@@ -1,0 +1,411 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Scott Jeen</title>
+        <link>https://enjeeneer.io/posts/</link>
+        <description>Recent content in Posts on Scott Jeen</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 17 Nov 2021 09:03:11 -0500</lastBuildDate>
+        <atom:link href="https://enjeeneer.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Presenting with Jupyter Notebooks</title>
+            <link>https://enjeeneer.io/posts/2021/11/presenting-with-jupyter-notebooks/</link>
+            <pubDate>Wed, 17 Nov 2021 09:03:11 -0500</pubDate>
+            
+            <guid>https://enjeeneer.io/posts/2021/11/presenting-with-jupyter-notebooks/</guid>
+            <description>The best way to walk through this tutorial is using the accompanying Jupyter Notebook: 
+[Jupyter Notebook]
+- In the last year I&amp;rsquo;ve started presenting work using Jupyter Notebooks, rebelling against the Bill Gates&#39;-driven status-quo. Here I&amp;rsquo;ll explain how to do it. It&amp;rsquo;s not difficult, but in my opinion makes presentations look slicker, whilst allowing you to run code live in a presentation if you like. First, we need to download the plug-in that gives us the presentation functionality, it&amp;rsquo;s called RISE.</description>
+            <content type="html"><![CDATA[<h3 id="the-best-way-to-walk-through-this-tutorial-is-using-the-accompanying-jupyter-notebook">The best way to walk through this tutorial is using the accompanying Jupyter Notebook:</h3>
+<p><a href="http://colab.research.google.com/github/enjeeneer/talks/blob/main/2021-11-17-RISEPresentations/notebook.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<p>[<a href="http://nbviewer.jupyter.org/github/enjeeneer/talks/blob/main/2021-11-17-RISEPresentations/notebook.ipynb">Jupyter Notebook</a>]</p>
+<h3 id="-">-</h3>
+<p>In the last year I&rsquo;ve started presenting work using Jupyter Notebooks, rebelling against the Bill Gates'-driven status-quo. Here I&rsquo;ll explain how to do it. It&rsquo;s not difficult, but in my opinion makes presentations look slicker, whilst allowing you to run code live in a presentation if you like. First, we need to download the plug-in that gives us the presentation functionality, it&rsquo;s called <a href="https://rise.readthedocs.io/en/stable/index.html">RISE</a>. We can do this easily using pip in a terminal window:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install RISE
+</code></pre></div><p>Once installed, our first move is to add the presentation toggles to our notebook cells. We do this by clicking <em>View</em> in the menu bar, then <em>Cell Toolbar</em>, then <em>Slideshow</em>:</p>
+<h2 id="adding-presentation-toggles-to-cells">Adding Presentation Toggles to Cells</h2>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-RISEPresentations/images/slideshow_2.gif?raw=true"/> 
+</figure>
+
+<h2 id="slide-types">Slide Types</h2>
+<p>This adds a <code>Slide Type</code> dropdown to each cell in the notebook. Here we can choose one of five options:</p>
+<ul>
+<li><strong>Slide</strong>: Used to start a new chapter in your presentation, think of this as a section heading in LaTeX.</li>
+<li><strong>Sub-slide</strong>: Slide falling within the chapter defined by a <strong>Slide</strong> cell.</li>
+<li><strong>Fragment</strong>: this is to split the contents of one slide into pieces; a cell marked as a fragment will create a break inside the slide; it will not show up right away, you will need to press Space one more time to see it.</li>
+<li><strong>Skip</strong>: Skips cell when in presenter mode.</li>
+<li><strong>Notes</strong>: Cell that allows the author to write notes on a slide that aren&rsquo;t shown in presenter view.</li>
+</ul>
+<p>As with any notebook, we can define the cell type to be either <code>Markdown</code> or <code>Code</code>. As you&rsquo;d expect, we present any text or image-based slide in <code>Markdown</code>, reserving the <code>Code</code> cell type if and only if we want to explicitly run some code in the presentation. If you aren&rsquo;t familiar, Markdown is a straightforward language for text formatting; I won&rsquo;t go into the details here, but suffice to say you can learn the basics of Markdown in 5 minutes. You can find a useful cheatsheet <a href="https://www.markdownguide.org/cheat-sheet/">here</a>.</p>
+<h2 id="images">Images</h2>
+<p>Adding images is easy too. I advise creating a sub-directory in your working directory called <code>/images</code> and storing anything you want to present there. Then you display them in a markdown file using some simple HTML syntax:</p>
+<p><code>&lt;img class=&quot;&quot; src=&quot;images/london_deaths.jpeg&quot; style=&quot;width:75%&quot;&gt;</code></p>
+<p>You can manipulate the <code>style</code> attribute to change the size of the image. Don&rsquo;t worry, this is the only HTML you need to know!</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-RISEPresentations/images/london_deaths.jpeg?raw=true"/> 
+</figure>
+
+<h2 id="entering-presentation-mode">Entering Presentation Mode</h2>
+<p>To view your slideshow click on the bar-chart button in the menu bar. This will start the presentation from the cell currently selected:</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-RISEPresentations/images/start_show.gif?raw=true"/> 
+</figure>
+
+<p>That&rsquo;s it! This tutorial has given you an introduction to the basics of RISE for presenting with Jupyter Notebooks, you can of course customise these to your heart&rsquo;s content using further plug-ins and more advanced Markdown. Here&rsquo;s a summary of the useful links from this document to finish:</p>
+<ul>
+<li><a href="https://rise.readthedocs.io/en/stable/index.html">RISE Documentation</a></li>
+<li><a href="https://www.markdownguide.org/cheat-sheet/">Markdown Cheatsheet</a></li>
+<li><a href="https://www.tablesgenerator.com/">Markdown Table Generator</a></li>
+</ul>
+<h1 id="thanks">Thanks!</h1>
+<h3 id="twitter-enjeeneerhttpstwittercomenjeeneer">Twitter: <a href="https://twitter.com/enjeeneer">@enjeeneer</a></h3>
+<h3 id="website-httpsenjeeneeriohttpsenjeeneerio">Website: <a href="https://enjeeneer.io/">https://enjeeneer.io/</a></h3>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Notes, Exercises and Code for Sutton and Barto&#39;s Reinforcement Learning: An Introduction (2018)</title>
+            <link>https://enjeeneer.io/posts/2021/04/notes-exercises-and-code-for-sutton-and-bartos-reinforcement-learning-an-introduction-2018/</link>
+            <pubDate>Fri, 30 Apr 2021 18:18:24 +0100</pubDate>
+            
+            <guid>https://enjeeneer.io/posts/2021/04/notes-exercises-and-code-for-sutton-and-bartos-reinforcement-learning-an-introduction-2018/</guid>
+            <description>In the last few weeks I&amp;rsquo;ve been compiling a set of notes and exercise solutions for Sutton and Barto&amp;rsquo;s Reinforcement Learning: An Introduction. Admittedly, these were produced for my own benefit, but if you&amp;rsquo;d like to look at my notes, my (probably incorrect) answers to the exercises, or the code accommodating those answers, I&amp;rsquo;ll link directly to them below:
+ Notes Exercises Code  Thanks to Bryn Hayder for inspiring this idea, and for providing his exercise solutions which helped me throughout.</description>
+            <content type="html"><![CDATA[<p>In the last few weeks I&rsquo;ve been compiling a set of notes and exercise solutions for <a href="http://incompleteideas.net/book/RLbook2020.pdf">Sutton and Barto&rsquo;s Reinforcement Learning: An Introduction</a>. Admittedly, these were produced for my own benefit, but if you&rsquo;d like to look at my notes, my (probably incorrect) answers to the exercises, or the code accommodating those answers, I&rsquo;ll link directly to them below:</p>
+<ul>
+<li><a href="/sutton_and_barto/rl_notes.pdf"><strong>Notes</strong></a></li>
+<li><a href="/sutton_and_barto/rl_exercises.pdf"><strong>Exercises</strong></a></li>
+<li><a href="https://github.com/enjeeneer/sutton_and_barto"><strong>Code</strong></a></li>
+</ul>
+<p>Thanks to <a href="https://github.com/brynhayder">Bryn Hayder</a> for inspiring this idea, and for providing his exercise solutions which helped me throughout.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Scott&#39;s Uncomprehensive Guide to Scotland </title>
+            <link>https://enjeeneer.io/posts/2021/04/scotts-uncomprehensive-guide-to-scotland/</link>
+            <pubDate>Mon, 19 Apr 2021 21:08:05 +0000</pubDate>
+            
+            <guid>https://enjeeneer.io/posts/2021/04/scotts-uncomprehensive-guide-to-scotland/</guid>
+            <description>Hello treasured friend. If you&amp;rsquo;re reading this, it&amp;rsquo;s probably because I&amp;rsquo;ve force-fed you a link after discussing your upcoming trip to Scotland. I hope this is useful to you in some way. Think of this a travel guide that you can dip into when you find yourself in one of these places either hungry or bored. I don&amp;rsquo;t describe anything in detail, you&amp;rsquo;ll just have to take me on my word that these places are worth visiting.</description>
+            <content type="html"><![CDATA[<p>Hello treasured friend. If you&rsquo;re reading this, it&rsquo;s probably because I&rsquo;ve force-fed you a link after discussing your upcoming trip to Scotland. I hope this is useful to you in some way. Think of this a travel guide that you can dip into when you find yourself in one of these places either hungry or bored. I don&rsquo;t describe anything in detail, you&rsquo;ll just have to take me on my word that these places are worth visiting.</p>
+<p>Before diving in, I&rsquo;d like to make a quick overarching recommendation. If you only have one chance to visit, I would strongly advise using this visit to see Edinburgh in August for the <a href="https://en.wikipedia.org/wiki/Edinburgh_Festival_Fringe">Fringe Festival</a>. In general, you can&rsquo;t do better than Edinburgh; it&rsquo;s the capital, cultural centre, prettiest city; and in August you&rsquo;ll get the best weather. But the Fringe is a unique experience that I think should be on everyone&rsquo;s bucket list. Every pub, church, park, music venue (indeed, any open space) becomes a stage for artists, actors, and comedians. These artists range from world class to distinctly amateur, and the fun lies in booking a string of shows across an afternoon/evening, likely from performers you will never have heard of, and rolling the dice. You will see some awful shows that make you cringe, then you&rsquo;ll see a performance that will take your breath away leaving you in awe of their talent. The bars are open till 5am every day of the week (usually outlawed in Scotland), and the city is buzzing with excitement and energy. Edinburgh is the most cosmopolitan city in Scotland, but it is especially so for the Fringe, with  ~1 million tourists visiting. During my undergrad, I worked in different bars each Fringe I was there, so have seen plenty of it, and I promise you won&rsquo;t regret going, it&rsquo;s a special time.</p>
+<p>Anyway, if you want to explore more than just the Fringe, here&rsquo;s some ideas of things to do. The two categories are: 1) Cities, 2) Special Events, and there&rsquo;s a little aside at the end on golf courses. I think the sub-structure is self-explanatory. I hope it&rsquo;s helpful!</p>
+<h1 id="cities">Cities</h1>
+<h2 id="edinburgh">Edinburgh</h2>
+<h3 id="things-to-do-before-dark">Things to do before dark</h3>
+<ul>
+<li>Walk up Arthur&rsquo;s Seat via the Craggs for a view of the entire city <a href="https://goo.gl/maps/5Jpnucuso4ebNY5w9">[map]</a></li>
+<li>Walk up Calton Hill for a view of Princess Street, the Castle and the Firth of Forth <a href="https://goo.gl/maps/o5Y5uA94EH9bRP7k8">[map]</a></li>
+<li>The Castle (beware of the £20 entry fee if you&rsquo;re light on $$$ <a href="https://goo.gl/maps/WjrgDGNcJJFCV2BT6">[map]</a></li>
+<li>Walk along the canal through Dean Village <a href="https://goo.gl/maps/oYKFGTvuNzDCuwWo9">[map]</a></li>
+<li>Portobello beach (if you&rsquo;re feeling warm) <a href="https://goo.gl/maps/a9UsAs9WhXRBAVs37">[map]</a></li>
+<li>Tour the university buildings; George Square/The Meadows <a href="https://goo.gl/maps/z9DmcxhgCNycQ3FY7">[map]</a> and Old College <a href="https://goo.gl/maps/StYFpYtcEzn9tFDY6">[map]</a></li>
+</ul>
+<h3 id="things-to-do-after-dark">Things to do after dark</h3>
+<ul>
+<li>Sneaky Pete&rsquo;s: playing techno/house, the best night in Edinburgh. Something happening most nights  <a href="https://goo.gl/maps/AVeVNFvc4JMPdLyr9">[map]</a></li>
+<li>The Brass Monkey: an eccentric, unique locals bar <a href="https://goo.gl/maps/WEEQrNjGNGcRAvHy6">[map]</a></li>
+<li>The Devil&rsquo;s Advocate: cool, sleek (and more expensive) city bar <a href="https://goo.gl/maps/19BmGMCQ5ya2pUTZ6">[map]</a></li>
+<li>The Hanover Tap: easy-going student bar <a href="https://goo.gl/maps/CrXV6yB6fFTojF1i8">[map]</a></li>
+<li>99 Hanover St.: cool city bar with the occasional DJ <a href="https://goo.gl/maps/AXt3AW6LXyuaFkJv8">[map]</a></li>
+<li>Garibadli&rsquo;s: wild club near many of the above bars. Order the Gari&rsquo;s special at the bar! <a href="https://goo.gl/maps/CZPhQmjGVhzumwsq6">[map]</a></li>
+<li>The Hanging Bat: cool bar with loads of beer <a href="https://g.page/thehangingbat?share">[map]</a></li>
+</ul>
+<h3 id="things-to-do-if-you-have-a-car">Things to do if you have a car</h3>
+<ul>
+<li>Visit North Berwick and Gullane, two lovely seaside towns along the coast <a href="https://goo.gl/maps/1r1kviJPhEbi3NWd9">[map]</a></li>
+<li>The Pentland Hills <a href="https://goo.gl/maps/NVPLxfiqaNj9Bb9Z7">[map]</a></li>
+</ul>
+<h3 id="things-to-do-if-hungover">Things to do if hungover</h3>
+<ul>
+<li>Meltmongers (grilled cheese) <a href="https://goo.gl/maps/m8saRkuZyTyLKSNGA">[map]</a></li>
+<li>Snax Cafe: infamous hangover food for pennies <a href="https://goo.gl/maps/X3nVXRehDAzP4yYe7">[map]</a></li>
+<li>Wings: chicken wings in an unreasonable number of seasonings <a href="https://goo.gl/maps/h2AvnUGcYPzaSWmm6">[map]</a></li>
+</ul>
+<h3 id="lunch">Lunch</h3>
+<ul>
+<li>Nile Valley Cafe–me and my mates' favourite spot in the city (Sudanese Wraps) <a href="https://goo.gl/maps/xGS9on9vymkHhN3Q8">[map]</a></li>
+<li>Tupiniquim (Brazilian crepes) <a href="https://goo.gl/maps/UhaxA5MDUTUgnVk58">[map]</a></li>
+<li>J Reid Sandwich Shop: great salads <a href="https://goo.gl/maps/K6vCQJuafghiuHEY9">[map]</a></li>
+<li>Victor Hugo Deli <a href="https://goo.gl/maps/m8saRkuZyTyLKSNGA">[map]</a></li>
+<li>10 to 10 in Delhi (Indian) <a href="https://goo.gl/maps/zSGp67zvi61DGHvr5">[map]</a></li>
+<li>The Scran and Scallie: up-market scottish gastropub. Some of the best pub food in the city <a href="https://goo.gl/maps/19BmGMCQ5ya2pUTZ6">[map]</a></li>
+</ul>
+<h3 id="dinner">Dinner</h3>
+<ul>
+<li>Yene Meze (Greek) <a href="https://goo.gl/maps/kW8YaB4f3j16qzPS9">[map]</a></li>
+<li>Fishers in the City: delicious, up-market fish restaurant <a href="https://g.page/Fishers-in-the-city?share">[map]</a></li>
+<li>The Bon Vivant: fantastic French restaurant <a href="https://goo.gl/maps/CrXV6yB6fFTojF1i8">[map]</a></li>
+<li>The Outsider: chill atmosphere, serving delicious mixed cuisine <a href="https://goo.gl/maps/mjmUh3S5vhSgXe8p6">[map]</a></li>
+<li>The Grain Store: amazing scottish cuisine, albeit pricey <a href="https://goo.gl/maps/yYxhqMV8HnUM1zEq7">[map]</a></li>
+</ul>
+<h3 id="coffee">Coffee</h3>
+<ul>
+<li>Project Coffee <a href="https://goo.gl/maps/MtfGh3uCsGpapB7CA">[map]</a></li>
+<li>Soderberg <a href="https://goo.gl/maps/5vTA9SNftMSLM3Jm9">[map]</a></li>
+<li>Maison de Moggy: a cafe full of cats <a href="https://goo.gl/maps/iZ5c6j2bYDkbiomZ6">[map]</a></li>
+</ul>
+<h2 id="glasgow">Glasgow</h2>
+<h3 id="things-to-do-before-dark-1">Things to do before dark</h3>
+<ul>
+<li>Kelvingrove Art Gallery: some lovely exhibitions inc. <a href="https://en.wikipedia.org/wiki/Christ_of_Saint_John_of_the_Cross">Dali&rsquo;s Christ of Saint John of the Cross</a> <a href="https://goo.gl/maps/eCvcpUcUE4Lmyq4n7">[map]</a></li>
+<li>Walk around the West End: Byres Road, Botanic Gardens, University Avenue etc. <a href="https://goo.gl/maps/NMuBdWBtLwh2SpGq7">[map]</a></li>
+<li>Take the <a href="https://en.wikipedia.org/wiki/Glasgow_Subway">Subway</a>!</li>
+</ul>
+<h3 id="things-to-do-after-dark-1">Things to do after dark</h3>
+<ul>
+<li>Ashton Lane (specifically <a href="brelbar.com">Brel</a> for a drink and the <a href="ubiquitouschip.co,uk">Ubiquitous Chip</a> for food) <a href="https://goo.gl/maps/QfYxVpMeGbRGYJ6i9">[map]</a></li>
+<li>The Arlington (an edgy locals bar) <a href="https://goo.gl/maps/1RoyojPkp3qxRGbw8">[map]</a></li>
+<li>Oran Mor (if you&rsquo;re out this area (the west end) beyond midnight, this is the only place that&rsquo;s open till 3am) <a href="https://goo.gl/maps/pAnWoRiYjB96EzHr9">[map]</a></li>
+<li>Sub club (the longest running underground club in the world, the best spot for techno and a fun night) <a href="https://goo.gl/maps/e7xh4AKv7JnrXDcs5">[map]</a></li>
+<li>SWG3: the clue is in the name <a href="https://goo.gl/maps/7rcZiL1TrakfAivP9">[map]</a></li>
+</ul>
+<h3 id="things-to-do-if-you-have-a-car-1">Things to do if you have a car</h3>
+<ul>
+<li>Loch Lomond and Conic Hill <a href="https://goo.gl/maps/RgDsXhviKvHKo5dy8">[map]</a></li>
+<li>Climb Queen&rsquo;s view <a href="https://goo.gl/maps/RgDsXhviKvHKo5dy8">[map]</a></li>
+<li>Glengoyne Distillery <a href="https://g.page/Glengoyne?share">[map]</a></li>
+<li>Mugdock Country Park &amp; Castle <a href="https://goo.gl/maps/stpHPSLAe7geNMNJA">[map]</a></li>
+</ul>
+<h3 id="things-to-do-if-hungover-1">Things to do if hungover</h3>
+<ul>
+<li>The University Cafe: famous locals cafe that do a sick Scottish breakfast <a href="https://goo.gl/maps/BKQPKYN3LHzc7XNV9">[map]</a></li>
+<li>Hyndland Cafe: greasy breakfast food for locals <a href="https://goo.gl/maps/c2iAw3iXAMkpUZaG6">[map]</a></li>
+</ul>
+<h3 id="lunch-1">Lunch</h3>
+<ul>
+<li>Epicures: Standard brunch food, delicious  <a href="https://goo.gl/maps/MvWLvNLRRMeqs7cG7">[map]</a></li>
+<li>The Hanoi Bike Ship: easy vietnamese food <a href="https://goo.gl/maps/1RDdm1VdSJAJLVm2A">[map]</a></li>
+</ul>
+<h3 id="dinner-1">Dinner</h3>
+<ul>
+<li>Balbir&rsquo;s: I think it&rsquo;s the best curry I&rsquo;ve had <a href="https://goo.gl/maps/BhrHeMfitjsxrJWW6">[map]</a></li>
+<li>La Vita Spuntini: delicious Italian tapas <a href="https://goo.gl/maps/wZAmsMbwzkm2Lig78">[map]</a></li>
+<li>Pizza Magic: the best pizza I&rsquo;ve had in the city (also applies if hungover) <a href="https://goo.gl/maps/Sx9reyZYKhrJ1Vwk6">[map]</a></li>
+<li>Stravaigin: gourmet Scottish cuisine <a href="https://goo.gl/maps/SWBM2vNa9LLaoWNv9">[map]</a></li>
+</ul>
+<h3 id="coffee-1">Coffee</h3>
+<ul>
+<li>Tchai-Ovna House of Tea: this isn&rsquo;t coffee, but don&rsquo;t worry about that just come here, drink their tea, smoke their shisha and play chess. It&rsquo;s a great spot. <a href="https://goo.gl/maps/S86eTVP8Dtqg91X49">[map]</a></li>
+<li>Laboratorio Espresso: If you do need coffee, this place is pretty good <a href="https://goo.gl/maps/nYNoJb9aFYfWp7Ue6">[map]</a></li>
+</ul>
+<h2 id="st-andrews">St Andrews</h2>
+<h3 id="things-to-do-before-dark-2">Things to do before dark</h3>
+<ul>
+<li>Have a go at the O.G. crazy golf: The Himalayas. Pitch up and pay a couple of quid at the window and they will give you a putters and balls <a href="https://goo.gl/maps/gv1NKrc7Cx7AnWRc6">[map]</a>.</li>
+<li>Walk along west sands, where they filmed <a href="https://www.youtube.com/watch?v=TLbWBlB2aWA"><em>that</em></a> scene in Chariots of Fire <a href="https://goo.gl/maps/uepd8JwdH3uPxvSg7">[map]</a></li>
+<li>Get a fudge donut from Fisher &amp; Donaldson <a href="https://goo.gl/maps/LKmFK2JMkuG4Qe3o7">[map]</a></li>
+<li>Walk to east sands and along the pier where the students <a href="https://news.st-andrews.ac.uk/archive/students-take-part-in-traditional-st-andrews-pier-walk/">meet before the start of new academic year</a> <a href="https://goo.gl/maps/gYVkPDS62mF7HB7v6">[map]</a></li>
+<li>If you&rsquo;re there on a Sunday, have a picnic on the 18th fairway of the old course. It&rsquo;s public land and there&rsquo;s no play on a Sunday, you&rsquo;ll meet lots of dog walkers. <a href="https://goo.gl/maps/f5RvVnwfjUP6eVzi9">[map]</a></li>
+<li>If you play golf, clearly try and play the Old, if you can&rsquo;t get on there my next favourite is the New. <a href="https://goo.gl/maps/zE6EZNL9sHhhRdb36">[map]</a></li>
+</ul>
+<h3 id="things-to-do-after-dark-2">Things to do after dark</h3>
+<ul>
+<li>The Dumvegan: historic golf-themed pub <a href="https://goo.gl/maps/MxoD6SDWJJtyPhgD8">[map]</a></li>
+<li>The Keys: the localist of local pubs <a href="https://goo.gl/maps/7mHbi7KXhN79o9i1A">[map]</a></li>
+<li>The Vic: the only place playing music till late <a href="https://goo.gl/maps/zL8KbhBeEM2fGpwS7">[map]</a></li>
+<li>The Jigger: sit and watch the golfers go by (nb: if you&rsquo;re a golfer, the Jigger challenge is to nip if after you finish the 17th and drink as many pints as you like in half an hour, then you have to play the 18th in fewer shots than the number of pints drunk) <a href="https://g.page/jigger-inn?share">[map]</a></li>
+</ul>
+<h3 id="things-to-do-if-you-have-a-car-2">Things to do if you have a car</h3>
+<ul>
+<li>Go to Elie, have lunch in <a href="https://goo.gl/maps/8XcwJtZ1PNRzUkAG9">The Ship</a> and watch some beach cricket <a href="https://goo.gl/maps/DsCgtdEQGtvQspzG9">[map]</a></li>
+<li>Anstruther for the best fish and chips in Scotland! <a href="https://goo.gl/maps/L2q5eY9utz1xB8287">[map]</a></li>
+<li>Have a walk around the colourful houses in Pittenweem <a href="https://goo.gl/maps/rtaXBFoxczuNoSRM6">[map]</a></li>
+</ul>
+<h3 id="things-to-do-if-hungover-2">Things to do if hungover</h3>
+<ul>
+<li>Munch: cheap, delicious greasy food <a href="https://goo.gl/maps/QQ21ntM7VCJkWYB67">[map]</a></li>
+<li>Toastie Bar: 50p toasties, ideal <a href="https://goo.gl/maps/jT3Ki1WT6nDnoynV6">[map]</a></li>
+</ul>
+<h3 id="lunch-2">Lunch</h3>
+<ul>
+<li>Forgan&rsquo;s: solid brunch menu <a href="https://g.page/ForgansSTA?share">[map]</a></li>
+<li>CombiniCo: east asian cuisine, sushi etc. <a href="https://goo.gl/maps/jFsSwf7MxADigzTs9">[map]</a></li>
+</ul>
+<h3 id="dinner-2">Dinner</h3>
+<ul>
+<li>The Seafood Ristorante: amazing fresh fish from the harbour, pricey <a href="https://g.page/theSeafoodStA?share">[map]</a></li>
+<li>The Rav: British cuisine, stylish surroundings <a href="https://goo.gl/maps/kCekTGKVYUNkn6v97">[map]</a></li>
+</ul>
+<h3 id="coffee-2">Coffee</h3>
+<ul>
+<li>Taste: my Uncle owns this place! <a href="https://goo.gl/maps/vysZ53CnTTrbBHL1A">[map]</a></li>
+</ul>
+<h1 id="special-events">Special Events</h1>
+<h2 id="edinburgh-fringe">Edinburgh Fringe</h2>
+<h3 id="venues-to-visit">Venues to visit</h3>
+<ul>
+<li>Pleasance Courtyard: high-quality comedy and drama and one of the cool old university buildings. The bars are sick too. <a href="https://goo.gl/maps/nh83Py5T7N5Xdbgc8">[map]</a></li>
+<li>Gilded Balloon: Similar to Pleasance, really cool old building with great acts performing every year. <a href="https://goo.gl/maps/skjzcAoqYcY2XAJv8">[map]</a></li>
+<li>The Stand: the best comedy club in Edinburgh <a href="https://goo.gl/maps/oCiiZpTNv5nDGqAM8">[map]</a></li>
+<li>Underbelly Cowgate: a cool network of bars underneath the city, and a great spot to be for going out after a show <a href="https://goo.gl/maps/NaV4JpBcyueVZpkG7">[map]</a></li>
+<li>Udderbelly: a large purple cow [map]](<a href="http://www.underbellyedinburgh.co.uk/#stq=&amp;stp=1">http://www.underbellyedinburgh.co.uk/#stq=&amp;stp=1</a>)</li>
+</ul>
+<h3 id="recurring-shows-to-see">Recurring shows to see</h3>
+<ul>
+<li>Late n' Live: on every night in the Gilded Balloon from 1am. Different comedians are selected each evening to perform a set. They&rsquo;ve already performed their usual, daily set earlier on, and have probably now had a few celebratory drinks. The crowd are equally loose and it creates a chaotic, hilarious atmosphere <a href="https://latenlive.co.uk/about/">[map]</a></li>
+</ul>
+<h2 id="north-coast-500">North Coast 500</h2>
+<p>If you&rsquo;re planning a road trip through the Highlands then you&rsquo;re probably familiar with the North Coast 500. You can&rsquo;t go wrong following <a href="https://en.wikipedia.org/wiki/North_Coast_500#:~:text=The%20North%20Coast%20500%20is,Scotland%20in%20one%20touring%20route.">the intended route</a>, but here&rsquo;s a little advice on places I think you should definitely visit on the way.</p>
+<ul>
+<li>Glenfinnan Viaduct: If you&rsquo;ve seen Harry Potter then you&rsquo;ll recognise this as the bridge the train crosses en route to Hogwarts. It&rsquo;s beautiful, but works as a great spot to stop for lunch. <a href="https://goo.gl/maps/A5LmFpunQxGNgU9P9">[map]</a></li>
+<li>The <a href="https://images.app.goo.gl/n6dZcDgixxPJad2r8">James Bond View</a> <a href="https://goo.gl/maps/Yvm6WqbqDW3HLLGZA">[map]</a></li>
+<li>Eilean Donan Castle, also in James Bond lol <a href="https://goo.gl/maps/WQNE2ip1viDqgpux9">[map]</a></li>
+<li>The prettiest bit of road to drive is near Applecross <a href="https://goo.gl/maps/gUFfQctdsUB9J168A">[map]</a></li>
+<li>Get a flight to <a href="https://en.wikipedia.org/wiki/Barra_Airport">Barra</a> in the Outer Hebrides and land on the beach! <a href="https://goo.gl/maps/27GKka1FZMAGK8QX7">[map]</a></li>
+<li>Isle of Harris, and specifically <a href="https://goo.gl/maps/wkoNLZcS1CpCdENM7">Luskentyre Beach</a>) <a href="https://goo.gl/maps/wkoNLZcS1CpCdENM7">[map]</a></li>
+<li>Take the <a href="https://en.wikipedia.org/wiki/Westray_to_Papa_Westray_flight#:~:text=The%20Loganair%20Westray%20to%20Papa,fastest%20flight%20is%2053%20seconds.">shortest commercial flight</a> in the world from Westray to Papa Westray. It lasts 53 seconds. <a href="https://goo.gl/maps/AkH13qdFuG4KXXHB9">[map]</a></li>
+</ul>
+<h1 id="an-aside-on-golf-courses">An Aside on Golf Courses</h1>
+<p>If you are into golf, here&rsquo;s my top 5 courses, and some hidden gems:</p>
+<h2 id="top-5">Top 5</h2>
+<ol>
+<li>Royal Dornoch</li>
+<li>Muirfield</li>
+<li>Carnoustie</li>
+<li>Troon</li>
+<li>Kingsbarns</li>
+</ol>
+<p>I&rsquo;m yet to play Turnberry since the updates, but I&rsquo;m told it&rsquo;s now no. 1.</p>
+<h2 id="hidden-gems-in-no-particular-order">Hidden Gems (in no particular order)</h2>
+<ul>
+<li>Ladybank</li>
+<li>Moray</li>
+<li>Nairn (if you consider it hidden)</li>
+<li>Elie</li>
+<li>Monifieth</li>
+<li>Murcar</li>
+<li>Shiskine</li>
+<li>Luffness</li>
+</ul>
+<p>If you have any questions, please do send me an email. You can find my address on <a href="https://enjeeneer.io/">the homepage</a>.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Golf, attention-spans, and degrowth</title>
+            <link>https://enjeeneer.io/posts/2021/04/golf-attention-spans-and-degrowth/</link>
+            <pubDate>Wed, 14 Apr 2021 16:10:24 +0100</pubDate>
+            
+            <guid>https://enjeeneer.io/posts/2021/04/golf-attention-spans-and-degrowth/</guid>
+            <description>&amp;ldquo;It&amp;rsquo;s downwind, if he throws everything at it he&amp;rsquo;s got a chance of making the front edge&amp;rdquo; said Nick Faldo, CBS commentator and 6 time major champion, as Bryson DeChambeau ambled to the 6th tee at Bay Hill Country Club 5 weeks ago. DeChambeau was leading Arnold Palmer&amp;rsquo;s Bay Hill Invitational and considering his options from the tee of the 528 yard par 5. I say 528 yards, as that is the distance as offered by Bay Hill&amp;rsquo;s scorecard, but that is the distance measured around the lake blocking the player&amp;rsquo;s line from tee to green, but were the player to bypass the boomerang arc and aim directly for the green, the hole plays only 340 yards.</description>
+            <content type="html"><![CDATA[<p>&ldquo;It&rsquo;s downwind, if he throws everything at it he&rsquo;s got a chance of making the front edge&rdquo; said Nick Faldo, CBS commentator and 6 time major champion, as Bryson DeChambeau ambled to the 6th tee at Bay Hill Country Club 5 weeks ago. DeChambeau was leading Arnold Palmer&rsquo;s Bay Hill Invitational and considering his options from the tee of the 528 yard par 5. I say 528 yards, as that is the distance as offered by Bay Hill&rsquo;s scorecard, but that is the distance measured around the lake blocking the player&rsquo;s line from tee to green, but were the player to bypass the boomerang arc and aim directly for the green, the hole plays only 340 yards.</p>
+<p><figure>
+    <img src="/img/bayhill_6th.png" width="450" height="300"/> 
+</figure>
+
+<em>Figure: The 6th hole at Bay Hill Country Club. The teebox is on the far left of the image and the green on the far right. Source: <a href="https://www.pgatour.com/tournaments/arnold-palmer-invitational-presented-by-mastercard.html">pgatour.com</a></em></p>
+<p>DeChambeau had been building toward this moment since the first lockdown of 2020. He entered lockdown a lean 85kg athlete and, after four months of throwing metal around his gym, emerged 20kg heavier and several belt loops larger. DeChambeau had gambled on the idea that bulking up to quicken his swing speed and lengthen his drives would tip the statistics of golf in his favour. He assumed that the benefits granted by increased distance would outweigh the side affects of swinging the club faster. If he can approach the green with an 8 iron, he thinks, whilst the field are hitting 5 irons, he will outperform the better iron players than him, despite their increased skill. He was right to think so.  Since returning from lockdown DeChambeau is first in strokes gained off-the-tee on the US Tour (a measure of how much better he drives the ball compared to the field average), has won three times, has 17 top-10 finishes, and has cashed $10 million. At Bay Hill he drove to the periphery of the 6th green on the final day and won the tournament.</p>
+<p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/G1kFhGapsto" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<em>Video: Bryson DeChambeau&rsquo;s drive on the 6th hole at Bay Hill Country Club on the third day of the Arnold Palmer Invitational</em></p>
+<p>To a non-golfer this tactic may seem obvious, but the efficacy of this approach has been long debated. Many (many!) golfers have tried and failed to hit the ball further. Luke Donald, a slight Englishman, made it to world Number 1 in 2011 with a game based on subtlety and consistency; Martin Kaymer won two major championships with a swing that faded the ball–a curvature from left to right that tends to produce shorter drives. Both men changed their swings in an attempt to hit the ball further and have been unrecognisable since. The established thinking went thus: greater distance means reduced control with the benefit of one being balanced by the drawback of the other. Technology has tipped this balance. Since the mid-2000s equipment manufacturers have been producing ever-optimised clubs and balls. The clubs cater better to off-centre strikes (often leading to wayward shots in times past) and the balls fly straighter and further. Combined, players can swing much harder without fear that a miss-strike could send their drives into hazards or rough.</p>
+<p>This creates two problems for the sport, which are 1) logistical and 2) (somewhat) philosophical. First, golf courses, usually built in the late 19th and early 20th centuries, are now too short for the professional game. As an attempted fix, tee boxes have been extended backward to lengthen holes and rough has been grown to penalise inaccuracy. However, this creates two further problems: 1a) courses are built on finite land and, in many places, their limits have been reached, and 1b) longer courses and thicker rough, somewhat ironically, exacerbate the advantage gained by distance, as it&rsquo;s easier to hit a shorter iron from the rough than a longer one. The second, philosophical issue, is that increased length eliminates what most see as the best aspects of the game. The accuracy-distance tradeoff has always been key to the sport: a player who was less powerful, but could control their ball (and their emotions) better than their opponent would emerge victorious. Moreover, longer, straighter shots allow players to cut corners, or fly second shots directly to the hole, when players from past eras would have to bend shots around corners or manage contours to get approach shots close.</p>
+<p>It seems sensible, therefore, that corrective action should be taken, but the governing bodies are hesitant. There is a prevailing narrative, lobbied, I suspect, by TV executives and equipment manufacturers, that fans <em>want</em> to see the ball go further. Indeed, executives of these organisations appear to actively reject the science to further this agenda; Jay Monahan, commissioner of the US PGA Tour said in 2017 that trends in driving distance <a href="%5Bhttps://www.golfchannel.com/news/pga-tour-pga-america-issue-statements-study%5D(https://www.golfchannel.com/news/pga-tour-pga-america-issue-statements-study)">&ldquo;do not indicate a significant or abnormal increase in distance&rdquo;</a>. Average driving distance on the PGA Tour increased by <a href="%5Bhttps://www.pgatour.com/content/pgatour/stats/stat.101.y2017.html%5D(https://www.pgatour.com/content/pgatour/stats/stat.101.y2017.html)">14%</a> in the 15 years preceding that statement. Financial incentives make the motivations of the equipment manufacturers unsurprising, but I&rsquo;m staggered by the assertion that fans love distance. Do fans <em>really</em> want to see the ball go further? Like, <em>really</em>? Are we not discrediting the interests and intelligence of these fans? The PGA&rsquo;s primary riposte is that people&rsquo;s attention spans are getting shorter, <a href="https://www.bbc.co.uk/news/health-38896790">a debated assertion</a> (and topic for another post), and that if they don&rsquo;t catch viewer&rsquo;s attention early they will switch channel.</p>
+<p>These concerns are not unique to golf&rsquo;s leadership. T20 cricket is now framed by fireworks and cheerleaders when 6s are hit; premier league football clubs play music after a goal is scored to boost the atmosphere; organisers of the Boat Race recently made the rowers walk from a misty dressing room as <a href="%5Bhttps://youtu.be/oi_Lo4QuhtU?t=2898%5D(https://youtu.be/oi_Lo4QuhtU?t=2898)">lasers buzzed around their heads</a>; and the Super Bowl&rsquo;s half-time show (famously) gets bigger every year. It seems unlikely that these efforts have made TV sport more popular today that in previous decades, so I looked up Super Bowl viewership data to investigate (see below). You&rsquo;ll note that roughly 75% of US TV owners tuned in for the 1967 edition, and that figure has remained largely stable ever since. Fans continue to enjoy the Super Bowl in similar proportions to decades past, despite efforts to make it appear more exciting or accessible.</p>
+<p><figure>
+    <img src="/img/superbowl.png" width="700" height="300"/> 
+</figure>
+
+<em>Figure: Super Bowl TV ratings 1967-2019. Source: <a href="https://en.wikipedia.org/wiki/Super_Bowl_television_ratings">Wikipedia: Super Bowl television ratings</a></em></p>
+<p>I can&rsquo;t help but draw comparisons between golf&rsquo;s predicament and climate change. A clamour for growth that harms the environment; vested interests rejecting the facts; a misunderstanding of what people truly value. We know climate change has been driven by capitalist demands for growth, and we know these demands manifest as 2% annual increase targets to GDP, despite the plateauing of human well-being beyond <a href="%5Bhttps://ourworldindata.org/grapher/gdp-vs-happiness?xScale=linear&amp;minPopulationFilter=1000000&amp;time=2018%5D(https://ourworldindata.org/grapher/gdp-vs-happiness?xScale=linear&amp;minPopulationFilter=1000000&amp;time=2018)">$30,000 per capita</a>. With a finite planet, perennial growth, is, of course, a ridiculous idea. But more pressingly, growth in the next 30 years is incompatible with climate targets. Even if we deploy renewables as quickly as is hoped in best-case scenarios, we still have to reduce global energy use from 400EJ today to 240EJ by 2050 (<a href="%5Bhttps://www.nature.com/articles/s41560-018-0172-6%5D(https://www.nature.com/articles/s41560-018-0172-6)">Grubler et al (2018)</a>). We cannot make these reductions by efficiency improvements alone for several reasons, including <a href="https://bit.ly/3ddJWrf">Jevon&rsquo;s Paradox</a> and, in some cases, <a href="https://www.sciencedirect.com/science/article/pii/S0360544210000265">thermodynamic limits to energy efficiency</a>, so we have to find ways of reducing our energy demand in absolute terms. We have to find ways to degrow.</p>
+<p>How can we convince our leaders, largely born during the late 20th century–the golden age of economic growth–that degrowth is a viable alternative? I think our best chance is to understand what maximises human well-being, show its separation from growth, and double down. In sport, we don&rsquo;t find joy in a 30 second Twitter highlight, but in the hours of subtlety and story that preceded it. When Ben Stokes flushes a 4 through the covers to beat the Aussies, it&rsquo;s not the shot itself that&rsquo;s exhilarating (to a non-Aussie!), it&rsquo;s the previous hour of blocking from the bespectacled Jack Leach, positioning our hero for victory, that we love. When Tiger Woods wins his 5th Masters, the joy comes from understanding his ten-year comeback, lifting himself from the depths of public disgrace to the heights of sporting nirvana–all for his children who never saw him in his prime. And when Bryson DeChambeau drives the 6th green at Bay Hill, fans cheer not because the ball goes far, but because they appreciate his graft through lockdown, and are excited to see his efforts vindicated. We derive fulfilment from depth, characters and stories, not from superficial tricks.</p>
+<p>In life, too, our most fulfilling times are not the most expensive, the most energy-intensive or those that emit the most carbon. They are, in fact, the opposite. They&rsquo;re times spent laughing with friends, perfecting skills, exercising our creativity, connecting religiously, exploring the outdoors, feeling loved by others, and offering our love to others. All of these fulfilment-maximising activities come at low or no environmental cost. Crucially, they don&rsquo;t come after the Bank of England meets its fiscal targets for Q2. If our goal is a truly equitable, sustainable, <em>happy</em> world, then we must realise that growth, in the developed world, cannot provide it.</p>
+<p>I suspect golf&rsquo;s governing bodies will soon change the golf ball to shorten drives, and stop the expansion of its historic stadia. Can we make the same changes to our economic systems?</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Can probabilistic machine learning help limit climate change?</title>
+            <link>https://enjeeneer.io/posts/2021/01/can-probabilistic-machine-learning-help-limit-climate-change/</link>
+            <pubDate>Tue, 05 Jan 2021 16:33:12 +0000</pubDate>
+            
+            <guid>https://enjeeneer.io/posts/2021/01/can-probabilistic-machine-learning-help-limit-climate-change/</guid>
+            <description>🌍 If we are to successfully mitigate climate change we must reduce global emissions to near-zero by 2050. To this end, three solutions exist:
+ Generate energy using emission-free technologies; Capture and bury emissions using carbon capture and storage (CCS); and Use energy more efficiently.  In the UK, emission reduction efforts via solution 1) have so far proven extremely successful. Emission-free energy technologies generated 45% of UK electricity demand in 2020 which has caused a decrease in grid carbon intensity of 66%.</description>
+            <content type="html"><![CDATA[<h1 id="heading">🌍</h1>
+<p>If we are to successfully mitigate climate change we must reduce global emissions to near-zero by 2050. To this end, three solutions exist:</p>
+<ol>
+<li>Generate energy using emission-free technologies;</li>
+<li>Capture and bury emissions using carbon capture and storage (CCS); and</li>
+<li>Use energy more efficiently.</li>
+</ol>
+<p>In the UK, emission reduction efforts via solution 1) have so far proven extremely successful. Emission-free energy technologies generated <a href="https://www.gov.uk/government/statistics/energy-trends-section-6-renewables">45% of UK electricity demand in 2020</a> which has caused a decrease in grid carbon intensity of <a href="https://www.iea.org/countries/united-kingdom">66%</a>. Headway is being made, albeit slowly, toward solution 2), DRAX hope to deploy two Bioenergy CCS plants by 2030 that will remove <a href="https://www.theccc.org.uk/publication/sixth-carbon-budget/">0.32 tCO2 per person per year</a>. To date, mitigation efforts via solution 3) have proven less fruitful. UK final energy consumption has not meaningfully decreased in recent years; only 7% on 1990 levels according to the IEA. Despite widespread acknowledgment of the need to use energy more efficiently, over 30 years we&rsquo;ve made little progress.</p>
+<p>Our inefficient use of energy is linked closely with uncertainty. We overuse our resources today because tomorrow&rsquo;s needs are difficult to predict. Building contractors, for example, pre-purchase more material than is required because they are unsure exactly how much they will use in construction. Similarly, supermarkets buy more food than customers want because they struggle to predict customer demand. And home owners use their central heating for longer than needed because they cannot be sure how long it takes to warm up. Better predictions of our uncertain future allow us to make informed, efficient choices in the present that mitigate wasted resource.</p>
+<p>To make such predictions we use <a href="https://www.nature.com/articles/nature14541">probabilistic machine learning</a>. And with our predictions, we can then think about ways of acting optimally in these futures using <a href="https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf">Reinforcement Learning</a>. For example, using a probabilistic forecast of this afternoon&rsquo;s cloud cover, we could predict when the solar panels on our roof are likely to produce energy and delay the use of air conditioners until then. Using predictions for control in such a way, we can reduce emissions at near-zero cost,  in a way that other mitigation strategies struggle to do.</p>
+<p>My work is about making the best use of our predictive abilities to use resources more efficiently and reduce emissions.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Book Review: Cradle-to-Cradle Remaking the Way We Make Things</title>
+            <link>https://enjeeneer.io/posts/2018/11/book-review-cradle-to-cradle-remaking-the-way-we-make-things/</link>
+            <pubDate>Tue, 20 Nov 2018 16:54:55 +0000</pubDate>
+            
+            <guid>https://enjeeneer.io/posts/2018/11/book-review-cradle-to-cradle-remaking-the-way-we-make-things/</guid>
+            <description>Consider the cherry tree. A frenetic supply chain of blossom that produces thousands of seeds in the hope that one might fall to the soil, take root and grow. Its manufacturing model is inefficient, wasteful and laborious, yet beautifully nourishing to its surrounding ecology. The blossom that do not germinate instead provide nutrients for insects, microorganisms, animals and soil; its abundance and over-production should not be chastised, but celebrated.</description>
+            <content type="html"><![CDATA[<figure>
+    <img src="/img/cradle.jpg" width="250" height="350"/> 
+</figure>
+
+<p>Consider the cherry tree. A frenetic supply chain of blossom that produces thousands of seeds in the hope that one might fall to the soil, take root and grow. Its manufacturing model is inefficient, wasteful and laborious, yet beautifully nourishing to its surrounding ecology. The blossom that do not germinate instead provide nutrients for insects, microorganisms, animals and soil; its abundance and over-production should not be chastised, but celebrated. In Michael Braungart and William McDonough’s seminal book “Cradle-to-Cradle: Remaking the Way We Make Things”, the author’s ask: “What would the human-built world look like if it were built by a cherry tree?”. Braungart and McDonaugh assert that since the industrial revolution, humankind’s marriage with nature has been shaky and is now, in the 21st century, going through a messy, complicated divorce.</p>
+<p>The authors argue that our conventional cradle-to-grave manufacturing and consumption processes are deeply flawed in their linearity and their contempt they show for the environment. They compel the reader to drive a personal and corporate paradigm shift toward a circular design economy – their so-called cradle-to-cradle (C2C) approach. Their manifesto for revolution asks that producers make three actions: one is to see waste as food for the environment; two is to separate biological and technical nutrients in products to ease ready recycling and upcycling; and three is to adopt eco-effective practices rather than eco-efficient practices that value and incorporate the environment in design. Central to the novel’s argument is the author’s criticism of western society’s obsession with death, indeed graves. They suggest that mankind is fixated on finding a grave for their products after their finite and often short useful life. Braungart and McDonough summarise their circular philosophy and set up their narrative by asking the reader “what if the industrial revolution had taken place in a society that believed in reincarnation? Would our cradle-to-grave approach become cradle-to-cradle?”</p>
+<p>The concept of circularity was first discussed 52 years ago when Kenneth Boudling began questioning the linear openness of our economic activity in his piece “The Economics of the Coming Spaceship Earth” [1]. He identified society’s predisposition toward sending material to ‘sinks’ rather than reusing them in a closed economy. In 1989, this idea was further developed by Pearce and Kerry Turner when they first coined the phrase ‘circular economy’ [2],   after which Jackson synthesised much of the work in the field in his book “Material Concerns: Pollution, profit and quality of life” [3]. Thought toward bettering our products by copying natural design in the form of biomimicry was first discussed in 1982 by Merrill [4], before being popularised by Benyus in her seminal book “Biomimicry: Innovation Inspired by Nature” [5]. Cradle-to-Cradle’s call for ecological practice in industry and a closer alignment with nature draws heavily on these influences and preaches the author’s sermon in accessible English that resonates with academics, corporations and the public. In response to Cradle-to-Cradle, the Ellen Macarthur Foundation have furthered the shift toward a circular economy by producing a realisable framework that is founded on Braungart and McDonough’s cradle-to-cradle principles. The book has been cited thousands of times and has sold more than 300,000 copies worldwide. As such, it must be credited with starting a revolution in industrial design and in public discourse around societal overconsumption and waste.</p>
+<p>Cradle-to-Cradle comments on various aspects of sustainability, notably: challenging orthodoxy through change, operating within environmental limits and enacting effective life cycle management. The novel-spanning motif that we must create a mindset shift toward waste equalling food is the clearest objection of orthodoxy. The authors are constantly challenging the idea of waste describing it as an artefact of human creation; “whatever humans make does not go ‘away’” they exclaim. They make the reader question where “away” really is; is a landfill “away”? Is a recycling plant “away”? Where is this abstract place? They emphasise that nothing enters or leaves the confines of our planet, thus we live in materially closed system. Braungart and McDonough state that “to eliminate the concept of waste means to design things – products, packaging and systems – from the very beginning on the understanding that waste does not exist”. Inoculating public and corporate minds with this message could be extremely powerful in catalysing the transition toward a sustainable circular economy and I believe this is the most influential, effective message from the book. The author’s exemplars of how we can make our waste nourishing and not damaging are often idealistic, particularly their assertion that we should design a car with clean water as effluent that could promote roadside ecology. Despite their head-in-the-clouds aspirations, I still feel this message is truly valuable. I would add that any efforts to shift the paradigm away from convention will inevitably seem utopic at first, but it is only by thinking laterally with great optimism that can we enact real change.</p>
+<p>Throughout the text, Braungart and McDonaugh ask industry to design processes and products that operate within the environmental limits of the planet. They repeatedly remind the reader that “being less-bad is not good” referring to the environmental impact of our actions. They demonise so-called eco-efficiency, that is, for example: using less material in manufacturing, creating more carbon-efficient processes or using less water in agriculture. To that end, McDonough was quoted in an interview with the National Press Club as saying “If you want to go to Mexico, and you’re driving toward Canada, even if you slow down you’re still going to Canada”. Instead the authors ask the reader: “What would it mean to be 100% good?”, by that they mean operating with eco-effectiveness; designing systems so they are in deep symbiosis with nature. In doing so they say we can strive for a future of abundance, rather than one of limited eco-efficiency, bounded by the traditional environmentalist ideals of conservationism. The authors claim that their eco-effective principles will design systems that “pay back […] the environment with interest” and in my opinion this is where, their argument collapses.</p>
+<p>Despite the authors giving thought to environmentalism at a systems level, I am not convinced the boundaries of their analysis are wide enough, and this particular utopic view is a clear example. It is thermodynamically impossible for a process to pay back the environment “with interest”, this would require it to add more energy to the environment than was taken in the first place. Sure, creating coffee cups that require few inputs to produce and can fertilise farmland when disposed would be excellent, and I welcome the innovation that cracks this perpetual motion-style problem, but these are impossibilities.</p>
+<p>The author’s character assassination on eco-efficiency seems equally misguided. They state that we should build eco-effective buildings with green roofs that provide bird habitat and solar cooling, rather than designing more efficient air-conditioning systems or effective solar shades. Whilst I agree that green roofs bring positive benefits, the authors do not comment on the increased structural steel required to buttress these green roofs. What about the mineral extraction associated with this added steel? The carbon emissions produced in their manufacturing? The disposal of this steel at the building’s end of life? The bounds of their systems analysis appear blinkered. “Efficiency isn’t much fun” McDonough and Braungart assert. I would argue efficiency can be fun, as well as challenging and beneficial despite not paying back the environment with circular idealism. Strangely, the authors backtrack on their criticism of efficiency, concluding their comments by saying “This is not to condemn all efficiency. When implemented as a tool within a larger, effective system […] efficiency can actually be valuable”. Their lack of continuity in this argument is a damning indictment of their eco-effective propaganda.</p>
+<p>Life cycle management is a third sustainability theme tackled by McDonough and Braungart’s Cradle-to-Cradle. They describe two component metabolisms from which products are formed: the biological cycle and the technical cycle, and they say that extending the useful life of a product is achieved by optimising products within these cycles. The biological metabolism consists of biological nutrients; materials that can be “consumed by microorganisms in the soil and by other animals”. Conversely, the technical metabolism is filled with technical nutrients that are man-made materials; industrial components. The authors suggest that we must keep these cycles entirely separate if we are to salvage and reuse components in new products. If we do not, we create products they describe as “monstrous hybrids”. McDonough and Braungart describe the modern leather shoe as a monstrous hybrid. Leather is, of course, a biological nutrient that would traditionally be coloured with a vegetable chemical: tannis. Recently, leather shoes have been coloured with chromium tanning, a technical nutrient, to avoid the energy-intensive process of extracting tannis from trees. Because these nutrients become intrinsically locked together, neither component can be salvaged at their end of use and their value is lost. I believe this analysis is extremely valuable in an engineering context as it requires that life cycle thinking is at the forefront of the designer’s mind at the earliest stage of a project, rather than an afterthought.</p>
+<p>The authors use this analogy to comment on recycling, or a lack thereof, in industry more generally. They introduce the concept of “downcycling”, whereby valuable components are not reused in their original context, but downgraded to a rudimentary form; plastic water bottles are often melted down and moulded into speed bumps, for example. The authors tell the reader that separating the biological and technical metabolisms will in fact enable upcycling, whereby components can be used in applications better than their original use. What a wonderful idea! Components can be used again and again in ever-improving contexts. I struggle with this concept and find, once again, the boundaries of their system are conveniently limited. Thermodynamics is their recurring enemy, with the second law stating that everything tends toward disorder. Upcycling components to higher quality contexts, contexts of higher order, requires the input of energy – a distinct omission from their analysis. The recycling system becomes tricky when you consider the second law as all matter is freefalling into a cavernous well of disorder. In my opinion, we should strive for recycling in the same context rather than upcycling, but even this requires an energy input to maintain the same order or quality. I think it is unrealistic and uneconomic to expect that technical nutrients can be transformed to applications of higher quality – a practice that any corporate executive would endorse if he thought it were plausible – and believe it comes at the detriment to the authors otherwise effective observations on life cycle management.</p>
+<p>Braungart and McDonough’s Cradle-to-Cradle is a seminal piece in the sustainability field that undoubtedly inspired the circularity movement and highlighted the wasteful consumption paradigm that plagues society. Their call for the reader to take inspiration from nature’s waste-free, abundant supply chains is effective as is their observations of the technical and biological metabolisms that contribute to our products. The author’s often utopic philosophies seem tricky to implement and their analyses appear limited, but their optimism about the future is refreshing in a world filled with negative rhetoric. A true strength of their message is the coherent language through which it is delivered, but I would argue that, despite the book’s accessibility, there are very few readers who can realistically enact the change they want. This power is inherently reserved for political leaders and captains of industry and their message offers few hand-holds for the general public to grip to. Nevertheless, Cradle-to-Cradle is an overwhelmingly positive contribution to sustainable thought that opens a dialogue with all stakeholders of the design process. If the cherry tree represents the ideal to which we aspire, Michael Braungart and William McDonough have planted the first seeds.</p>
+<h2 id="references">References</h2>
+<p>[1]        K. E. Boulding, “The Economics of the Coming Spaceship Earth,” Environ. Qual. Grow. Econ., pp. 3–14, Mar. 1966.</p>
+<p>[2]        D. W. Pearce and R. Kerry Turner, Economics of Natural Resources and the Environment. 1989.</p>
+<p>[3]        T. Jackson, Material Concerns: Pollution, profit and quality of life. Routledge, 1996.</p>
+<p>[4]        C. L. Merrill, “Biomimicry of the Dioxygen Active Site In The Copper Proteins Hemocyanin and Cytochrome Oxidase,” Thesis, 1982.</p>
+<p>[5]        J. Benyus, Biomimicry: Innovation Inspired by Nature. William Morrow &amp; Company, Inc., 1997.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Plastic Politics</title>
+            <link>https://enjeeneer.io/posts/2018/10/plastic-politics/</link>
+            <pubDate>Fri, 19 Oct 2018 16:56:04 +0000</pubDate>
+            
+            <guid>https://enjeeneer.io/posts/2018/10/plastic-politics/</guid>
+            <description>Single-use plastics and the European Single Market have more in common than you may think; they were both popularised in the middle of the 20th century, they both bring economic benefit to western economies and they both have a party trying to discontinue their use. Negotiating the terms of my exit from the plastics market (read: Plaxit) has required diplomacy and strong leadership in equal measure. Admittedly, I have not penned a Chequers plan, nor have I travelled to Brussels for negotiations, but I have had to make compromises.</description>
+            <content type="html"><![CDATA[<figure>
+    <img src="/img/plastic_politics.png" width="350" height="300"/> 
+</figure>
+
+<p>Single-use plastics and the European Single Market have more in common than you may think; they were both popularised in the middle of the 20th century, they both bring economic benefit to western economies and they both have a party trying to discontinue their use. Negotiating the terms of my exit from the plastics market (read: Plaxit) has required diplomacy and strong leadership in equal measure. Admittedly, I have not penned a Chequers plan, nor have I travelled to Brussels for negotiations, but I have had to make compromises. Sadly, the hard-Plaxit you readers have cried for is proving tricky to reconcile. Your brain may be filling with statements like: “Why are you even following through with this if you can’t do it properly?” or “You’ve fed us misinformation!” or “Why don’t you scrap the idea entirely?!” and all of these have validity. But we can’t go back now, that would be undemocratic. Or could we?</p>
+<p>No we can’t. So I intend on playing the hand I’ve been dealt as best I can. The primary policy I am here to discuss relates to my use of University cafeterias. I am allowing myself to eat lunch, and occasionally dinner, in food halls provided the food I am eating is not observably housed in plastic at the point of eating. How’s that for policy design? Clearly, the issue is that the food on my plate, say the Lamb Tagine I had for dinner last night, will have been removed from plastic containment by chefs before it got to me. The Lamb may have come in some butcher’s paper (unlikely), but the cous-cous will have undoubtedly been poured from a plastic bag. I appreciate this is cheeky, but your author would like to eat something that isn’t loose vegetables for every meal – the modus operandi thus far. I should emphasise that other than this slight rule-bending, I am yet to buy any food or other goods delivered in plastic. I shall explain my progress to date.</p>
+<p>I am practicing the obvious stuff that I’m sure many of you do too: carry a keep-cup for coffee, carry a steel water bottle, carry a cloth bag for any shopping and carry steel cutlery on the off-chance the only available cutlery is plastic. I have dealt with more subtle hurdles too, including: not eating crisps or chocolate, not eating meat, not eating pre-packed salads and not eating pre-made sandwiches or pastas for lunch. I have been primarily buying my food from the local farmer’s market (see below) as opposed to my nearest supermarket as said supermarkets are impossible to navigate without purchasing plastic – more on this in a future blog. Not only is the produce nicer than that of a supermarket, but there is of course benefit in supporting local farmers and businesses.</p>
+<p>So, things are on-track (bar cafeteria-gate) and I plan on ramping up my change effort to affect those other than myself in the weeks to come. I hope you accept the requests outlined above, otherwise we will descend into an inevitable no-deal scenario and nobody wants that. Thanks for reading, I hope you stay tuned.</p>
+<p>PS</p>
+<p>As I was about to post this blog, there is <a href="https://www.bbc.co.uk/news/business-45911794">plastic-related news hot off the presses</a>. The Environment Agency have made accusations against UK recycling firms who are reportedly profiting illegally from recycling they aren’t even doing. As if you needed another reason to give up plastic entirely!</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Change</title>
+            <link>https://enjeeneer.io/posts/2018/10/change/</link>
+            <pubDate>Fri, 12 Oct 2018 16:55:47 +0000</pubDate>
+            
+            <guid>https://enjeeneer.io/posts/2018/10/change/</guid>
+            <description>What’s that Mahatmu Gandhi quote again? The one about changing the world and so-on? It never really resonated with me. It’s rather pessimistic, but I often succumb to Down’s paradox or the paradox of voting, that is, the disbelief that one’s vote can alter the outcome of an election or, crucially, that one’s actions can cause a tangible disruption to our environment. During my first 10 days at the University of Cambridge I have quickly (and quite rightly) felt my pessimism is unshared.</description>
+            <content type="html"><![CDATA[<p>What’s that Mahatmu Gandhi quote again? The one about changing the world and so-on? It never really resonated with me. It’s rather pessimistic, but I often succumb to Down’s paradox or the paradox of voting, that is, the disbelief that one’s vote can alter the outcome of an election or, crucially, that one’s actions can cause a tangible disruption to our environment. During my first 10 days at the University of Cambridge I have quickly (and quite rightly) felt my pessimism is unshared. Academics and students here work tirelessly to make the world a better place and there is no doubt that countless individuals will indeed disprove Down’s paradox and enact change that benefits us all. These same academics have set my cohort a challenge to change one thing in our lives for the duration of this term to understand the barriers to change, both personal and external. This is a timely test given the IPCC’s recent report detailing our accelerated impact on the climate and the risks our actions pose to sea level rises, coral reefs, fisheries and agricultural land. The need for change could not be more acute.</p>
+<p>It’s funny, my initial reaction upon hearing of our Change Challenge was one of opposition. Upon reflection, I am not particularly akin to change, nor am I any good at it. Joining the university is arguably the biggest change I have made in the last 5 years and, hilariously, prior to that, my biggest change was attending the university where I studied my undergraduate degree. I am capable of making small changes quite readily: do a bit of running, read more, travel to some new places, but I sub-consciously resist wholesale change. In fairness, I think most of us resist huge change too – the status quo is warm, comfortable and known. Indeed, I feel change resistance is a significant part of our evolutionary makeup. Older generations regularly lament how the world has changed and how younger people don’t act how they would like. This is understandable as their actions, and the way society operated in their youth, allowed them to survive (dare I say thrive!) and in many cases allowed them great wealth and opportunity. But the way we do things now needs not only to change, but be turned on its head. We cannot keep treating our planet the way we do if we want other generations to enjoy what we enjoy. This is hard! I quite like the warm, comfortable status-quo that is our CO2-asphyxiated home. But if we are going to change it we need people like me who don’t like change to really change the way we operate.</p>
+<p>So I’ve decided for my Change Challenge I am going to attempt to give up single-use plastic entirely. I have chosen this not just for the obvious ecological benefits, but to change the way I currently interact with plastic. I want to view my world through plastic-tinted glasses, if you will.  I know the issues associated with this, namely that all of western society revolves around the use of plastic, but that is primarily why I am doing it. I want to do something that is really going to affect my lifestyle to challenge my resistance to change. I am also aware that this is essentially impossible given our extensive use of plastic in food packaging and hygiene products, but I imagine my attempts will more clearly highlight where we excessively use plastic and identify the low-hanging fruit for plastic reduction in such sectors. I intend to update this blog bi-weekly to discuss the difficulties I am having and perhaps offer some strategies for reducing our plastic consumption without going to such extremes as these.</p>
+<p>Be the change you want to see in the world he said. This time, Gandhi, I’ll try and listen.</p>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>

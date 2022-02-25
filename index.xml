@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scott Jeen</title>
+    <link>https://enjeeneer.io/</link>
+    <description>Recent content on Scott Jeen</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 17 Nov 2021 09:03:11 -0500</lastBuildDate><atom:link href="https://enjeeneer.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Presenting with Jupyter Notebooks</title>
+      <link>https://enjeeneer.io/posts/2021/11/presenting-with-jupyter-notebooks/</link>
+      <pubDate>Wed, 17 Nov 2021 09:03:11 -0500</pubDate>
+      
+      <guid>https://enjeeneer.io/posts/2021/11/presenting-with-jupyter-notebooks/</guid>
+      <description>The best way to walk through this tutorial is using the accompanying Jupyter Notebook: 
+[Jupyter Notebook]
+- In the last year I&amp;rsquo;ve started presenting work using Jupyter Notebooks, rebelling against the Bill Gates&#39;-driven status-quo. Here I&amp;rsquo;ll explain how to do it. It&amp;rsquo;s not difficult, but in my opinion makes presentations look slicker, whilst allowing you to run code live in a presentation if you like. First, we need to download the plug-in that gives us the presentation functionality, it&amp;rsquo;s called RISE.</description>
+    </item>
+    
+    <item>
+      <title>Space Invasion, Space Invaders, and Climate Change Mitigation</title>
+      <link>https://enjeeneer.io/talks/2021-06-03-jesusmcrgreen/</link>
+      <pubDate>Thu, 03 Jun 2021 11:50:52 +0100</pubDate>
+      
+      <guid>https://enjeeneer.io/talks/2021-06-03-jesusmcrgreen/</guid>
+      <description>Abstract
+Recent advances in the field of Reinforcement Learning, a subfield of Artificial Intelligence, have shown computers can achieve superhuman performance at complex games like Go, Starcraft and the Atari Suite without human knowledge. What if, instead of playing Space Invaders, we play the game of climate change mitigation? More specifically, how can we design games where the goal is to minimise carbon emissions in some setting, and learn to play them optimally?</description>
+    </item>
+    
+    <item>
+      <title>Notes, Exercises and Code for Sutton and Barto&#39;s Reinforcement Learning: An Introduction (2018)</title>
+      <link>https://enjeeneer.io/posts/2021/04/notes-exercises-and-code-for-sutton-and-bartos-reinforcement-learning-an-introduction-2018/</link>
+      <pubDate>Fri, 30 Apr 2021 18:18:24 +0100</pubDate>
+      
+      <guid>https://enjeeneer.io/posts/2021/04/notes-exercises-and-code-for-sutton-and-bartos-reinforcement-learning-an-introduction-2018/</guid>
+      <description>In the last few weeks I&amp;rsquo;ve been compiling a set of notes and exercise solutions for Sutton and Barto&amp;rsquo;s Reinforcement Learning: An Introduction. Admittedly, these were produced for my own benefit, but if you&amp;rsquo;d like to look at my notes, my (probably incorrect) answers to the exercises, or the code accommodating those answers, I&amp;rsquo;ll link directly to them below:
+ Notes Exercises Code  Thanks to Bryn Hayder for inspiring this idea, and for providing his exercise solutions which helped me throughout.</description>
+    </item>
+    
+    <item>
+      <title>Scott&#39;s Uncomprehensive Guide to Scotland </title>
+      <link>https://enjeeneer.io/posts/2021/04/scotts-uncomprehensive-guide-to-scotland/</link>
+      <pubDate>Mon, 19 Apr 2021 21:08:05 +0000</pubDate>
+      
+      <guid>https://enjeeneer.io/posts/2021/04/scotts-uncomprehensive-guide-to-scotland/</guid>
+      <description>Hello treasured friend. If you&amp;rsquo;re reading this, it&amp;rsquo;s probably because I&amp;rsquo;ve force-fed you a link after discussing your upcoming trip to Scotland. I hope this is useful to you in some way. Think of this a travel guide that you can dip into when you find yourself in one of these places either hungry or bored. I don&amp;rsquo;t describe anything in detail, you&amp;rsquo;ll just have to take me on my word that these places are worth visiting.</description>
+    </item>
+    
+    <item>
+      <title>Golf, attention-spans, and degrowth</title>
+      <link>https://enjeeneer.io/posts/2021/04/golf-attention-spans-and-degrowth/</link>
+      <pubDate>Wed, 14 Apr 2021 16:10:24 +0100</pubDate>
+      
+      <guid>https://enjeeneer.io/posts/2021/04/golf-attention-spans-and-degrowth/</guid>
+      <description>&amp;ldquo;It&amp;rsquo;s downwind, if he throws everything at it he&amp;rsquo;s got a chance of making the front edge&amp;rdquo; said Nick Faldo, CBS commentator and 6 time major champion, as Bryson DeChambeau ambled to the 6th tee at Bay Hill Country Club 5 weeks ago. DeChambeau was leading Arnold Palmer&amp;rsquo;s Bay Hill Invitational and considering his options from the tee of the 528 yard par 5. I say 528 yards, as that is the distance as offered by Bay Hill&amp;rsquo;s scorecard, but that is the distance measured around the lake blocking the player&amp;rsquo;s line from tee to green, but were the player to bypass the boomerang arc and aim directly for the green, the hole plays only 340 yards.</description>
+    </item>
+    
+    <item>
+      <title>Taking a peek inside black-box function approximators</title>
+      <link>https://enjeeneer.io/talks/2021-03-15-xchangeseminar/</link>
+      <pubDate>Mon, 15 Mar 2021 16:55:47 +0000</pubDate>
+      
+      <guid>https://enjeeneer.io/talks/2021-03-15-xchangeseminar/</guid>
+      <description>Abstract
+In this talk, I will introduce deterministic and probabilistic black-box function approximators, with applications for timeseries modelling. First, I introduce the multilayer perceptron (neural network), demonstrating how they can model arbitrarily complex functions, but highlighting their propensity to overfit the training data. Second, I introduce the Gaussian process (GP), a bayesian, probabilistic approach to function approximation. I visualise how GP&amp;rsquo;s quantify uncertainty, a robust trait in the context of control, but highlight their inability to scale to large datasets.</description>
+    </item>
+    
+    <item>
+      <title>Can probabilistic machine learning help limit climate change?</title>
+      <link>https://enjeeneer.io/posts/2021/01/can-probabilistic-machine-learning-help-limit-climate-change/</link>
+      <pubDate>Tue, 05 Jan 2021 16:33:12 +0000</pubDate>
+      
+      <guid>https://enjeeneer.io/posts/2021/01/can-probabilistic-machine-learning-help-limit-climate-change/</guid>
+      <description>🌍 If we are to successfully mitigate climate change we must reduce global emissions to near-zero by 2050. To this end, three solutions exist:
+ Generate energy using emission-free technologies; Capture and bury emissions using carbon capture and storage (CCS); and Use energy more efficiently.  In the UK, emission reduction efforts via solution 1) have so far proven extremely successful. Emission-free energy technologies generated 45% of UK electricity demand in 2020 which has caused a decrease in grid carbon intensity of 66%.</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://enjeeneer.io/projects/</link>
+      <pubDate>Mon, 04 Jan 2021 17:34:13 +0000</pubDate>
+      
+      <guid>https://enjeeneer.io/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://enjeeneer.io/about/</link>
+      <pubDate>Mon, 04 Jan 2021 17:15:23 +0000</pubDate>
+      
+      <guid>https://enjeeneer.io/about/</guid>
+      <description>Hey! 👋 My name&amp;rsquo;s Scott, I&amp;rsquo;m a PhD candidate in engineering at the University of Cambridge researching reinforcement learning and its applications for mitigating planet-cooking.
+I&amp;rsquo;m part of Jonathan Cullen&amp;rsquo;s group - the Resource Efficiency Collective - where I look at ways of controlling complex systems for improved energy efficiency. This involves building agents that learn to control buildings and industrial processes efficiently, and to draw power from the grid at optimal times - techniques often called demand response.</description>
+    </item>
+    
+    <item>
+      <title>Book Review: Cradle-to-Cradle Remaking the Way We Make Things</title>
+      <link>https://enjeeneer.io/posts/2018/11/book-review-cradle-to-cradle-remaking-the-way-we-make-things/</link>
+      <pubDate>Tue, 20 Nov 2018 16:54:55 +0000</pubDate>
+      
+      <guid>https://enjeeneer.io/posts/2018/11/book-review-cradle-to-cradle-remaking-the-way-we-make-things/</guid>
+      <description>Consider the cherry tree. A frenetic supply chain of blossom that produces thousands of seeds in the hope that one might fall to the soil, take root and grow. Its manufacturing model is inefficient, wasteful and laborious, yet beautifully nourishing to its surrounding ecology. The blossom that do not germinate instead provide nutrients for insects, microorganisms, animals and soil; its abundance and over-production should not be chastised, but celebrated.</description>
+    </item>
+    
+  </channel>
+</rss>

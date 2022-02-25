@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>black-box functions on Scott Jeen</title>
+    <link>https://enjeeneer.io/tags/black-box-functions/</link>
+    <description>Recent content in black-box functions on Scott Jeen</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Mar 2021 16:55:47 +0000</lastBuildDate><atom:link href="https://enjeeneer.io/tags/black-box-functions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Taking a peek inside black-box function approximators</title>
+      <link>https://enjeeneer.io/talks/2021-03-15-xchangeseminar/</link>
+      <pubDate>Mon, 15 Mar 2021 16:55:47 +0000</pubDate>
+      
+      <guid>https://enjeeneer.io/talks/2021-03-15-xchangeseminar/</guid>
+      <description>Abstract
+In this talk, I will introduce deterministic and probabilistic black-box function approximators, with applications for timeseries modelling. First, I introduce the multilayer perceptron (neural network), demonstrating how they can model arbitrarily complex functions, but highlighting their propensity to overfit the training data. Second, I introduce the Gaussian process (GP), a bayesian, probabilistic approach to function approximation. I visualise how GP&amp;rsquo;s quantify uncertainty, a robust trait in the context of control, but highlight their inability to scale to large datasets.</description>
+    </item>
+    
+  </channel>
+</rss>

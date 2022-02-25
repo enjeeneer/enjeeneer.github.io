@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Scott Jeen</title>
+    <link>https://enjeeneer.io/tags/</link>
+    <description>Recent content in Tags on Scott Jeen</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Mar 2021 16:55:47 +0000</lastBuildDate><atom:link href="https://enjeeneer.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>black-box functions</title>
+      <link>https://enjeeneer.io/tags/black-box-functions/</link>
+      <pubDate>Mon, 15 Mar 2021 16:55:47 +0000</pubDate>
+      
+      <guid>https://enjeeneer.io/tags/black-box-functions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>machine learning</title>
+      <link>https://enjeeneer.io/tags/machine-learning/</link>
+      <pubDate>Mon, 15 Mar 2021 16:55:47 +0000</pubDate>
+      
+      <guid>https://enjeeneer.io/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rl</title>
+      <link>https://enjeeneer.io/tags/rl/</link>
+      <pubDate>Mon, 15 Mar 2021 16:55:47 +0000</pubDate>
+      
+      <guid>https://enjeeneer.io/tags/rl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>climate</title>
+      <link>https://enjeeneer.io/tags/climate/</link>
+      <pubDate>Tue, 05 Jan 2021 16:33:12 +0000</pubDate>
+      
+      <guid>https://enjeeneer.io/tags/climate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>book_review</title>
+      <link>https://enjeeneer.io/tags/book_review/</link>
+      <pubDate>Tue, 20 Nov 2018 16:54:55 +0000</pubDate>
+      
+      <guid>https://enjeeneer.io/tags/book_review/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>circular_economy</title>
+      <link>https://enjeeneer.io/tags/circular_economy/</link>
+      <pubDate>Tue, 20 Nov 2018 16:54:55 +0000</pubDate>
+      
+      <guid>https://enjeeneer.io/tags/circular_economy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>plastic</title>
+      <link>https://enjeeneer.io/tags/plastic/</link>
+      <pubDate>Fri, 19 Oct 2018 16:56:04 +0000</pubDate>
+      
+      <guid>https://enjeeneer.io/tags/plastic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>change_challenge</title>
+      <link>https://enjeeneer.io/tags/change_challenge/</link>
+      <pubDate>Fri, 12 Oct 2018 16:55:47 +0000</pubDate>
+      
+      <guid>https://enjeeneer.io/tags/change_challenge/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

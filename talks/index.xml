@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Talks on Scott Jeen</title>
+    <link>https://enjeeneer.io/talks/</link>
+    <description>Recent content in Talks on Scott Jeen</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 03 Jun 2021 11:50:52 +0100</lastBuildDate><atom:link href="https://enjeeneer.io/talks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Space Invasion, Space Invaders, and Climate Change Mitigation</title>
+      <link>https://enjeeneer.io/talks/2021-06-03-jesusmcrgreen/</link>
+      <pubDate>Thu, 03 Jun 2021 11:50:52 +0100</pubDate>
+      
+      <guid>https://enjeeneer.io/talks/2021-06-03-jesusmcrgreen/</guid>
+      <description>Abstract
+Recent advances in the field of Reinforcement Learning, a subfield of Artificial Intelligence, have shown computers can achieve superhuman performance at complex games like Go, Starcraft and the Atari Suite without human knowledge. What if, instead of playing Space Invaders, we play the game of climate change mitigation? More specifically, how can we design games where the goal is to minimise carbon emissions in some setting, and learn to play them optimally?</description>
+    </item>
+    
+    <item>
+      <title>Taking a peek inside black-box function approximators</title>
+      <link>https://enjeeneer.io/talks/2021-03-15-xchangeseminar/</link>
+      <pubDate>Mon, 15 Mar 2021 16:55:47 +0000</pubDate>
+      
+      <guid>https://enjeeneer.io/talks/2021-03-15-xchangeseminar/</guid>
+      <description>Abstract
+In this talk, I will introduce deterministic and probabilistic black-box function approximators, with applications for timeseries modelling. First, I introduce the multilayer perceptron (neural network), demonstrating how they can model arbitrarily complex functions, but highlighting their propensity to overfit the training data. Second, I introduce the Gaussian process (GP), a bayesian, probabilistic approach to function approximation. I visualise how GP&amp;rsquo;s quantify uncertainty, a robust trait in the context of control, but highlight their inability to scale to large datasets.</description>
+    </item>
+    
+  </channel>
+</rss>

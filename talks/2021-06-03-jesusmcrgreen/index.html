@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Scott Jeen">
+<meta name="description" content="Abstract
+Recent advances in the field of Reinforcement Learning, a subfield of Artificial Intelligence, have shown computers can achieve superhuman performance at complex games like Go, Starcraft and the Atari Suite without human knowledge. What if, instead of playing Space Invaders, we play the game of climate change mitigation? More specifically, how can we design games where the goal is to minimise carbon emissions in some setting, and learn to play them optimally?" />
+<meta name="keywords" content="Scott Jeen" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://enjeeneer.io/talks/2021-06-03-jesusmcrgreen/" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-192648932-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+    <title>
+        
+            Space Invasion, Space Invaders, and Climate Change Mitigation :: Scott Jeen  — Limiting climate change with computers
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://enjeeneer.io/main.cbec4bded5981a9639be0a9253dbc5636fb308fba08c31a50670aee0a034a132.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://enjeeneer.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://enjeeneer.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://enjeeneer.io/favicon-16x16.png">
+    <link rel="manifest" href="https://enjeeneer.io/site.webmanifest">
+    <link rel="mask-icon" href="https://enjeeneer.io/safari-pinned-tab.svg" color="#252627">
+    <link rel="shortcut icon" href="https://enjeeneer.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#252627">
+    <meta name="theme-color" content="#252627">
+
+
+
+<meta itemprop="name" content="Space Invasion, Space Invaders, and Climate Change Mitigation">
+<meta itemprop="description" content="Abstract
+Recent advances in the field of Reinforcement Learning, a subfield of Artificial Intelligence, have shown computers can achieve superhuman performance at complex games like Go, Starcraft and the Atari Suite without human knowledge. What if, instead of playing Space Invaders, we play the game of climate change mitigation? More specifically, how can we design games where the goal is to minimise carbon emissions in some setting, and learn to play them optimally?">
+<meta itemprop="datePublished" content="2021-06-03T11:50:52+01:00" />
+<meta itemprop="dateModified" content="2021-06-03T11:50:52+01:00" />
+<meta itemprop="wordCount" content="4092">
+<meta itemprop="image" content="https://enjeeneer.io"/>
+
+
+
+<meta itemprop="keywords" content="" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://enjeeneer.io"/>
+
+<meta name="twitter:title" content="Space Invasion, Space Invaders, and Climate Change Mitigation"/>
+<meta name="twitter:description" content="Abstract
+Recent advances in the field of Reinforcement Learning, a subfield of Artificial Intelligence, have shown computers can achieve superhuman performance at complex games like Go, Starcraft and the Atari Suite without human knowledge. What if, instead of playing Space Invaders, we play the game of climate change mitigation? More specifically, how can we design games where the goal is to minimise carbon emissions in some setting, and learn to play them optimally?"/>
+
+
+
+    <meta property="og:title" content="Space Invasion, Space Invaders, and Climate Change Mitigation" />
+<meta property="og:description" content="Abstract
+Recent advances in the field of Reinforcement Learning, a subfield of Artificial Intelligence, have shown computers can achieve superhuman performance at complex games like Go, Starcraft and the Atari Suite without human knowledge. What if, instead of playing Space Invaders, we play the game of climate change mitigation? More specifically, how can we design games where the goal is to minimise carbon emissions in some setting, and learn to play them optimally?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://enjeeneer.io/talks/2021-06-03-jesusmcrgreen/" />
+<meta property="og:image" content="https://enjeeneer.io"/>
+<meta property="article:published_time" content="2021-06-03T11:50:52+01:00" />
+<meta property="article:modified_time" content="2021-06-03T11:50:52+01:00" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-06-03 11:50:52 &#43;0100 BST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-192648932-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    <span class="header__inner">
+        <a href="https://enjeeneer.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">cd /enjeeneer/</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#8B0000;
+                   animation-duration:1s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://enjeeneer.io/about/">About</a></li><li><a href="https://enjeeneer.io/cv/cv_coffee.pdf">CV</a></li><li><a href="https://enjeeneer.io/posts/">Posts</a></li><li><a href="https://github.com/enjeeneer/">Projects</a></li><li><a href="https://enjeeneer.io/talks/">Talks</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://enjeeneer.io/talks/2021-06-03-jesusmcrgreen/">Space Invasion, Space Invaders, and Climate Change Mitigation</a></h2>
+            <h3 class="loc"><a href="https://enjeeneer.io/talks/2021-06-03-jesusmcrgreen/">Jesus College, Cambridge</a></h3>
+            <h3 class="time"><a href="https://enjeeneer.io/talks/2021-06-03-jesusmcrgreen/">3rd June 2021, 6pm</a></h3>
+
+            
+
+            
+
+            <div class="post-content">
+                <p><strong>Abstract</strong></p>
+<p>Recent advances in the field of Reinforcement Learning, a subfield of Artificial Intelligence, have shown computers can achieve superhuman performance at complex games like Go, Starcraft and the Atari Suite without human knowledge. What if, instead of playing Space Invaders, we play the game of climate change mitigation? More specifically, how can we design games where the goal is to minimise carbon emissions in some setting, and learn to play them optimally? In this talk, we&rsquo;ll first establish the importance of using less energy and material to limit planet-cooking, then we&rsquo;ll take the first steps toward formulating a game whose solution could help to mitigate climate change.</p>
+<p><strong>Code</strong></p>
+<p><a href="http://colab.research.google.com/github/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/notebook.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<p>[<a href="http://nbviewer.jupyter.org/github/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/notebook.ipynb">Jupyter Notebook</a>]</p>
+<p><strong>Slides</strong></p>
+<p>[<a href="https://enjeeneer.io/talks/2021-06-03slides.html">Click here for slideshow</a>]</p>
+<h1 id="0-outline">0. Outline</h1>
+<p><strong>1. Space Invasion:</strong> the footprint of climate change mitigation</p>
+<p><strong>2. Space Invaders:</strong> learning to control complex systems optimally</p>
+<p><strong>3. An Emission-minimisation Game</strong></p>
+<h1 id="1-space-invasion">1. Space Invasion</h1>
+<p>Climate change mitigation is fundamentally an energy problem; society requires energy of all forms to function, and this energy still comes largely from sources that emit greenhouse gases that cause global warming. With that in mind, we can think of energy as the calories of our economies, and we can frame climate change mitigation as a diet that we must embark on. Like any diet, there are three things we can do to lose weight. Firstly, we can eat healthier meals, or get our energy from cleaner sources. We can think of this as analogous to generating energy from renewable energy resources like wind or solar. Secondly, we can eat less food, or use less energy in our lives. In our research group we call this Resource Efficiency, or maintaining the same final service for less energy input. And finally, we can keep eat the same rubbish food in similar amounts, and just exercise a few hours a day to try and burn off the calories. This is analogous to carbon capture and storage, where we continue to emit carbon dioxide by burning fossil fuels, but attach a hoover to the exhaust of the power station or industrial process and bury the gases in the same oilfield you just plucked the fossil fuels from.</p>
+<p>So these are our climate change mitigation options. The UK has focussed largely on option 1 (renewable energy) to-date, and all of their projections rely on option 3 (carbon capture), little attention is given to motivating resource efficiency; in much the same way people prefer not to tell you to eat less when dieting. I&rsquo;m going to talk initially about the problems associated with the UK&rsquo;s plans, and how my research looks to address it.</p>
+<h2 id="high-carbon-diet">High Carb(on) Diet</h2>
+<h2 id="low-carbon-diet">Low Carb(on) Diet</h2>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/diet.png?raw=true"/> 
+</figure>
+
+<p>To do that, I need to introduce you to our unit of measurement for this diet. Instead of using the calorie, we&rsquo;ll use the kilowatt-hour (kWh), the SI unit for measuring energy. To give you a sense of scale, here&rsquo;s our current energy diet, and the number of kWhs associated with some everyday activities.</p>
+<p>Leaving one 40W lightbulb on for 24 hours will use about 1kWh of energy. An aluminium can of coke requires about 0.6kWh of energy to be produced. A hot bath will cost you 5kWh. And burning 1 litre of petrol in your car by driving 5 or 6 miles will use 10kWh of energy. If we sum all activities you do daily, we find that the average person in the UK uses about 125kWh/day. Instead of quantifying energy use on a daily basis, we can convert this volume of energy to a flow rate of energy that we call power, measured in watts rather than watt-hours. So 125kWh/day of energy is equivalent to a 5kW power source consuming power for the whole day, similar to two cookers being left on at 200 degrees all day.</p>
+<p>So this is your life, two cookers on all the time, one for the left hemisphere of your brain and one for the right. So to continue to live your life as you do today, you need to go out in the world and find a 5kW power source and have it on all day, offsetting the energy you are using elsewhere in your life. So let&rsquo;s think about doing that; if you&rsquo;re going to go out and find a source of power, your going to need a piece of land to put in on. How much land would you like? Well let&rsquo;s give everyone in the country a fair share of land.</p>
+<h2 id="our-energy-diet">Our Energy Diet</h2>
+<p>💡 → 1kWh</p>
+<p>🥤 → 0.6kWh</p>
+<p>🛁 → 5kWh</p>
+<p>🚗 → 10kWh</p>
+<p>💁‍♀️ → 125kWh/day or <strong>5kW</strong> → 🎛🎛</p>
+<p>after <strong>MacKay (2008)</strong></p>
+<p>The population of the UK is 66.65 million apparently, and the total area of land in the UK is 242,495 square kilometres. If we divide the top one by the bottom one, we find that each person in the UK gets about 3600 square metres of space to store their energy generating devices, which is about equivalent to half a football pitch. We can do one more calculation to find the power density of your life: by taking the power rating of your life (5kW) and dividing it by your allotment size (3600m2) we find that your life costs 2.5 W/m2.</p>
+<p>Now, this is a useful figure to obtain, because each of those energy generating devices you&rsquo;re about to go and source are also quantified in this way, so we see how likely it is for each of the technologies to power your life.</p>
+<h2 id="your-allotment-for-energy-generation">Your Allotment for Energy Generation</h2>
+<ul>
+<li>UK population: 66.65 million</li>
+<li>UK land area: 242,495 km²</li>
+<li>Your allotment: 3600m² ~ half a football pitch</li>
+<li>Your life: <strong>~2.5 W/m$^2$</strong></li>
+</ul>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/pitch.jpg?raw=true"/> 
+</figure>
+
+<p>after <strong>MacKay (2008)</strong></p>
+<p>Here&rsquo;s a table of the most common energy generating technologies. The middle column is their power density, or power output per unit land area, and the final column is an indication of whether they are zero-emission or otherwise. (The pinnochio face is reserved for technologies that are often said to be renewable, but are, in fact, not). So, remember your life requires 2.5 W/m2, what the first entry in the table is telling us is that to power your life using solely wind power we need to cover your entire allotment (and everyone else&rsquo;s allotment) in wind turbines. If we wanted to use solar power, we&rsquo;d need to cover about half of your football pitch in solar panels. If we wanted to use nuclear power, we would only need to use about 1% of your football pitch. And so on. So let&rsquo;s try and visualise some of these interventions.</p>
+<h2 id="space-requirements-of-energy-generating-devices">Space Requirements of Energy Generating Devices</h2>
+<p>Your life: <strong>~2.5 W/m$^2$</strong></p>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>~ Power Per Unit Land Area</th>
+<th>Zero Operational Emissions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wind</td>
+<td>2.7 W/m$^2$</td>
+<td>💚</td>
+</tr>
+<tr>
+<td>Biomass</td>
+<td>1 W/m$^2$</td>
+<td>🤥</td>
+</tr>
+<tr>
+<td>Solar</td>
+<td>6 W/m$^2$</td>
+<td>💚</td>
+</tr>
+<tr>
+<td>Hydropower</td>
+<td>0.9 W/m$^2$</td>
+<td>🤥</td>
+</tr>
+<tr>
+<td>Geothermal</td>
+<td>3 W/m$^2$</td>
+<td>💚</td>
+</tr>
+<tr>
+<td>Natural Gas</td>
+<td>1300 W/m$^2$</td>
+<td>⛔️</td>
+</tr>
+<tr>
+<td>Coal</td>
+<td>125 W/m$^2$</td>
+<td>⛔️</td>
+</tr>
+<tr>
+<td>Oil</td>
+<td>180 W/m$^2$</td>
+<td>⛔️</td>
+</tr>
+<tr>
+<td>Nuclear</td>
+<td>300 W/m$^2$</td>
+<td>💚</td>
+</tr>
+</tbody>
+</table>
+<p>Data: <strong>van Zalk &amp; Behrens (2018)</strong></p>
+<p>Here&rsquo;s your football pitch:
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/pitch_sketch_1.png?raw=true"/> 
+</figure>
+</p>
+<p>If you want to reserve some space for living your life, rather than just producing energy, you&rsquo;ll want to cordan that off. Here&rsquo;s is 40% of your land blocked off, which represents the area of UK land currently used for cities and for countryside Bossard &amp; Otahel (2000).</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/pitch_sketch_2.png?raw=true"/> 
+</figure>
+
+<p>But we&rsquo;ll find later on that we might need some of that land to avoid turning the UK into a desert, so it&rsquo;s back on the table for now:</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/pitch_sketch_1.png?raw=true"/> 
+</figure>
+
+<p>Let&rsquo;s take a look at how this land has been used through the years. This was (very) roughly the UK between the beginning of the industrial revolution and the 1980s. Most electricity coming from coal, and oil used for transportation and some heating.</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/pitch_sketch_3.png?raw=true"/> 
+</figure>
+
+<p>Then Mrs Thatcher came to power in the 1980s, closed most of the coal mines and replaced them with natural gas power plants of higher power density and lower emission intensity, and the energy mix looked something like this. Note: energy generation is using approximately 1% of land area here, plenty of room to continue live out the glorious 80s whilst the planet slowly begins to simmer.</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/pitch_sketch_4.png?raw=true"/> 
+</figure>
+
+<p>Here&rsquo;s (very) roughly where we are today, we have a mix of natural gas, biomass, wind, solar and nuclear; with the area of land they cover flattered by the fact that 40% of our energy is sourced from natural gas. The important takeaway from this diagram is the arbitrarily sized chequered box representing imported energy. Much of the goods and services that contribute to your 125kWh per day energy usage are imported; the aluminium in your coke can, the steel in your car. To fund our lifestyles in the UK, we are effectively outsourcing a large amount of energy production (and associated emissions), moving the energy generating devices from our land to somebody else&rsquo;s land. This may be okay today, when the energy generating devices elsewhere are natural gas or coal and don&rsquo;t take up much land. But when these countries attempt to decarbonise and find they are being asked or required to build solar panels on their countryside, I suspect they are going to come back to the UK and say &lsquo;wait a minute, you deal with these emissions, you&rsquo;re causing them&rsquo;. This gives us a false sense of how much land the energy required to fuel our lifestyles is taking up.</p>
+<p>So, to me, it seems only fair that we consider scenarios where we generate an amount of energy proportional to our lifestyles. And that is what we will consider now.</p>
+<p><figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/pitch_sketch_5a.png?raw=true"/> 
+</figure>
+%&quot;&gt;</p>
+<p>If we were to generate energy using only wind and solar, we would use approximately 70% of UK land area, remember cities and countryside account for 40% of land area so we are eating into our leisure area now.</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/pitch_sketch_6a.png?raw=true"/> 
+</figure>
+
+<p>There are various ways to stop this space invasion, and one of them is to shrink the size of the energy pie; to use less energy in our society; to be more resource efficient. That is the focus of our research group&rsquo;s work, and that is one of the goals of my research. So, if we want to reduce our energy demand, what are our options, and where should our prioritises lie.</p>
+<h2 id="reducing-energy-demand-what-are-our-options">Reducing energy demand: what are our options?</h2>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/global_sankey_1a.png?raw=true"/> 
+</figure>
+
+<p><strong>Cullen &amp; Allwood (2010)</strong></p>
+<p>Above is work done by my supervisor, Jon Cullen, in 2010, mapping the relationship between energy sources and final services, via the devices that produce this transformation. I&rsquo;d like to first focus your attention on the middle slice of the five illustrated. You&rsquo;ll see that approximately half of global energy supply is used to produce or extract heat (red); the most obvious example of this being in the heating and cooling of homes, other examples include powering furnaces in manufacturing facilities, or in heating water. Just over a third of our energy is used to produce motion (cyan), be it powering cars, trucks or planes, or in moving heavy machinery in manufacturing. And just over 15% of energy remains for what Jon describes as &lsquo;Other&rsquo; (black) which involves lighting, communication, and myriad of less energy-intensive services.</p>
+<p>My research looks to affect a few parts of this diagram:
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/global_sankey_2a.png?raw=true"/> 
+</figure>
+</p>
+<p>I&rsquo;m interested in how the small cyan line in the bottom left hand corner: renewable energy, integrates with the energy conversion devices, and final services. Although small on this diagram, this was the global energy mix in 2005, by 2050 we expect renewable energy to supply approximately 70% of world energy. Unlike fossil fuel power stations, we cannot control when renewable energy resources will produce electricity because their ability to do so is weather dependent. For example, solar panels will produce energy during the daytime when the sun has risen, but not at night when the sun has set. We therefore say renewable energy technologies are <em>intermittent</em>. I&rsquo;ll explain the intermittency problem visually:</p>
+<p>Let&rsquo;s consider the problem of trying to power a flat on Park Street for one day using a 10kW array of solar panels on the roof. The orange line here traces power output of the panels throughout the day, when the sun rises in the morning it begins to produce energy, it&rsquo;s power output peaks at some point in the early afternoon and then drops to 0 after the sun has set. In contrast the energy demand of the flat occupants is lumpy, there&rsquo;s a peak around 7am when people get in the shower and put the kettle on for a coffee; if they go out to work for the day the power demand drops in the morning and afternoon, then when they come home and putting the heating, oven and tv in there&rsquo;s another spike.</p>
+<h2 id="the-intermittency-problem">The Intermittency Problem</h2>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/intermittency.gif?raw=true"/> 
+</figure>
+
+<p>This creates scenarios throughout the day where there are deficits and surplusses in energy. In green, energy generation exceeds demand, so we meet our energy requirements renewably, but in the absence of a battery waste chunks of zero-emission energy. In red, demand outstrips what the panels supply. In these scenarios today, these peaks of excess supply are met by firing up natural gas plants at short notice to provide the energy, creating further emissions.</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/intermittency_1.png?raw=true"/> 
+</figure>
+
+<p>What we would prefer is a scenario like this one. Here we&rsquo;ve done two things: we flattened and broadened the demand curve, so there are no peaks to meet with natural gas; and we&rsquo;ve introduced a storage medium - potentially a battery. During the hours of peak production we store energy (represented by orange) and we discharge this energy when needed, represented in blue. Here, we&rsquo;ve reduced our total energy demand by flattening the peak, and we&rsquo;ve stopped the mitigated the problem of peak matching with natural gas - saving emissions in two ways.</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/opt_intermittency.png?raw=true"/> 
+</figure>
+
+<p>This is of course an idealised representation of what we&rsquo;d like to do at both a household and national scale, and it makes it look simpler that it is. In reality, both the the supply curve and the demand curve are stochastic, and matching them is a highly complex optimisation problem.</p>
+<p>To do so we need to accurately predict renewable energy supply at various time horizons; in the next 5 minutes and in the next 5 hours, and everywhere in between. Equally we need to predict energy demand, which, depending on the situation can be affected by countless variables. In the household setting, the energy demand is largely affected by weather conditions (i.e. if it&rsquo;s cold outside heating demand increases) and time of day (if it&rsquo;s 7am somebody probably wants a shower). In the industrial setting, perhaps a car manufacturing plant, the energy demand of the plant may be affected by sales forecasts, and raw material delivery schedules.</p>
+<p>Attempting to solve this problem requires some sophisticated techniques, and my research centres on a subfield of artificial intelligence called Reinforcement Learning (RL). Which I&rsquo;ll take about now, in section 2: space invaders.</p>
+<h2 id="intermittency-a-non-trivial-optimisation-problem">Intermittency: A non-trivial optimisation problem</h2>
+<ul>
+<li>
+<p><strong>Stochastic supply:</strong></p>
+<ul>
+<li>Weather-dependent</li>
+<li>Need accurate predictions of supply at varied time horizons: 5mins; 5 hours; 5 days</li>
+</ul>
+</li>
+<li>
+<p><strong>Stochastic demand:</strong></p>
+<ul>
+<li>Depending on scenario, affected by countless variables</li>
+<li>Household setting: outdoor temperature; time of day; day of week</li>
+<li>Industrial setting: sales forecasts; raw material delivery schedules</li>
+</ul>
+</li>
+</ul>
+<h1 id="2-space-invaders">2. Space Invaders</h1>
+<p>Reinforcement learning is the eminent paradigm for allowing computers to learn from experience. In RL, we consider an agent (represented by the brain) interacting with an environment (represented by the globe). The agent can take actions in an environment, and at each timestep step it receives feedback on how the state of the environment has changed given that action, and a reward for taking that action. The goal of the RL agent is to maximise the sum of cumulative rewards throughout its lifetime. When an RL agent is instantiated, it has no understanding of its environment or valuable actions to take in the environment, but learns by taking actions in the environment, in a trial and error fashion, observing the reward it accrues, and updating it&rsquo;s understanding of the state-space. It&rsquo;s hypothesised that this is much the same way we as humans learn intelligently. Consider the example of learning to ride a bike; we don&rsquo;t necessarily understand the physics of bike-riding, instead we get on the bike, try to balance and cycle and see what works for us. We find, through trial and error, the optimal way to position our body to balance the bike.</p>
+<p>Although this appears a simple paradigm, it elicits extremely powerful behaviour from computers.</p>
+<h2 id="reinforcement-learning">Reinforcement Learning</h2>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/rl_basic.png?raw=true"/> 
+</figure>
+
+<p><strong>Silver (2015)</strong></p>
+<p>Some of the best examples of this powerful behaviour come from the gaming domain. Here&rsquo;s an RL agent, created by DeepMind in 2013, that learns to play the Atari game breakout with no prior knowledge or human input. The agent is fed minimal data; it&rsquo;s fed the raw pixels of the screen as a representation of the state; it&rsquo;s knows it can take three actions: move left, move right, or stay still, and it&rsquo;s fed the score at the top of the screen as a reward signal.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/TmPfTpjtdgg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>You can see initially it struggles to hit the ball, but slowly it learns first to connect with the ball. Then by episode 600 it exhibits some pretty intelligent behaviour; it discovers that the optimally strategy is to burrow holes in the channels of the bricks and ping the ball behind the bricks.</p>
+<p>To give you a little more intuition about what is happening under the hood of an RL agent, let&rsquo;s return quickly to the breakout example.</p>
+<p>There are various ways in which the agent can represent its understanding of the system, but one is by assigning each part of the state-space (the environment) a value, and iterating it&rsquo;s formulation of that value as it receives rewards from the environment.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/DG17IKcDt8c" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>Here we see a plot of the agent&rsquo;s value estimate for the current state of the environment over time. We see a spiky pattern in the value estimate; just before the ball hits it bricks it has learned that it will receive reward shortly and estimates high value, then the value estimate drops as it knows it would receive more reward until some time into the future.</p>
+<h1 id="3-an-emission-minimising-game">3. An Emission-Minimising Game</h1>
+<p>So I&rsquo;ve introduced RL, and discussed how agents can learn to play extremely complex games with no prior knowledge to a superhuman level. I&rsquo;ve also motivated the need to reduce energy-use as a climate change mitigation technique. I&rsquo;m going to conclude by combining these two sections together, and discuss formulating an emission-minimising game and how we can go about finding a solution.</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/coldstore2.png?raw=true"/> 
+</figure>
+
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/coldstore1.png?raw=true"/> 
+</figure>
+
+<p>The game we&rsquo;re going to play is controlling the energy-intensive equipment in an industrial-sized coldstorage facility in Canada. I work with a US company called Emerson Electric who own 10,000 or so of these facilities across North America; they act as a middle-ground between food manufacturers and supermarkets, that is to say, food manufacturers delivery fresh food here, the food is held for some period of time before it is picked up and delivered to supermarkets. It&rsquo;s a big facility, a few football pitches in size, and consumes a lot of energy - approximately XX amount. We want to build an RL agent that can learn to control the equipment in this facility, and smooth demand in much the same way that I described earlier on with the solar PV example.</p>
+<h2 id="31-formulating-the-game">3.1 Formulating the Game</h2>
+<ul>
+<li>
+<p>Moves:</p>
+<ul>
+<li>Chiller control: $\sum_{n=1}^6 a_t^n \in \mathcal{A}$, with $\mathcal{A} = [0\text{kW}, 5\text{kW}]$</li>
+</ul>
+</li>
+<li>
+<p>Goal:</p>
+<ul>
+<li>
+<p>Minimise energy-use: $\min{E_t}$, while</p>
+</li>
+<li>
+<p>Maintain temperature: $T_t \leq 3^0C$</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Environment dynamics (transition function):</p>
+<ul>
+<li><strong>???</strong></li>
+<li>$\mathbb{P}(s_{t+1}, r_{t} | s_t, a_t)$</li>
+</ul>
+</li>
+</ul>
+<p>So let&rsquo;s build the game. Each game has three aspects, the moves we can take, its goal and the environment dynamics or transition function.</p>
+<p>Our available moves are related to the 6 chiller units in the facility, these are what use energy and regulate the temperature. We can actuate each of these 6 chillers in the continuous region between 0kW and 5kW, where 0kW is the chiller off and 5kW is the chiller at full power.</p>
+<p>Our goal is twofold: minimise energy-use in the facility whilst maintaining the temperature below 3 degrees celcius which is the safe temperature range for the food inside.</p>
+<p>Finally the environment dynamics or transition function - something I haven&rsquo;t yet discussed. The is a mapping that represents how the state of the environment evolves given our actions from some state. In the Atari example, it&rsquo;s straightforward: I move the joystick right and the paddle moves to the right; in our example it&rsquo;s more complex and not obvious. How the temperature in the room changes given the agents actions is complex and non-linear. We need to learn this so that we can setup a simulator of the environment that the agent can play in and learn to control.</p>
+<p>The details of how this is done is the topic for another talk, but in summary we use other supervised machine learning techniques to do this.</p>
+<h2 id="learning-the-environment-dynamicstransition-function">Learning the Environment Dynamics/Transition Function</h2>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/gp_test.png?raw=true"/> 
+</figure>
+
+<p>Here&rsquo;s a representation of the transition function, estimated using a Gaussian Process. In red, is how the temperature of the coldstorage facility varied over a few day last July given the actions of the existing controller. In green, is our transition function&rsquo;s prediction of what happened in that same time period, and you can see it&rsquo;s pretty accurately characterised the dynamics of the system given chiller actuation.</p>
+<h2 id="32-playing-the-game">3.2 Playing the Game</h2>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/reward.png?raw=true"/> 
+</figure>
+
+<p>Now that we&rsquo;ve set up the game let&rsquo;s play. We play it for 200, one month episodes in simulation, this is the same as practicing controlling the facility for about 15 years. The y-axis here is cumulative reward per episode; you can see it starts out poorly, with no idea how to control the system, but quickly learns which actions are good ones. After about 50 episodes we&rsquo;re at near-optimal behaviour.</p>
+<h2 id="33-winning-the-game">3.3. Winning the Game</h2>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/rb_control.png?raw=true"/> 
+</figure>
+
+<p>Let&rsquo;s now compare our agent with the existing controller by running it through the same scenarios it was required to. Here&rsquo;s one day&rsquo;s plot from last September. In blue is the combined power output of the chillers, and in dashed purple is the average temperature in the facility. You can see quite stochastic behaviour, and the temperature is not regulated particularly well.</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-06-03-JesusMCRGreen/images/solution.gif?raw=true"/> 
+</figure>
+
+<p>Let&rsquo;s now run our RL agent in the same setting and see what happens. So the first thing to note is the green-dotted line. Our agent has learned to control the facility at just below 3 degrees Celsius and used much less power as a result. It also smooths the spiky nature of demand. I should point out, that this sort of behaviour is unlikely in the real world, because unforeseen stochasticities will inevitably push the temperature beyond 3 degrees, so we would likely set the agent to control for, say 2.7 degrees to account for this.</p>
+<h2 id="limitations">Limitations</h2>
+<ul>
+<li>Sample inefficiency</li>
+<li>Robustness to out of distribution events</li>
+<li>No online learning</li>
+</ul>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Incorporate grid stochasticity</li>
+<li>Incorporating uncertainty</li>
+<li>Improve data-efficiency</li>
+<li>Consider multi-agent systems</li>
+</ul>
+<p>I&rsquo;ll end with some limitations and next steps. Firstly the limitations, you&rsquo;ll note that I said this agent trained on 15 years of simulation, this is completely unrealistic for real settings. The agent may not be robust to out of distribution, unforeseen events and we need to address that. And there is no online learning, these models were trained using data from the facility, again to scale this approach to every energy-intensive building around the world we need to stick a box to the side of a building and learn with no prior knowledge.</p>
+<p>Next steps for me and to incorporate the grid stochasticity that I discussed in the toy example; try and incorporate uncertainty into the agent&rsquo;s action selection to improve robustness; use or adapt new algorithms to improve data-efficiency; and consider multi-agent systems where many agents are trying to draw power from the grid simultaneously.</p>
+<h1 id="thanks">Thanks!</h1>
+<ul>
+<li>Website: <a href="https://enjeeneer.io">https://enjeeneer.io</a></li>
+<li>Questions?</li>
+</ul>
+<h2 id="references">References</h2>
+<p>Bossard, M., Feranec, J., &amp; Otahel, J. (2000). CORINE land cover technical guide: Addendum 2000.</p>
+<p>Cullen, J. M., &amp; Allwood, J. M. (2010). The efficient use of energy: Tracing the global flow of energy from fuel to service. Energy Policy, 38(1), 75-81.</p>
+<p>MacKay, D. (2008). Sustainable Energy-without the hot air. UIT cambridge.</p>
+<p>Mnih, V., Kavukcuoglu, K., Silver, D., Graves, A., Antonoglou, I., Wierstra, D., &amp; Riedmiller, M. (2013). Playing atari with deep reinforcement learning. arXiv preprint arXiv:1312.5602.</p>
+<p>Silver, D., Schrittwieser, J., Simonyan, K., Antonoglou, I., Huang, A., Guez, A., &hellip; &amp; Hassabis, D. (2017). Mastering the game of go without human knowledge. nature, 550(7676), 354-359.</p>
+<p>Silver, D. (2015). Lecture 1: Introduction to reinforcement learning. Google DeepMind, 1, 1-10.</p>
+<p>van Zalk, J., &amp; Behrens, P. (2018). The spatial extent of renewable and non-renewable power generation: A review and meta-analysis of power densities and their application in the US. Energy Policy, 123, 83-91.</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://enjeeneer.io/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-192648932-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+
+    </body>
+</html>

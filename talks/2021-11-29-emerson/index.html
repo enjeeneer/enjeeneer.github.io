@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Scott Jeen">
+<meta name="description" content="Code
+
+[Jupyter Notebook]
+Slides
+[Click here for slideshow]
+Outline  Motivation  Climate Commercial   Existing Solutions Probabilistic Model-Based Reinforcement Learning Experiments Conclusions  1. Motivation Here&amp;rsquo;s a diagram my supervisor Jon Cullen produced a few years ago mapping global energy sources, on the left hand-side of the diagram, through conversion devices, to final services on the right hand-side of the diagram [1]. Though it looks complicated, I&amp;rsquo;d like to simplify things by focussing your attention on the middle section of the diagram." />
+<meta name="keywords" content="Scott Jeen" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://enjeeneer.io/talks/2021-11-29-emerson/" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-192648932-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+    <title>
+        
+            Low Emission Building Control with Probabilistic Model-Based Reinforcement Learning :: Scott Jeen  — Limiting climate change with computers
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://enjeeneer.io/main.cbec4bded5981a9639be0a9253dbc5636fb308fba08c31a50670aee0a034a132.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://enjeeneer.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://enjeeneer.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://enjeeneer.io/favicon-16x16.png">
+    <link rel="manifest" href="https://enjeeneer.io/site.webmanifest">
+    <link rel="mask-icon" href="https://enjeeneer.io/safari-pinned-tab.svg" color="#252627">
+    <link rel="shortcut icon" href="https://enjeeneer.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#252627">
+    <meta name="theme-color" content="#252627">
+
+
+
+<meta itemprop="name" content="Low Emission Building Control with Probabilistic Model-Based Reinforcement Learning">
+<meta itemprop="description" content="Code
+
+[Jupyter Notebook]
+Slides
+[Click here for slideshow]
+Outline  Motivation  Climate Commercial   Existing Solutions Probabilistic Model-Based Reinforcement Learning Experiments Conclusions  1. Motivation Here&rsquo;s a diagram my supervisor Jon Cullen produced a few years ago mapping global energy sources, on the left hand-side of the diagram, through conversion devices, to final services on the right hand-side of the diagram [1]. Though it looks complicated, I&rsquo;d like to simplify things by focussing your attention on the middle section of the diagram.">
+<meta itemprop="datePublished" content="2021-11-28T23:24:35-05:00" />
+<meta itemprop="dateModified" content="2021-11-28T23:24:35-05:00" />
+<meta itemprop="wordCount" content="2940">
+<meta itemprop="image" content="https://enjeeneer.io"/>
+
+
+
+<meta itemprop="keywords" content="" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://enjeeneer.io"/>
+
+<meta name="twitter:title" content="Low Emission Building Control with Probabilistic Model-Based Reinforcement Learning"/>
+<meta name="twitter:description" content="Code
+
+[Jupyter Notebook]
+Slides
+[Click here for slideshow]
+Outline  Motivation  Climate Commercial   Existing Solutions Probabilistic Model-Based Reinforcement Learning Experiments Conclusions  1. Motivation Here&rsquo;s a diagram my supervisor Jon Cullen produced a few years ago mapping global energy sources, on the left hand-side of the diagram, through conversion devices, to final services on the right hand-side of the diagram [1]. Though it looks complicated, I&rsquo;d like to simplify things by focussing your attention on the middle section of the diagram."/>
+
+
+
+    <meta property="og:title" content="Low Emission Building Control with Probabilistic Model-Based Reinforcement Learning" />
+<meta property="og:description" content="Code
+
+[Jupyter Notebook]
+Slides
+[Click here for slideshow]
+Outline  Motivation  Climate Commercial   Existing Solutions Probabilistic Model-Based Reinforcement Learning Experiments Conclusions  1. Motivation Here&rsquo;s a diagram my supervisor Jon Cullen produced a few years ago mapping global energy sources, on the left hand-side of the diagram, through conversion devices, to final services on the right hand-side of the diagram [1]. Though it looks complicated, I&rsquo;d like to simplify things by focussing your attention on the middle section of the diagram." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://enjeeneer.io/talks/2021-11-29-emerson/" />
+<meta property="og:image" content="https://enjeeneer.io"/>
+<meta property="article:published_time" content="2021-11-28T23:24:35-05:00" />
+<meta property="article:modified_time" content="2021-11-28T23:24:35-05:00" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-11-28 23:24:35 -0500 EST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-192648932-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    <span class="header__inner">
+        <a href="https://enjeeneer.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">cd /enjeeneer/</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#8B0000;
+                   animation-duration:1s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://enjeeneer.io/about/">About</a></li><li><a href="https://enjeeneer.io/cv/cv_coffee.pdf">CV</a></li><li><a href="https://enjeeneer.io/posts/">Posts</a></li><li><a href="https://github.com/enjeeneer/">Projects</a></li><li><a href="https://enjeeneer.io/talks/">Talks</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://enjeeneer.io/talks/2021-11-29-emerson/">Low Emission Building Control with Probabilistic Model-Based Reinforcement Learning</a></h2>
+            <h3 class="loc"><a href="https://enjeeneer.io/talks/2021-11-29-emerson/">Emerson, Dayton USA</a></h3>
+            <h3 class="time"><a href="https://enjeeneer.io/talks/2021-11-29-emerson/">29th November 2021, 11am</a></h3>
+
+            
+
+            
+
+            <div class="post-content">
+                <p><strong>Code</strong></p>
+<p><a href="http://colab.research.google.com/github/enjeeneer/talks/blob/main/2021-11-29-Emerson/notebook.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<p>[<a href="http://nbviewer.jupyter.org/github/enjeeneer/talks/blob/main/2021-11-29-Emerson/notebook.ipynb">Jupyter Notebook</a>]</p>
+<p><strong>Slides</strong></p>
+<p>[<a href="https://enjeeneer.io/talks/2021-11-29slides.html">Click here for slideshow</a>]</p>
+<h2 id="outline">Outline</h2>
+<ol>
+<li>Motivation
+<ul>
+<li>Climate</li>
+<li>Commercial</li>
+</ul>
+</li>
+<li>Existing Solutions</li>
+<li>Probabilistic Model-Based Reinforcement Learning</li>
+<li>Experiments</li>
+<li>Conclusions</li>
+</ol>
+<h1 id="1-motivation">1. Motivation</h1>
+<p>Here&rsquo;s a diagram my supervisor Jon Cullen produced a few years ago mapping global energy sources, on the left hand-side of the diagram, through conversion devices, to final services on the right hand-side of the diagram [1]. Though it looks complicated, I&rsquo;d like to simplify things by focussing your attention on the middle section of the diagram.</p>
+<h2 id="11-climate">1.1 Climate</h2>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-CambridgeZero/images/global_sankey_1a.png?raw=true"/> 
+</figure>
+
+<p>Here we see that global energy use can be stratified into one of three categories: energy used to create motion in
+cyan; energy used to regulate temperature in red; and energy used for everything else in black. We can observe that the primary source of energy consumption globally is in regulating temperature - approximately 50% of total energy demand. Finding ways of regulating temperature in society more efficiently would prove a useful way of reducing energy use and this carbon emissions.</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-CambridgeZero/images/global_sankey_3a.png?raw=true"/> 
+</figure>
+
+<p>Another part of the diagram I&rsquo;d like to draw your attention to is the blue sliver labelled renewables in the bottom left. Though renewables contributed to a small percentage of global energy supply when this diagram was produced (using data from 2005), the International Energy Agency expect renewables to contribute to 75% of global energy supply by 2050. Such a high penetration of renewables on the grid will cause problems, problems related primarily to the stochastic nature of renewable energy generation - often called its <em>intermittency</em>.</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-CambridgeZero/images/global_sankey_2a.png?raw=true"/> 
+</figure>
+
+<p>To explain intermittency, consider the hypothetical scenario of powering a home using only a solar array located on its roof. Here, we plot demand for energy in blue and the supply of energy from the solar array in orange, for 24 hours. On a perfectly clear summers day, the energy supplied by our solar array will increase in the morning as the sun rises, peak around midday when irradiance is highest, and fall in the evening as the sun sets. In contrast, the occupant&rsquo;s demand for energy won&rsquo;t be so symmetric. They&rsquo;ll likely demand produce a peak in energy demand in the morning when they wake up, boil the kettle, turn the heating on and take a shower. Then, they&rsquo;ll head out to work and demand will fall and plateau. In the evening they&rsquo;ll return causing another spike in energy demand as the heating comes on, they cook dinner and turn on a range of appliances.</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-CambridgeZero/images/intermittency.gif?raw=true"/> 
+</figure>
+
+<p>These mismatched curves create periods where we have surplus power supply (green) and periods where we have a deficit (red). Where demand exceeds supply, as is the case in the evening, the national grid will cover the deficit by spinning up a gas-powered power station (a process called <em>peak-matching</em>), doing so creates unnecessary emissions that could have been avoided if we had shifted surplus power created during the day to the evening.</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-CambridgeZero/images/intermittency_xkcd.png?raw=true"/> 
+</figure>
+
+<p>Here is an illustration of such an idealised scenario. Now we&rsquo;ve added a storage medium, this could be a chemical storage i.e. a battery, or it could be thermal storage i.e. thermal inertia in building materials. We&rsquo;ve flattened the blue demand curve, spreading it throughout the day rather than allowing the peaks in the morning and evenings. Now we store our surplus energy during the day in orange, and discharge it in the mornings and evening in blue. In this scenario we avoid the unnecessary spinning up of the gas-powered power plant and reduce overall emissions.</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-CambridgeZero/images/opt_intermittency_xkcd.png?raw=true"/> 
+</figure>
+
+<p>Equipment in most buildings are regulated by Rule-based Controllers (RBCs) that take system temperature as input, use a temperature setpoint as an objective, and actuate equipment to minimise the error between objective and state. Though usefully simple, they don&rsquo;t maximise energy efficiency, nor do they interact with the grid to draw power when carbon intensity is low to minimise emissions. We&rsquo;d like to design controllers that learn patterns in occupant behaviour, weather, and grid carbon intensity and take control actions that move us toward this idealised scenario that minimises emissions. For that, in my work, I employ Reinforcement Learning (RL), a method for obtaining optimal control polices in complex systems autonomously.</p>
+<h2 id="12-commercial">1.2 Commercial</h2>
+<p><figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-29-Emerson/images/coldstore2.png?raw=true"/> 
+</figure>
+
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-29-Emerson/images/slab_temps1.png?raw=true"/> 
+</figure>
+</p>
+<p>So why is this relevant to Emerson? Where the storage medium in the residential example could be electrical, like a battery, it doesn&rsquo;t need to be, it could be thermal, like a fridge or cold storage facility. Here rather than charging a battery with excess renewable supply, we can charge the contents of the fridge with cooled air, and allow the heat to dissipate ove time in the same way we dissipate energy from the battery. As a more concrete example, if we could predict that we would have excess renewable supply throughout a morning because it was windy, and a deficit in the afternoon as the wind drops. We could use that renewable energy in the morning to overcool the space, then switch the coolers off in the afternoon, all whilst ensuring the temperature remains within a safe operating range throughout.</p>
+<h2 id="12-commercial-1">1.2 Commercial</h2>
+<ul>
+<li>
+<p>Cooling equipment in 1000s of coldstorage facilities</p>
+</li>
+<li>
+<p>Can we write control algorithms that improve:</p>
+<ul>
+<li><em>Efficiency</em></li>
+<li><em>Flexibility</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Grid-interactive Efficient Buildings</strong></p>
+</li>
+</ul>
+<p>So we know Emerson have equipment in 1000s of these facilities globally. The questions then become, can we write control algorithms that improve the efficiency and the flexibility of these buildings. This is a concept often referred to as creating Grid-interactive efficient buildings. Given the scale of Emerson&rsquo;s global coldchain operations, doing so offers significant scope to reduce emissions, save money on energy bills for a client, and accrue revenue by offering the grid flexibility.</p>
+<p>Any questions at this stage?</p>
+<h1 id="2-existing-solutions">2. Existing Solutions</h1>
+<h2 id="21-reinforcement-learning">2.1 Reinforcement Learning</h2>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/rl_basic.png?raw=true"/> 
+</figure>
+
+<p>Several authors have looked at this problem in recent years with most focussing on Reinforcement Learning as a potential solution. Reinforcement Learning is a general framework for solving sequential decision making tasks with no prior knowledge of the system. We have RL agents (here illustrated by the brain) that can take actions in some environment (represented by the globe), at each timestep receiving feedback on those actions in the form of a reward, which represents how well it is doing at task it is supposed to be performing, and an updated state. The goal of the RL agent is to maximise the sum of cumulative rewards over a trajectory of actions. This is useful because in complex systems it can be hard to specify a sequence of actions we would like an agent to take. Instead it is much easier to specify a goal we are trying to achieve or how we would like the world to look upon completing the task. We can do this by specifying the reward function, which is the only bit of human intervention in this system, then we allow the agent to work out the best control policy for maximising its reward.</p>
+<p>Although this appears a simple paradigm, it elicits extremely powerful behaviour from computers.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/TmPfTpjtdgg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>Some of the best examples of this power come from the gaming domain. Here’s an RL agent, created by DeepMind in 2013, that learns to play the Atari game breakout with no prior knowledge or human input. The agent is fed minimal data; it’s fed the raw pixels of the screen as a representation of the state; it’s knows it can take three actions: move left, move right, or stay still, and it’s fed the score at the top of the screen as a reward signal.</p>
+<p>You can see initially it struggles to hit the ball, but slowly it learns first to connect with the ball. Then by episode 600 it exhibits some pretty intelligent behaviour; it discovers that the optimally strategy is to burrow holes in the channels of the bricks and ping the ball behind the bricks.</p>
+<p><figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/move37.png?raw=true"/> 
+</figure>
+
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/leesedol.png?raw=true"/> 
+</figure>
+</p>
+<p>Another seminal example is DeepMind&rsquo;s AlphaGo agent that beat the world-champion Go player Lee Sedol 4-1 back in 2016. Go is an extremely difficult game to master, historically seen as one of the hardest challenges for artificial intelligence. There are 10^170 ways to configure a Go board, meaning if you want to create a table of all the different states and search through them to find the best move you would need a computer larger than observable universe. The move highlighted in this image, move 37, became infamous in the Go world because it seemed counterintuitive to humans when played, but later turned out the be the game-winning move. AlphaGo managed to uncover new knowledge about a game that has been played by humans for thousands of years.</p>
+<h2 id="22-our-game-heatingcooling-control">2.2 Our Game: Heating/Cooling Control</h2>
+<h3 id="state-space">State-space</h3>
+<ul>
+<li>Indoor temperature/humidity</li>
+<li>Outdoor temperature/humidity</li>
+<li>Occupancy patterns (doors, lights, time, date)</li>
+<li>Grid carbon intensity</li>
+<li>Energy price</li>
+<li>etc.</li>
+</ul>
+<h3 id="action-space">Action-space</h3>
+<ul>
+<li>Chiller/heater power</li>
+</ul>
+<h3 id="reward">Reward</h3>
+<ul>
+<li>Minimise energy-use or emissions: $\min{Energy_{t:T}}$ or $\min{Emissions_{t:T}}$</li>
+<li>subject to: $T_{low} \leq T_t \leq T_{high}$</li>
+</ul>
+<p>Instead of playing Go or the Atari Suite we want to formulate a game around building control. Our board or state-space becomes a feature space of indoor/outdoor temperature/humidity, occupancy patterns, grid carbon intensity, energy price etc. The actions we can take relate, in the simplest case, to chiller and heater actuation i.e. we can turning the coolers up and down in response the state we observe. And our reward is based on minimising energy or emissions our some trajectory small t to big T, whilst maintaining temperature in a safe operating range. Past attempts to solve this game have focussed primarily on model-free reinforcement learning.</p>
+<h2 id="23-model-free-reinforcement-learning">2.3 Model-free Reinforcement Learning</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Rollouts</th>
+<th style="text-align:center">Network</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-CambridgeZero/images/model_free.gif?raw=true" alt=""></td>
+<td style="text-align:center"><img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-CambridgeZero/images/model_free_network1.png?raw=true" alt=""></td>
+</tr>
+</tbody>
+</table>
+<p>In model free RL, our agent learns policy that is a mapping from state to action, represented by the network diagram on the right. On the left, we visualise how an RL agent collects experience in an environment to learn this mapping. The agent will start in some state $s_t$ where it takes some action $a_t$ transitioning it to some next state $s_{t+1}$, from which it takes another action $a_{t+1}$. This process continues until some finite time horizon $H$ where it will receive some reward, a quantification of how good the previous string of actions were. This reward is backpropogated, and the network is updated to reflect how good or bad each of those actions were at achieving our goal.</p>
+<p>As may be clear, to obtain an optimal solution, the agent would have to visit all possible states and take all possible actions. To do this safely, these agents are usually obtained in building simulations using millions of timesteps of data, but such simulations can be difficult, expensive or impossible to obtain in some buildings, so this approach limits the applicability of model-free RL to the subset of global buildings for which we have can obtain such data in advance.</p>
+<h2 id="24-model-based-reinforcement-learning">2.4 Model-based Reinforcement Learning</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Rollouts</th>
+<th style="text-align:center">Network</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-CambridgeZero/images/model_based.gif?raw=true" alt=""></td>
+<td style="text-align:center"><img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-CambridgeZero/images/model_based_network.png?raw=true" alt=""></td>
+</tr>
+</tbody>
+</table>
+<p>An alternative is model-based RL where the agent instead learns a mapping from state-action pair to next state, in other words, it attempts to learn the system dynamics. Using this model, the agent can test a range of candidate action sequences, estimating the expected reward of each at time horizon $H$. The agent then takes the first action from the action sequence producing highest expected reward in the real world.</p>
+<p>This approach is considerably more data-efficient than model-free RL because the agent can imagine the consequences of as many actions as it likes offline, limiting the amount of interactions required in the real environment to obtain a good policy. Because of this, authors have shown that model-based RL agents do not need to be pre-trained in simulation, but can instead be deployed directly in the environment where it can learn a policy after 12 hours of interaction. However, the primary drawback is that the model it learns is inevitably wrong to some degree, or <em>biased</em>, and this model inaccuracy can lead to poorer performance than model-based agents.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Pros</strong> 💚</th>
+<th><strong>Cons</strong> 💔</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Model-free</strong></td>
+<td>Performance</td>
+<td>Data inefficiency</td>
+</tr>
+<tr>
+<td><strong>Model-based</strong></td>
+<td>Data efficiency</td>
+<td>Performance; Model bias</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>SOA Energy Efficiency</strong></th>
+<th><strong>SOA Data Efficiency</strong></th>
+<th><strong>Authors</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Model-free</strong></td>
+<td><strong>10-30%</strong></td>
+<td>1-2 years <em>simulated</em> data</td>
+<td>[2,3]</td>
+</tr>
+<tr>
+<td><strong>Model-based</strong></td>
+<td>5-9%</td>
+<td><strong>3-12 hours</strong> <em>live</em> data</td>
+<td>[4, 5]</td>
+</tr>
+</tbody>
+</table>
+<p>Here I summarise the pros and cons of each approach. In general, model-free approaches perform better but are data inefficient - requiring pre-training in a simulator. On the other hand, model-based techniques are far more data efficient, but model-bias can cause poorer performance. We see this reflected in the building control literature, where model-free approaches have shown energy efficiency improvements of up to 30%, whereas model-based techniques have only shown up to 9% energy efficiency improvements.</p>
+<p>Ideally, we&rsquo;d like to find new solutions that elicit the performance of model-free approaches with the data efficiency and online commissioning of model-based approaches. The approach we propose for doing so is <em>Probabilistic</em> Model-Based Reinforcement Learning.</p>
+<h1 id="3-probabilisitic-model-based-reinforcement-learning">3. <em>Probabilisitic</em> Model-Based Reinforcement Learning</h1>
+<p>Here we follow the same schema as traditional model-based RL i.e. we learn a mapping from state-action pair to next state, but now instead of deterministically predicting the state evolution, we learn a probability distribution over next state parameterised by mean $\mu$ and variance $\sigma$. We employ an ensemble of 5 probabilistic networks to account for uncertainty in the modelling approach too.</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-CambridgeZero/images/prob_rl.png?raw=true"/> 
+</figure>
+
+<p>after [6]</p>
+<p>The method for agent planning changes too, now instead of making point predictions of the outcome of action sequences, we output a distribution over all possible future rewards. In the example below, we evaluate one action sequence, passing it through three models in our ensemble, outputting state distribution predictions, sampling from that distribution and iterating until time horizon $H$. At this stage we get a distribution over rewards which we can use to get the expected value of the action sequence. Comparing this with the expected reward of many other action sequences we can find the optimal action sequence, and take the first action in that sequence in the real environment.</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-CambridgeZero/images/prob_rl.gif?raw=true"/> 
+</figure>
+
+<h1 id="4-experiments">4. Experiments</h1>
+<p>We ran a series of experiments to test the effectiveness of our proposed approach. We test our algorithm in three varied building simulations, a mixed-use facility in Greece, an apartment block in Spain, and a seminar centre in Denmark. We compare our algorithm with an existing RBC, the state-of-the-art model-free approach and the state-of-the-art model-based approach. The agents have no prior knowledge of the system <em>a priori</em>, other than the type of actions they can take, and are each given 12 hours to explore the state-space before controlling them. The goal of each agent is to minimise emissions whilst maintaining internal temperature in the range 19-24 degrees centigrade for one year of operation.</p>
+<h2 id="41-building-simulations-7">4.1 Building Simulations [7]</h2>
+<p><figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-CambridgeZero/images/mixed-use.PNG?raw=true"/> 
+</figure>
+
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-CambridgeZero/images/apartment.png?raw=true"/> 
+</figure>
+
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-CambridgeZero/images/seminar_centre.PNG?raw=true"/> 
+</figure>
+</p>
+<p><em><strong>Figure 1:</strong></em> <em>Building energy simulation schematics. Top: Mixed Use; Middle: Apartment; Bottom: Seminar Centre.</em></p>
+<p>We find that in two of the three cases our PMBRL method (green) minimises emissions over all other controllers. In the mixed-use facility it reduces emissions by 30% over the RBC and in the apartment block it reduces emissions by 10%. In the seminar centre it creates the same volume of emissions as the existing controller.</p>
+<h2 id="42-emissions">4.2 Emissions</h2>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-CambridgeZero/images/cum_emissions_1.png?raw=true"/> 
+</figure>
+
+<p><em><strong>Figure 2:</strong></em> <em>Cumulative emissions produced by each controller across the (a) Mixed Use, (b) Apartment, and (c) Seminar Centre environments. Green: PMBRL; Orange: PPO; Blue: MPC-DNN; Red: RBC.</em></p>
+<p>Our approach is also the best at maintaining temperature within the desired bounds, here represented by the light green band. Our approach never breaches the temperature bounds in the apartment or seminar centre, and does so 0.27% of the year in the mixed use facility. In contrast the existing SOA approaches breach the same bounds 18.36% (model-based) and 53.33% (model-free) of the time on average.</p>
+<h2 id="43-thermal-comfort">4.3 Thermal Comfort</h2>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-CambridgeZero/images/temperature_control.png?raw=true"/> 
+</figure>
+
+<p><em><strong>Figure 3:</strong></em> <em>Mean daily building temperature produced by each controller across the (a) Mixed Use, (b) Apartment, and (c) Seminar Centre environments. Green: PMBRL; Orange: PPO; Blue: MPC-DNN; Red: RBC; Purple Dashed: Outdoor temperature (the primary system disturbance). The green shaded area illustrates the target temperature range [19, 24].</em></p>
+<h1 id="5-conclusions">5. Conclusions</h1>
+<ol>
+<li>
+<p>Reducing energy use in heating and cooling systems, and better matching energy demand with carbon-free supply are important climate change mitigation tools.</p>
+</li>
+<li>
+<p>In theory, RL allows us to obtain emission-reducing control policies for <em>any</em> building with <em>no</em> prior knowledge.</p>
+</li>
+<li>
+<p>Existing RL approaches require training in hard-to-obtain simulators using millions of timesteps of data.</p>
+</li>
+<li>
+<p><strong>Our approach, PMBRL, is easy to deploy, requiring no prior knowledge, and can obtain emission-reducing control policies after only a few hours of interaction in the real environment.</strong></p>
+</li>
+</ol>
+<h1 id="thanks">Thanks!</h1>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-29-Emerson/images/qr.png?raw=true"/> 
+</figure>
+
+<h3 id="twitter-enjeeneerhttpstwittercomenjeeneer">Twitter: <a href="https://twitter.com/enjeeneer">@enjeeneer</a></h3>
+<h3 id="website-httpsenjeeneeriohttpsenjeeneerio">Website: <a href="https://enjeeneer.io/">https://enjeeneer.io/</a></h3>
+<h1 id="6-references">6. References</h1>
+<p>[1] Cullen, Jonathan and Julian Allwood (2010). “The efficient use of energy: Tracing the global flow of energy from fuel to service”. In: Energy Policy 38.1, pp. 75–81.</p>
+<p>[2] Zhang, Z., Chong, A., Pan, Y., Zhang, C., Lam, K.P.: Whole building energy model for hvac optimalcontrol: A practical framework based on deep reinforcement learning. Energy and Buildings199,472–490 (2019)</p>
+<p>[3] Wei, T., Wang, Y., Zhu, Q.: Deep reinforcement learning for building hvac control. In: Proceedingsof  the  54th  Annual  Design  Automation  Conference  2017.  DAC  ’17,  Association  for  ComputingMachinery, New York, NY, USA (2017).</p>
+<p>[4] Lazic, N., Lu, T., Boutilier, C., Ryu, M., Wong, E.J., Roy, B., Imwalle, G.: Data center cooling usingmodel-predictive control. In: Proceedings of the Thirty-second Conference on Neural InformationProcessing Systems (NeurIPS-18). pp. 3818–3827. Montreal, QC (2018)</p>
+<p>[5] Jain, A., Smarra, F., Reticcioli, E., D’Innocenzo, A., Morari, M.: Neuropt: Neural network basedoptimization for building energy management and climate control. In: Bayen, A.M., Jadbabaie, A.,Pappas, G., Parrilo, P.A., Recht, B., Tomlin, C., Zeilinger, M. (eds.) Proceedings of the 2nd Confer-ence on Learning for Dynamics and Control. Proceedings of Machine Learning Research, vol. 120,pp. 445–454</p>
+<p>[6] Chua,  K.,  Calandra,  R.,  McAllister,  R.,  Levine,  S.:  Deep  reinforcement  learning  in  a  handful  oftrials using probabilistic dynamics models. arXiv preprint arXiv:1805.12114 (2018)</p>
+<p>[7] Scharnhorst, P., Schubnel, B., Fern ́andez Bandera, C., Salom, J., Taddeo, P., Boegli, M., Gorecki, T.,Stauffer, Y., Peppas, A., Politi, C.: Energym: A building model library for controller benchmarking.Applied Sciences11(8),  3518 (2021)</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://enjeeneer.io/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-192648932-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+
+    </body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Scott Jeen">
+<meta name="description" content="Abstract
+In this talk, I will introduce deterministic and probabilistic black-box function approximators, with applications for timeseries modelling. First, I introduce the multilayer perceptron (neural network), demonstrating how they can model arbitrarily complex functions, but highlighting their propensity to overfit the training data. Second, I introduce the Gaussian process (GP), a bayesian, probabilistic approach to function approximation. I visualise how GP&amp;rsquo;s quantify uncertainty, a robust trait in the context of control, but highlight their inability to scale to large datasets." />
+<meta name="keywords" content="Scott Jeen, machine learning, rl, black-box functions" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://enjeeneer.io/talks/2021-03-15-xchangeseminar/" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-192648932-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+    <title>
+        
+            Taking a peek inside black-box function approximators :: Scott Jeen  — Limiting climate change with computers
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://enjeeneer.io/main.cbec4bded5981a9639be0a9253dbc5636fb308fba08c31a50670aee0a034a132.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://enjeeneer.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://enjeeneer.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://enjeeneer.io/favicon-16x16.png">
+    <link rel="manifest" href="https://enjeeneer.io/site.webmanifest">
+    <link rel="mask-icon" href="https://enjeeneer.io/safari-pinned-tab.svg" color="#252627">
+    <link rel="shortcut icon" href="https://enjeeneer.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#252627">
+    <meta name="theme-color" content="#252627">
+
+
+
+<meta itemprop="name" content="Taking a peek inside black-box function approximators">
+<meta itemprop="description" content="Abstract
+In this talk, I will introduce deterministic and probabilistic black-box function approximators, with applications for timeseries modelling. First, I introduce the multilayer perceptron (neural network), demonstrating how they can model arbitrarily complex functions, but highlighting their propensity to overfit the training data. Second, I introduce the Gaussian process (GP), a bayesian, probabilistic approach to function approximation. I visualise how GP&rsquo;s quantify uncertainty, a robust trait in the context of control, but highlight their inability to scale to large datasets.">
+<meta itemprop="datePublished" content="2021-03-15T16:55:47+00:00" />
+<meta itemprop="dateModified" content="2021-03-15T16:55:47+00:00" />
+<meta itemprop="wordCount" content="2680">
+<meta itemprop="image" content="https://enjeeneer.io"/>
+
+
+
+<meta itemprop="keywords" content="machine learning,rl,black-box functions," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://enjeeneer.io"/>
+
+<meta name="twitter:title" content="Taking a peek inside black-box function approximators"/>
+<meta name="twitter:description" content="Abstract
+In this talk, I will introduce deterministic and probabilistic black-box function approximators, with applications for timeseries modelling. First, I introduce the multilayer perceptron (neural network), demonstrating how they can model arbitrarily complex functions, but highlighting their propensity to overfit the training data. Second, I introduce the Gaussian process (GP), a bayesian, probabilistic approach to function approximation. I visualise how GP&rsquo;s quantify uncertainty, a robust trait in the context of control, but highlight their inability to scale to large datasets."/>
+
+
+
+    <meta property="og:title" content="Taking a peek inside black-box function approximators" />
+<meta property="og:description" content="Abstract
+In this talk, I will introduce deterministic and probabilistic black-box function approximators, with applications for timeseries modelling. First, I introduce the multilayer perceptron (neural network), demonstrating how they can model arbitrarily complex functions, but highlighting their propensity to overfit the training data. Second, I introduce the Gaussian process (GP), a bayesian, probabilistic approach to function approximation. I visualise how GP&rsquo;s quantify uncertainty, a robust trait in the context of control, but highlight their inability to scale to large datasets." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://enjeeneer.io/talks/2021-03-15-xchangeseminar/" />
+<meta property="og:image" content="https://enjeeneer.io"/>
+<meta property="article:published_time" content="2021-03-15T16:55:47+00:00" />
+<meta property="article:modified_time" content="2021-03-15T16:55:47+00:00" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-03-15 16:55:47 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-192648932-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    <span class="header__inner">
+        <a href="https://enjeeneer.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">cd /enjeeneer/</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#8B0000;
+                   animation-duration:1s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://enjeeneer.io/about/">About</a></li><li><a href="https://enjeeneer.io/cv/cv_coffee.pdf">CV</a></li><li><a href="https://enjeeneer.io/posts/">Posts</a></li><li><a href="https://github.com/enjeeneer/">Projects</a></li><li><a href="https://enjeeneer.io/talks/">Talks</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://enjeeneer.io/talks/2021-03-15-xchangeseminar/">Taking a peek inside black-box function approximators</a></h2>
+            <h3 class="loc"><a href="https://enjeeneer.io/talks/2021-03-15-xchangeseminar/">Xchange Seminar, Cambridge</a></h3>
+            <h3 class="time"><a href="https://enjeeneer.io/talks/2021-03-15-xchangeseminar/">15th March 2021, 1pm</a></h3>
+
+            
+
+            
+
+            <div class="post-content">
+                <p><strong>Abstract</strong></p>
+<p>In this talk, I will introduce deterministic and probabilistic black-box function approximators, with applications for timeseries modelling. First, I introduce the multilayer perceptron (neural network), demonstrating how they can model arbitrarily complex functions, but highlighting their propensity to overfit the training data. Second, I introduce the Gaussian process (GP), a bayesian, probabilistic approach to function approximation. I visualise how GP&rsquo;s quantify uncertainty, a robust trait in the context of control, but highlight their inability to scale to large datasets. I conclude by applying both techniques to the problem of room temperature prediction.</p>
+<p><strong>Code</strong></p>
+<p><a href="http://colab.research.google.com/github/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/notebook.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<p>[<a href="http://nbviewer.jupyter.org/github/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/notebook.ipynb">Jupyter Notebook</a>]</p>
+<p><strong>Slides</strong></p>
+<p>[<a href="https://enjeeneer.io/talks/2021-03-15slides.html">Click here for slideshow</a>]</p>
+<h2 id="todays-talk">Today&rsquo;s Talk</h2>
+<ul>
+<li>My project</li>
+<li>Black-box function approximation
+<ul>
+<li><strong>Deterministic approach</strong>: Neural networks and Long-short term memory (LSTMs)</li>
+<li><strong>Probabilistic approach</strong>: Gaussian processes (GPs)</li>
+</ul>
+</li>
+<li>Timeseries applications</li>
+<li>Key takeaways</li>
+</ul>
+<h2 id="my-project">My Project</h2>
+<p>Let&rsquo;s start with a video of one of DeepMind&rsquo;s machine learning agents learning to play the Atari game <em>Breakout</em> [1]. DeepMind feed the agent three pieces of information: 1) The pixel arrangement of the screen, 2) The actions it can take i.e. that can move left or right only, and 3) the score. The task of the agent is to learn to maximise its score by any means necessary. You&rsquo;ll note that, initially, the agent doesn&rsquo;t understand how best to play the game, but after more iterations it begins to get the hang of it. After 600 episodes of play, the agent has worked out the optimal strategy for this game: burrow a channel in either side of the bricks and fire the ball into the space behind.</p>
+<h2 id="1-my-project">1. My Project</h2>
+<p><a href="https://www.youtube.com/watch?v=TmPfTpjtdgg" title="DQN Breakout"><img src="http://img.youtube.com/vi/TmPfTpjtdgg/0.jpg" alt="IMAGE ALT TEXT"></a></p>
+<p><em>Video: Deepmind&rsquo;s Deep Q-network solving the Atari game Breakout after 600 episodes of self-play <a href="https://arxiv.org/pdf/1312.5602.pdf">(Mnih et. al (2013))</a></em></p>
+<p>A couple of years later, DeepMind took things a step further and attempted to conquer Go–a considerably more complex game [2]. Now, we&rsquo;re moving from a relatively straight forward state-space to a <a href="https://en.wikipedia.org/wiki/Go_and_mathematics">state-space with $~10^{170}$ legal positions</a>, far <a href="https://en.wikipedia.org/wiki/Observable_universe">more atoms that in the observable universe</a>.</p>
+<p>DeepMind created a more advanced agent, AlphaGo, and used it to play the world no. 1 Lee Sedol in best of 5 match, <a href="https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol">winning 4-1</a>. Perhaps the most interesting takeaway from the series was AlphaGo&rsquo;s now infamous move 37 (<a href="https://www.youtube.com/watch?v=HT-UZkiOLv8">see this clip from DeepMind&rsquo;s documentary</a>). Expert Go players suggest that in the board setup illustrated below, human Go players have long believed that the optimal move is in the margins of the board, but AlphaGo decided to play 5 lines in from the edge; much to the surprise of the audience, and Lee Sedol. This move later proved to be game-winning; AlphaGo had correctly predicted how the board would evolve and that move scuppered its opponent. After a few weeks of training, AlphaGo unearthed knowledge about this game that humans hadn&rsquo;t found after thousands of years of play.</p>
+<p><figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/move37.png?raw=true"/> 
+</figure>
+
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/leesedol.png?raw=true"/> 
+</figure>
+</p>
+<p><em>Figure: <strong>Top:</strong> AlphaGo&rsquo;s infamous Move 37, a counterintuitive move for a human to make with this board set-up, but nonetheless a gaming-winning one. <strong>Bottom:</strong> Lee Sedol, the world no.1 Go player, flummoxed by AlphaGo&rsquo;s moves. (Silver et. al(2017))</em></p>
+<p>So, why am I telling you this? Well, for my PhD project, I think instead of playing Atari games we should play the game of climate change mitigation. Specifically, let&rsquo;s turn the electricity system into a game. The board is the electricity grid, our pieces are energy-intensive devices on the grid, and our goal is to minimise the emissions produced by these devices whilst maintaining a quality of service to society.</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/smartgrid.png?raw=true"/> 
+</figure>
+
+<p><em>Figure: The complex, interconnected electricity grid</em></p>
+<p>As a first step in this direction, my goal is to control one building such that it interacts with the grid most efficiently, and we&rsquo;re doing that in one of Emerson Electric&rsquo;s facilities out in Canada, but more on that later.</p>
+<h3 id="11-reinforcement-learning">1.1 Reinforcement Learning</h3>
+<p>I haven&rsquo;t yet discussed the technique DeepMind used to produce these results; its called <a href="https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf">Reinforcement Learning</a> [3]. In general, the RL control loop looks something like this:</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/rl_basic.png?raw=true"/> 
+</figure>
+
+<p><em>Figure: The RL control loop. Agent&rsquo;s take sequential actions that affect their environment, the environment changes and the agent receives a reward for their action. Adapted from <a href="https://www.youtube.com/watch?v=2pWv7GOvuf0&amp;t=1757s">Episode 1 of David Silver&rsquo;s RL Youtube series</a></em></p>
+<p>The brain here represents the agent, the globe represents its environment. The agent can take actions in the environment, after which the environment feeds it some reward and tells it what the new state is. The agent&rsquo;s goal is maximise its cumulative reward, i.e. find the set of actions given states that win the game or meet its control objective.</p>
+<p>More formally, the RL control loop looks something like this:</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/rl_formal.png?raw=true"/> 
+</figure>
+
+<p><em>Figure: The formalised RL control loop.</em></p>
+<p>Where the agent observes the state $s$ through some sensor that is often noisy, it feeds the state into its control policy which selects an action $a$ given $s$, sending the agent through a transition represented by $P$ to new state $s'$. This transition, often called the system dynamics, can be modelled as a black box function. I&rsquo;m going to spend the rest of this walkthrough discussing how the ways in which you can approximate a function using black methods, when we should do so, and the limitations of doing so.</p>
+<h2 id="2-black-box-function-approximation">2. Black-box Function Approximation</h2>
+<h3 id="21-two-approaches-to-modelling">2.1 Two approaches to modelling</h3>
+<p>Generally when we model a function using a black-box approximator, we can select (informally) from two sets of models, these are:</p>
+<ul>
+<li><strong>Deterministic models:</strong> Do not contain elements of randomness; every time the model is run with the same initial conditions it produces identical results.</li>
+<li><strong>Probabilistic models:</strong> Include elements of randomness; trials with identical initial conditions will produce different results.</li>
+</ul>
+<p>As you can imagine, these are philosophically contradictory ways of thinking about modelling. The first assumes that there is a definite underlying function to be modelled, and with enough data we will be able to obtain it with sufficient accuracy. The second, assumes the world is random, we will never find the <em>true</em> underlying function because every function is subject to irreducible randomness or uncertainty in the world (cf. <a href="https://en.wikipedia.org/wiki/Uncertainty_quantification">aleatoric uncertainty</a>). The two eminent modelling techniques in these camps are Neural Networks (deterministic) and Gaussian Processes (probabilistic). I&rsquo;ll run through an example explaining the differences between the two.</p>
+<h3 id="22-deterministic-models-neural-networks">2.2 Deterministic Models: Neural Networks</h3>
+<p>Firstly, we need some data. Let&rsquo;s imagine we&rsquo;ve collected 5 samples from the world that were produced by a function we&rsquo;d like to infer. For simplicity, we&rsquo;ll assume this model is one-dimensional with inputs $x_i$ and outputs $y_i$ creating a dataset of input-output pairs $\mathrm{D} = {x_i,y_i}_i^N$ where we assume the relationship between the variables is $y_i = f(x_i)$. Our goal is to infer the function $f(\cdot)$ from $\mathrm{D}$:</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/1_data.png?raw=true"/> 
+</figure>
+
+<p>In the first instance, let&rsquo;s think about modelling this data deterministically. We might think that there is a linear relationship in the underlying data, so we model it as a straight line and manipulate the parameters of our straight line until the error between our line and the data in minimised. Our linear model takes the form:</p>
+<h3 id="linear-basis">Linear Basis</h3>
+<p>$$
+f(x) = {\color{red}{w_0}} + {\color{blue}{w_1} x}
+$$</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/2_data.png?raw=true"/> 
+</figure>
+
+<p>We can set the parameters of our linear model such that the error is pretty small, but we also know that the underlying function is unlikely to be a truly linear. Instead, we could improve on this by assuming our basis function is no longer linear, but rather polynomial, taking the form:</p>
+<h3 id="polynomial-basis">Polynomial Basis</h3>
+<p>$$
+f(x) = {\color{red}{w_0}} + {\color{blue}{w_1}} x + {\color{green}{w_2}} x^2 + {\color{orange}{w_3}} x^3
+$$</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/3_data.png?raw=true"/> 
+</figure>
+
+<p>With enough manipulation, we could probably find a set of parameters for our polynomial that approximate that dataset pretty closely.</p>
+<p>Neural networks take this approach to the extreme. We&rsquo;ve looked at two basis functions so far, the linear model and the polynomial, for efficient computation neural networks tend to use the Rectified Linear Unit (ReLU) basis function, usually called the network&rsquo;s <em>activation function</em> for reasons that will become clear shortly.</p>
+<p>ReLUs take the following form:</p>
+<h3 id="rectified-linear-unit-relu">Rectified Linear Unit (ReLU)</h3>
+<p>$$
+f(x) = \max (0 ,  {\color{blue}{w_1}} x + {\color{red}{w_0}})
+$$</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/4_data.png?raw=true"/> 
+</figure>
+
+<p>They are named activation functions because they <em>activate</em> the output for a certain input. Neural networks are a linear combination of these activation functions, the output of which can, surprisingly, model <em>any</em> continuous function (cf. <a href="https://en.wikipedia.org/wiki/Universal_approximation_theorem#:~:text=In%20the%20mathematical%20theory%20of,given%20function%20space%20of%20interest.&amp;text=Most%20universal%20approximation%20theorems%20can%20be%20parsed%20into%20two%20classes.">the universal function approximator theorem</a>). Inspired by <a href="https://towardsdatascience.com/can-neural-networks-really-learn-any-function-65e106617fc6">this great blog post</a> from Brendan Fortuner, I tried to model our dataset using four ReLUs:</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/5_data.png?raw=true"/> 
+</figure>
+
+<p>Not a bad estimation! On the left you can see when each of the four ReLUs activate, and how they affect the function once activated. On the right, you can see the sum of those four activations.</p>
+<p>In effect, we have created a neural network with four nodes by hand (see the top graph in the image below). You can imagine that with more ReLUs we could produce a smoother fit to the data, 2 sets of 10 ReLUs would look something like the bottom graph in the image below:</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/nn4.png?raw=true"/> 
+</figure>
+
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/mlp.png?raw=true"/> 
+</figure>
+
+<p><em>Figure: <strong>Top:</strong> A neural network with 4 nodes and 1 hidden layer–a graph of the model created by hand above. <strong>Bottom:</strong> A neural network with 10 nodes and 2 hidden layers–a more typical model arrangement.</em></p>
+<p>Now we&rsquo;ll pass our dataset through a neural network of 30 nodes (node number picked arbitrarily), optimise and make predictions of the output. Here&rsquo;s what we get:</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/6.1_data.png?raw=true"/> 
+</figure>
+
+<p>That looks even better! The function smoothly fits the data in a way that looks quite probable. Let&rsquo;s see how our model compares to the true function:</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/7_data.png?raw=true"/> 
+</figure>
+
+<p>Ah. Things have gone awry. The neural network has completely mischaracterised the underlying function. We can forgive the neural network for getting it so wrong, but it would have been great if it had told us it wasn&rsquo;t sure! The neural network is arrogant, it thinks there is only one function that could have produced the data and that it&rsquo;s nailed it after seeing five datapoints. It cannot possibly know how the function behaves when $x &lt; -4$ or when $x &gt; 4$ yet it still makes confident assertions about $y$ there. Ideally, we&rsquo;d like an approach that tells us when it is confident in its predictions and when it is less confident. To do so, we&rsquo;ll now turn to the probabilistic approach.</p>
+<h2 id="3-probabilistic-models-gaussian-processes">3. Probabilistic Models: Gaussian Processes</h2>
+<p>We know that there are an infinite number of functions that could have produced the data we observe, and that we&rsquo;ll never be able to say for certain which one of these infinite functions is <em>correct</em>, but we&rsquo;d like to know which subset of these functions is most probable. The question becomes: how can we narrow our solution space from <em>every</em> possible function to a subset that could have feasibly produced the data we observe.</p>
+<p>We use <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem">Bayes' rule</a> to narrow the solution space, which tells us how to update our beliefs about the world based on the evidence we&rsquo;ve seen:</p>
+<p>$$
+P (A | B) = \frac{P(B | A) P(A)}{P(B)}
+$$</p>
+<p>and in the setting of functions and data it looks something like:</p>
+<p>$$
+P (\textbf{f} | \textbf{D}) = \frac{P(\textbf{D} | \textbf{f}) P(\textbf{f})}{P(\textbf{D})}
+$$</p>
+<p>The latter provides a <em>predictive posterior distribution</em> over the function space given the data we have observed i.e. of the infinite set of functions available to us, which are the most likely given the data. I&rsquo;m going to focus first on the <em>prior</em> $P(\textbf{f})$, which is where we as modellers can input our beliefs about the world <em>prior</em> to seeing any data. Let&rsquo;s return to our original dataset and think about our prior beliefs:</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/1_data.png?raw=true"/> 
+</figure>
+
+<p>We may think that the functions are likely to be quite smooth. Perhaps we know that the data has been sampled from a process that changes state slowly and smoothly e.g. the tide height in a harbour throughout a day. Here are 20 functions sampled from the infinite set of <em>smooth</em> functions produced by the <a href="https://en.wikipedia.org/wiki/Radial_basis_function">Radial Basis Function</a>.</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/8_data.png?raw=true"/> 
+</figure>
+
+<p>Or we might think the process isn&rsquo;t quite so smooth and perhaps varies more stochastically. Here are 20 functions sampled using a periodic basis function:</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/9_data.png?raw=true"/> 
+</figure>
+
+<p>From this prior, we can reject each function from the infinite set that does not pass through our datapoints by optimising the log marginal likelihood of the functions (a description of which is outside the scope of this talk).</p>
+<p>If we return to our Radial Basis Function kernel, reject all the functions that don&rsquo;t pass through our datapoints, plot 1000 of the remaining functions we get something that looks like this:</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/10_data.png?raw=true"/> 
+</figure>
+
+<p>Now we have a plot that accepts there are many reasonable explanations for the data we observe. We can then take the mean and standard deviation of the distribution of these function and create a plot with confidence intervals:</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/11_data.png?raw=true"/> 
+</figure>
+
+<p>Now the black box is telling where it is more and less confident. In the context of control, or reinforcement learning, this is more robust as the agent can be wary when there is uncertainty in the state of the system. This modelling technique is called a <a href="http://www.gaussianprocess.org/gpml/chapters/RW.pdf">Gaussian Process</a> [4].</p>
+<h3 id="33-drawbacks">3.3 Drawbacks</h3>
+<ul>
+<li>Expensive to compute; N &gt; ~50,000 prohibitively large</li>
+<li>Prior knowledge remains crucial</li>
+</ul>
+<h2 id="4-timeseries-applications">4. Timeseries applications</h2>
+<p>Many of the problems we tackle in our group can be described as <a href="https://en.wikipedia.org/wiki/Time_series">timeseries</a>, that is, the inputs and outputs of the system are indexed by time. Examples include: the flow of material through a manufacturing plant, CO2 air concentration, or daily energy generation from a solar panel. In such scenarios, we can take advantage of the sequential nature of the output to inform our model.</p>
+<p>By way of example, I&rsquo;m going to use the two techniques discussed thus far to predict the time-varying temperature in a coldstorage facility. Let&rsquo;s have a look at the data first:</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/temp_true.png?raw=true"/> 
+</figure>
+
+<p>Plotted in blue is the temperature of the coldstore in degrees centigrade sampled at 3 minute intervals. The washed out lines represent features of the system I believe affect the temperature of the coldstore, there are 40 in total. These include but are not limited to:</p>
+<ul>
+<li>Outside weather</li>
+<li>Power usage in the chillers</li>
+<li>Wall/floor temperature</li>
+<li>etc.</li>
+</ul>
+<p>I model the temperature as a function of these inputs at some number of timesteps prior to the timestep of interest for both a neural network (specifically an LSTM, <a href="https://distill.pub/2019/memorization-in-rnns/">see this excellent blog post for more info</a>) and a GP. The output of the LSTM is a function of the 10 previous timesteps and the GP is a function of only the previous timestep. Here are the results, firstly the LSTM:</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/lstm.png?raw=true"/> 
+</figure>
+
+<p>Then the GP:</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/gp.png?raw=true"/> 
+</figure>
+
+<p>Then only the test set of the GP:</p>
+<figure>
+    <img src="https://github.com/enjeeneer/talks/blob/main/2021-03-15-UselessGroupXchange/images/gp_test.png?raw=true"/> 
+</figure>
+
+<p>I have 9 months of data at the coldstorage facility (N ~ 400,000). The advantage of the LSTM is that it can use all of this data, meaning it can explore more of the state space, and make better predictions in those out-of-distribution times. The GP can only use ~10% of the dataset for training, meaning it cannot explore the state space in the same way the neural network can, but it can limit the damage by quantifying its uncertainty.</p>
+<h2 id="5-key-takeaways">5. Key Takeaways</h2>
+<ul>
+<li>Black box function approximators can model <em>any</em> continuous function in theory</li>
+<li>Deterministic techniques effective with large (N &gt; $10^5$) datasets</li>
+<li>Probabilistic techniques more robust in low data regimes thanks to uncertainty quantification</li>
+<li>GPs are limited by their expensive computations (N must be &lt; $10^5$)</li>
+<li>Both approaches can be used to model complex timeseries datasets</li>
+</ul>
+<h2 id="further-reading">Further Reading</h2>
+<p><strong>Further explanations on why these techniques work</strong></p>
+<ul>
+<li><a href="https://towardsdatascience.com/can-neural-networks-really-learn-any-function-65e106617fc6">Can neural networks solve any problem?</a></li>
+<li><a href="https://distill.pub/2019/memorization-in-rnns/">Visualising how LSTMs make predictions</a></li>
+</ul>
+<p><strong>How can you build these in practice?</strong></p>
+<ul>
+<li>Neural nets: <a href="https://machinelearningmastery.com/tensorflow-tutorial-deep-learning-with-tf-keras/">Introduction to deep learning with tensorflow</a></li>
+<li>GPs: <a href="https://towardsdatascience.com/gaussian-process-regression-on-molecules-in-gpflow-ee6fedab2130">GP regression on molecules</a></li>
+<li>LSTMs: <a href="https://towardsdatascience.com/lstm-for-time-series-prediction-de8aeb26f2ca">LSTMs for timeseries prediction</a></li>
+</ul>
+<p><strong>Introductory Books</strong></p>
+<ul>
+<li><a href="https://www.amazon.co.uk/Art-Statistics-Learning-Pelican-Books/dp/0241398630">The art of statistics: how to learn from data - David Spiegelhalter (2018)</a></li>
+<li><a href="https://www.amazon.co.uk/dp/B07474JB3Q/ref=dp-kindle-redirect?_encoding=UTF8&amp;btkr=1">Life 3.0: Being Human in the Age of Artificial Intelligence - Max Tegmark (2017)</a></li>
+</ul>
+<h1 id="thanks">Thanks!</h1>
+<ul>
+<li>Notes: <a href="https://enjeeneer.io/talks/2021-03-15-xchangeseminar/">https://enjeeneer.io/talks/2021-03-15-xchangeseminar/</a></li>
+<li>Thanks to <a href="http://carlhenrik.com/">Carl Henrik Ek</a>, Dept. of Computer Science for inspiring these slides</li>
+<li>Questions?</li>
+</ul>
+<h1 id="references">References</h1>
+<p>[1] Mnih, Volodymyr, et al. &ldquo;Playing Atari with deep reinforcement learning.&rdquo; arXiv preprint arXiv:1312.5602 (2013).</p>
+<p>[2] Silver, David, et al. &ldquo;Mastering the game of Go with deep neural networks and tree search.&rdquo; nature 529.7587 (2016): 484-489.</p>
+<p>[3] Sutton, Richard S., and Andrew G. Barto. Reinforcement learning: An introduction. MIT press, 2018.</p>
+<p>[4] Rasmussen, Carl Edward. &ldquo;Gaussian processes in machine learning.&rdquo; Summer school on machine learning. Springer, Berlin, Heidelberg, 2003.</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://enjeeneer.io/tags/machine-learning/">machine learning</a></span>
+        <span class="tag"><a href="https://enjeeneer.io/tags/rl/">rl</a></span>
+        <span class="tag"><a href="https://enjeeneer.io/tags/black-box-functions/">black-box functions</a></span>
+        
+    </p>
+
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://enjeeneer.io/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-192648932-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+
+    </body>
+</html>
