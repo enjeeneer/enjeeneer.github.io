@@ -22,11 +22,10 @@
 <p>[<a href="http://nbviewer.jupyter.org/github/enjeeneer/talks/blob/main/2021-11-17-RISEPresentations/notebook.ipynb">Jupyter Notebook</a>]</p>
 <h3 id="-">-</h3>
 <p>In the last year I&rsquo;ve started presenting work using Jupyter Notebooks, rebelling against the Bill Gates'-driven status-quo. Here I&rsquo;ll explain how to do it. It&rsquo;s not difficult, but in my opinion makes presentations look slicker, whilst allowing you to run code live in a presentation if you like. First, we need to download the plug-in that gives us the presentation functionality, it&rsquo;s called <a href="https://rise.readthedocs.io/en/stable/index.html">RISE</a>. We can do this easily using pip in a terminal window:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install RISE
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install RISE
 </code></pre></div><p>Once installed, our first move is to add the presentation toggles to our notebook cells. We do this by clicking <em>View</em> in the menu bar, then <em>Cell Toolbar</em>, then <em>Slideshow</em>:</p>
 <h2 id="adding-presentation-toggles-to-cells">Adding Presentation Toggles to Cells</h2>
-<figure>
-    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-RISEPresentations/images/slideshow_2.gif?raw=true"/> 
+<figure><img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-RISEPresentations/images/slideshow_2.gif?raw=true"/>
 </figure>
 
 <h2 id="slide-types">Slide Types</h2>
@@ -43,14 +42,12 @@
 <p>Adding images is easy too. I advise creating a sub-directory in your working directory called <code>/images</code> and storing anything you want to present there. Then you display them in a markdown file using some simple HTML syntax:</p>
 <p><code>&lt;img class=&quot;&quot; src=&quot;images/london_deaths.jpeg&quot; style=&quot;width:75%&quot;&gt;</code></p>
 <p>You can manipulate the <code>style</code> attribute to change the size of the image. Don&rsquo;t worry, this is the only HTML you need to know!</p>
-<figure>
-    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-RISEPresentations/images/london_deaths.jpeg?raw=true"/> 
+<figure><img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-RISEPresentations/images/london_deaths.jpeg?raw=true"/>
 </figure>
 
 <h2 id="entering-presentation-mode">Entering Presentation Mode</h2>
 <p>To view your slideshow click on the bar-chart button in the menu bar. This will start the presentation from the cell currently selected:</p>
-<figure>
-    <img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-RISEPresentations/images/start_show.gif?raw=true"/> 
+<figure><img src="https://github.com/enjeeneer/talks/blob/main/2021-11-17-RISEPresentations/images/start_show.gif?raw=true"/>
 </figure>
 
 <p>That&rsquo;s it! This tutorial has given you an introduction to the basics of RISE for presenting with Jupyter Notebooks, you can of course customise these to your heart&rsquo;s content using further plug-ins and more advanced Markdown. Here&rsquo;s a summary of the useful links from this document to finish:</p>
@@ -293,8 +290,7 @@
             <guid>https://enjeeneer.io/posts/2021/04/golf-attention-spans-and-degrowth/</guid>
             <description>&amp;ldquo;It&amp;rsquo;s downwind, if he throws everything at it he&amp;rsquo;s got a chance of making the front edge&amp;rdquo; said Nick Faldo, CBS commentator and 6 time major champion, as Bryson DeChambeau ambled to the 6th tee at Bay Hill Country Club 5 weeks ago. DeChambeau was leading Arnold Palmer&amp;rsquo;s Bay Hill Invitational and considering his options from the tee of the 528 yard par 5. I say 528 yards, as that is the distance as offered by Bay Hill&amp;rsquo;s scorecard, but that is the distance measured around the lake blocking the player&amp;rsquo;s line from tee to green, but were the player to bypass the boomerang arc and aim directly for the green, the hole plays only 340 yards.</description>
             <content type="html"><![CDATA[<p>&ldquo;It&rsquo;s downwind, if he throws everything at it he&rsquo;s got a chance of making the front edge&rdquo; said Nick Faldo, CBS commentator and 6 time major champion, as Bryson DeChambeau ambled to the 6th tee at Bay Hill Country Club 5 weeks ago. DeChambeau was leading Arnold Palmer&rsquo;s Bay Hill Invitational and considering his options from the tee of the 528 yard par 5. I say 528 yards, as that is the distance as offered by Bay Hill&rsquo;s scorecard, but that is the distance measured around the lake blocking the player&rsquo;s line from tee to green, but were the player to bypass the boomerang arc and aim directly for the green, the hole plays only 340 yards.</p>
-<p><figure>
-    <img src="/img/bayhill_6th.png" width="450" height="300"/> 
+<p><figure><img src="/img/bayhill_6th.png" width="450" height="300"/>
 </figure>
 
 <em>Figure: The 6th hole at Bay Hill Country Club. The teebox is on the far left of the image and the green on the far right. Source: <a href="https://www.pgatour.com/tournaments/arnold-palmer-invitational-presented-by-mastercard.html">pgatour.com</a></em></p>
@@ -309,8 +305,7 @@
 <p>This creates two problems for the sport, which are 1) logistical and 2) (somewhat) philosophical. First, golf courses, usually built in the late 19th and early 20th centuries, are now too short for the professional game. As an attempted fix, tee boxes have been extended backward to lengthen holes and rough has been grown to penalise inaccuracy. However, this creates two further problems: 1a) courses are built on finite land and, in many places, their limits have been reached, and 1b) longer courses and thicker rough, somewhat ironically, exacerbate the advantage gained by distance, as it&rsquo;s easier to hit a shorter iron from the rough than a longer one. The second, philosophical issue, is that increased length eliminates what most see as the best aspects of the game. The accuracy-distance tradeoff has always been key to the sport: a player who was less powerful, but could control their ball (and their emotions) better than their opponent would emerge victorious. Moreover, longer, straighter shots allow players to cut corners, or fly second shots directly to the hole, when players from past eras would have to bend shots around corners or manage contours to get approach shots close.</p>
 <p>It seems sensible, therefore, that corrective action should be taken, but the governing bodies are hesitant. There is a prevailing narrative, lobbied, I suspect, by TV executives and equipment manufacturers, that fans <em>want</em> to see the ball go further. Indeed, executives of these organisations appear to actively reject the science to further this agenda; Jay Monahan, commissioner of the US PGA Tour said in 2017 that trends in driving distance <a href="%5Bhttps://www.golfchannel.com/news/pga-tour-pga-america-issue-statements-study%5D(https://www.golfchannel.com/news/pga-tour-pga-america-issue-statements-study)">&ldquo;do not indicate a significant or abnormal increase in distance&rdquo;</a>. Average driving distance on the PGA Tour increased by <a href="%5Bhttps://www.pgatour.com/content/pgatour/stats/stat.101.y2017.html%5D(https://www.pgatour.com/content/pgatour/stats/stat.101.y2017.html)">14%</a> in the 15 years preceding that statement. Financial incentives make the motivations of the equipment manufacturers unsurprising, but I&rsquo;m staggered by the assertion that fans love distance. Do fans <em>really</em> want to see the ball go further? Like, <em>really</em>? Are we not discrediting the interests and intelligence of these fans? The PGA&rsquo;s primary riposte is that people&rsquo;s attention spans are getting shorter, <a href="https://www.bbc.co.uk/news/health-38896790">a debated assertion</a> (and topic for another post), and that if they don&rsquo;t catch viewer&rsquo;s attention early they will switch channel.</p>
 <p>These concerns are not unique to golf&rsquo;s leadership. T20 cricket is now framed by fireworks and cheerleaders when 6s are hit; premier league football clubs play music after a goal is scored to boost the atmosphere; organisers of the Boat Race recently made the rowers walk from a misty dressing room as <a href="%5Bhttps://youtu.be/oi_Lo4QuhtU?t=2898%5D(https://youtu.be/oi_Lo4QuhtU?t=2898)">lasers buzzed around their heads</a>; and the Super Bowl&rsquo;s half-time show (famously) gets bigger every year. It seems unlikely that these efforts have made TV sport more popular today that in previous decades, so I looked up Super Bowl viewership data to investigate (see below). You&rsquo;ll note that roughly 75% of US TV owners tuned in for the 1967 edition, and that figure has remained largely stable ever since. Fans continue to enjoy the Super Bowl in similar proportions to decades past, despite efforts to make it appear more exciting or accessible.</p>
-<p><figure>
-    <img src="/img/superbowl.png" width="700" height="300"/> 
+<p><figure><img src="/img/superbowl.png" width="700" height="300"/>
 </figure>
 
 <em>Figure: Super Bowl TV ratings 1967-2019. Source: <a href="https://en.wikipedia.org/wiki/Super_Bowl_television_ratings">Wikipedia: Super Bowl television ratings</a></em></p>
@@ -349,9 +344,8 @@
             <pubDate>Tue, 20 Nov 2018 16:54:55 +0000</pubDate>
             
             <guid>https://enjeeneer.io/posts/2018/11/book-review-cradle-to-cradle-remaking-the-way-we-make-things/</guid>
-            <description>Consider the cherry tree. A frenetic supply chain of blossom that produces thousands of seeds in the hope that one might fall to the soil, take root and grow. Its manufacturing model is inefficient, wasteful and laborious, yet beautifully nourishing to its surrounding ecology. The blossom that do not germinate instead provide nutrients for insects, microorganisms, animals and soil; its abundance and over-production should not be chastised, but celebrated.</description>
-            <content type="html"><![CDATA[<figure>
-    <img src="/img/cradle.jpg" width="250" height="350"/> 
+            <description>Consider the cherry tree. A frenetic supply chain of blossom that produces thousands of seeds in the hope that one might fall to the soil, take root and grow. Its manufacturing model is inefficient, wasteful and laborious, yet beautifully nourishing to its surrounding ecology. The blossom that do not germinate instead provide nutrients for insects, microorganisms, animals and soil; its abundance and over-production should not be chastised, but celebrated. In Michael Braungart and William McDonough’s seminal book “Cradle-to-Cradle: Remaking the Way We Make Things”, the author’s ask: “What would the human-built world look like if it were built by a cherry tree?</description>
+            <content type="html"><![CDATA[<figure><img src="/img/cradle.jpg" width="250" height="350"/>
 </figure>
 
 <p>Consider the cherry tree. A frenetic supply chain of blossom that produces thousands of seeds in the hope that one might fall to the soil, take root and grow. Its manufacturing model is inefficient, wasteful and laborious, yet beautifully nourishing to its surrounding ecology. The blossom that do not germinate instead provide nutrients for insects, microorganisms, animals and soil; its abundance and over-production should not be chastised, but celebrated. In Michael Braungart and William McDonough’s seminal book “Cradle-to-Cradle: Remaking the Way We Make Things”, the author’s ask: “What would the human-built world look like if it were built by a cherry tree?”. Braungart and McDonaugh assert that since the industrial revolution, humankind’s marriage with nature has been shaky and is now, in the 21st century, going through a messy, complicated divorce.</p>
@@ -380,8 +374,7 @@
             
             <guid>https://enjeeneer.io/posts/2018/10/plastic-politics/</guid>
             <description>Single-use plastics and the European Single Market have more in common than you may think; they were both popularised in the middle of the 20th century, they both bring economic benefit to western economies and they both have a party trying to discontinue their use. Negotiating the terms of my exit from the plastics market (read: Plaxit) has required diplomacy and strong leadership in equal measure. Admittedly, I have not penned a Chequers plan, nor have I travelled to Brussels for negotiations, but I have had to make compromises.</description>
-            <content type="html"><![CDATA[<figure>
-    <img src="/img/plastic_politics.png" width="350" height="300"/> 
+            <content type="html"><![CDATA[<figure><img src="/img/plastic_politics.png" width="350" height="300"/>
 </figure>
 
 <p>Single-use plastics and the European Single Market have more in common than you may think; they were both popularised in the middle of the 20th century, they both bring economic benefit to western economies and they both have a party trying to discontinue their use. Negotiating the terms of my exit from the plastics market (read: Plaxit) has required diplomacy and strong leadership in equal measure. Admittedly, I have not penned a Chequers plan, nor have I travelled to Brussels for negotiations, but I have had to make compromises. Sadly, the hard-Plaxit you readers have cried for is proving tricky to reconcile. Your brain may be filling with statements like: “Why are you even following through with this if you can’t do it properly?” or “You’ve fed us misinformation!” or “Why don’t you scrap the idea entirely?!” and all of these have validity. But we can’t go back now, that would be undemocratic. Or could we?</p>
