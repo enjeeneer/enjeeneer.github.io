@@ -183,7 +183,7 @@ if (!doNotTrack) {
 <p><a href="http://colab.research.google.com/github/enjeeneer/talks/blob/main/2022-06-23-OXCAV/notebook.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
 <p>[<a href="http://nbviewer.jupyter.org/github/enjeeneer/talks/blob/main/2022-06-23-OXCAV/notebook.ipynb">Jupyter Notebook</a>]</p>
 <p><strong>Slides</strong></p>
-<p>[<a href="https://enjeeneer.io/talks/2022-06-23slides">Click here for slideshow</a>]</p>
+<p>[<a href="https://enjeeneer.io/talks/2022-06-23slides_b">Click here for slideshow</a>]</p>
 <h2 id="outline">Outline</h2>
 <ol>
 <li>Motivation: Climate Change Mitigation, Intermittency, and Smart Building Control</li>
@@ -195,10 +195,9 @@ if (!doNotTrack) {
 </ol>
 <h1 id="1-motivation-climate-change-mitigation-intermittency-and-smart-building-control">1. Motivation: Climate Change Mitigation, Intermittency, and Smart Building Control</h1>
 <p>Here&rsquo;s a diagram my supervisor Jon Cullen produced a few years ago mapping global energy sources, on the left handside of the diagram, through conversion devices, to final services on the right handside of the diagram. Though it looks complicated, I&rsquo;d like to simplify things by focussing your attention on the middle section of the diagram.</p>
-<p><figure><img src="https://github.com/enjeeneer/talks/blob/main/2022-06-23-OXCAV/images/global_sankey_1a.png?raw=true"/>
+<figure><img src="https://github.com/enjeeneer/talks/blob/main/2022-06-23-OXCAV/images/global_sankey_1a.png?raw=true"/>
 </figure>
 
-<!-- raw HTML omitted --></p>
 <p><strong>Cullen and Allwood (2010)</strong></p>
 <p>Here we see that global energy use can be stratified into one of three categories: energy used to create motion in cyan; energy used to regulate temperature in red; and energy used for everthing else in black. We can observe that the primary source of energy consumption globally is in regulating temperature - approximately 50% of total energy demand. Finding ways of regulating temperature in society more efficiently would prove a useful way of reducing energy use and thus carbon emissions.</p>
 <figure><img src="https://github.com/enjeeneer/talks/blob/main/2022-06-23-OXCAV/images/global_sankey_3a.png?raw=true"/>
@@ -476,12 +475,11 @@ $$</p>
 <p>Planning loss = \(\sum_{n=1}^{100} MSE(\hat{s}<em>{t:t+H}^n, s</em>{t:t+H}^n)\)</p>
 <p>One part of the system that we perform further analysis on is the system identification policy. In these charts, I&rsquo;m varying the length of the commissioning period to assess how that affects performance over the first month of operation &ndash; we only look at the first month because any effect of system identification is subsumed by data collection beyond this point.</p>
 <p>We vary the length of system ID in the range 1hr-72hr and then measure the planning loss on a test set of 100 random state-action trajectories obtained from a different controller sampled from other times in the year. The planning loss is the sum of the state prediction MSEs. On the left is the planning loss right at the end of the commissioning period, and on the right is the change in planning loss for the same test set as the agent collects more data from the environment. To be clear, the agent is interacting with the environment, collecting data, and updating its model parameters at the end of each day so as to improve its model.</p>
-<p>We find that, as expected, the longer the system identification period, the more accurate the model predictions are at the end of that period. However, we also see that despite this initial descrepency, generally model performance converges after a few days of interaction, suggesting the data collected during system ID becomes quickly subsumed by other data in the environment. There is tradeoff between commissioning complexity and performance at the start of deployment. My conclusion from this analysis is that although we get better performance initially with a longer system ID period, the convergence in performance after a few days means that a shorter commissioning period remains practical.</p>
+<p>We find that, as expected, the longer the system identification period, the more accurate the model predictions are at the end of that period. However, we also see that despite this initial discrepency, generally model performance converges after a few days of interaction, suggesting the data collected during system ID becomes quickly subsumed by other data in the environment. There is tradeoff between commissioning complexity and performance at the start of deployment. My conclusion from this analysis is that although we get better performance initially with a longer system ID period, the convergence in performance after a few days means that a shorter commissioning period remains practical.</p>
 <h2 id="53-agent-decomposition">5.3 Agent Decomposition</h2>
-<p><figure><img src="https://github.com/enjeeneer/talks/blob/main/2022-06-23-OXCAV/images/component_testing.png?raw=true"/>
+<figure><img src="https://github.com/enjeeneer/talks/blob/main/2022-06-23-OXCAV/images/component_testing.png?raw=true"/>
 </figure>
 
-<!-- raw HTML omitted --></p>
 <p>My final chart is a decomposition of the components of PEARL that lead to its success. When compared with MPC-DNN, the other model-based technique used in this study, there are two components that are different: the use of probabilistic rather than deterministic models, and the use of Cross-Entropy Maximisation over Random Shooting as an action-selection mechanism. Here, I plot the mean daily reward of four different instantiations of PEARL with combinations of these two components. In blue, actions selected with random shooting and the dynamics modelled using probabilistic and deterministic ensembles, and in red actions selected with CEM and the dynamics modelled again using probabilistic and deterministic ensembles. In green we report the performance of the pre-trained model for reference. We find that performance correlated more with the choice of optimiser than it does with the choice of network, which is interesting and contrary to other results in the literature. Indeed, other authors have shown empirically that probabilistic ensembles perform better than deterministic ensembles, but that is not what we observe. Generally, they are shown to be better in environments that are complex, and this perhaps suggests that the problem is not complex enough to fully utilise probabilistic models.</p>
 <h1 id="6-limitations-future-work-and-conclusions">6. Limitations, Future Work and Conclusions</h1>
 <p>I&rsquo;ll finish with a discussion of some limitations and future work.</p>
