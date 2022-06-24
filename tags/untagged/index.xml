@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>untagged on Scott Jeen</title>
+    <link>https://enjeeneer.io/tags/untagged/</link>
+    <description>Recent content in untagged on Scott Jeen</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 23 Jun 2022 09:34:36 +0100</lastBuildDate><atom:link href="https://enjeeneer.io/tags/untagged/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Zero Shot Building Control</title>
+      <link>https://enjeeneer.io/talks/2022-06-23oxcav/</link>
+      <pubDate>Thu, 23 Jun 2022 09:34:36 +0100</pubDate>
+      
+      <guid>https://enjeeneer.io/talks/2022-06-23oxcav/</guid>
+      <description>Abstract
+Heating and cooling systems in buildings account for 31% of global energy use, much of which are regulated by Rule Based Controllers (RBCs) that neither maximise energy efficiency nor minimise emissions by interacting optimally with the grid. Control via Reinforcement Learning (RL) has been shown to significantly improve building energy efficiency, but existing solutions require pre-training in simulators that are prohibitively expensive to obtain for every building in the world.</description>
+    </item>
+    
+  </channel>
+</rss>

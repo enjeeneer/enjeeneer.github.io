@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Scott Jeen">
+<meta name="description" content="An Introduction to Reinforcement Learning Tom Bewley &amp;amp; Scott Jeen Alan Turing Institute 24/02/2022 The best way to walk through this tutorial is using the accompanying Jupyter Notebook:
+
+[Jupyter Notebook]
+1 | Markov Decision Processes: A Model of Sequential Decision Making 1.1. MDP (semi-)Formalism In reinforcement learning (RL), an agent takes actions in an environment to change its state over discrete timesteps $t$, with the goal of maximising the future sum of a scalar quantity known as reward." />
+<meta name="keywords" content="Scott Jeen" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://enjeeneer.io/posts/2022/02/one-hour-rl/" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-192648932-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+    <title>
+        
+            One Hour Rl :: Scott Jeen  — Limiting climate change with computers
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://enjeeneer.io/main.cbec4bded5981a9639be0a9253dbc5636fb308fba08c31a50670aee0a034a132.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://enjeeneer.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://enjeeneer.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://enjeeneer.io/favicon-16x16.png">
+    <link rel="manifest" href="https://enjeeneer.io/site.webmanifest">
+    <link rel="mask-icon" href="https://enjeeneer.io/safari-pinned-tab.svg" color="#252627">
+    <link rel="shortcut icon" href="https://enjeeneer.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#252627">
+    <meta name="theme-color" content="#252627">
+
+
+
+<meta itemprop="name" content="One Hour Rl">
+<meta itemprop="description" content="An Introduction to Reinforcement Learning Tom Bewley &amp; Scott Jeen Alan Turing Institute 24/02/2022 The best way to walk through this tutorial is using the accompanying Jupyter Notebook:
+
+[Jupyter Notebook]
+1 | Markov Decision Processes: A Model of Sequential Decision Making 1.1. MDP (semi-)Formalism In reinforcement learning (RL), an agent takes actions in an environment to change its state over discrete timesteps $t$, with the goal of maximising the future sum of a scalar quantity known as reward."><meta itemprop="datePublished" content="2022-02-25T15:23:20+00:00" />
+<meta itemprop="dateModified" content="2022-02-25T15:23:20+00:00" />
+<meta itemprop="wordCount" content="3056"><meta itemprop="image" content="https://enjeeneer.io"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://enjeeneer.io"/>
+
+<meta name="twitter:title" content="One Hour Rl"/>
+<meta name="twitter:description" content="An Introduction to Reinforcement Learning Tom Bewley &amp; Scott Jeen Alan Turing Institute 24/02/2022 The best way to walk through this tutorial is using the accompanying Jupyter Notebook:
+
+[Jupyter Notebook]
+1 | Markov Decision Processes: A Model of Sequential Decision Making 1.1. MDP (semi-)Formalism In reinforcement learning (RL), an agent takes actions in an environment to change its state over discrete timesteps $t$, with the goal of maximising the future sum of a scalar quantity known as reward."/>
+
+
+
+    <meta property="og:title" content="One Hour Rl" />
+<meta property="og:description" content="An Introduction to Reinforcement Learning Tom Bewley &amp; Scott Jeen Alan Turing Institute 24/02/2022 The best way to walk through this tutorial is using the accompanying Jupyter Notebook:
+
+[Jupyter Notebook]
+1 | Markov Decision Processes: A Model of Sequential Decision Making 1.1. MDP (semi-)Formalism In reinforcement learning (RL), an agent takes actions in an environment to change its state over discrete timesteps $t$, with the goal of maximising the future sum of a scalar quantity known as reward." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://enjeeneer.io/posts/2022/02/one-hour-rl/" /><meta property="og:image" content="https://enjeeneer.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-25T15:23:20+00:00" />
+<meta property="article:modified_time" content="2022-02-25T15:23:20+00:00" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2022-02-25 15:23:20 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+
+    
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-192648932-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    <span class="header__inner">
+        <a href="https://enjeeneer.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">cd /enjeeneer/</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#8B0000;
+                   animation-duration:1s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://enjeeneer.io/about/">About</a></li><li><a href="https://enjeeneer.io/cv/cv_coffee.pdf">CV</a></li><li><a href="https://enjeeneer.io/posts/">Posts</a></li><li><a href="https://github.com/enjeeneer/">Projects</a></li><li><a href="https://enjeeneer.io/talks/">Talks</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        15 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://enjeeneer.io/posts/2022/02/one-hour-rl/">One Hour Rl</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <h1 id="an-introduction-to-reinforcement-learning">An Introduction to Reinforcement Learning</h1>
+<h2 id="tom-bewleyhttpstombewleycom--scott-jeenhttpsenjeeneerio"><a href="https://tombewley.com/">Tom Bewley</a> &amp; <a href="https://enjeeneer.io/">Scott Jeen</a></h2>
+<h2 id="alan-turing-institute">Alan Turing Institute</h2>
+<h3 id="24022022">24/02/2022</h3>
+<p>The best way to walk through this tutorial is using the accompanying Jupyter Notebook:</p>
+<p><a href="http://colab.research.google.com/github/enjeeneer/talks/blob/main/2021-11-17-RISEPresentations/notebook.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<p>[<a href="http://nbviewer.jupyter.org/github/enjeeneer/talks/blob/main/2021-11-17-RISEPresentations/notebook.ipynb">Jupyter Notebook</a>]</p>
+<h1 id="1--markov-decision-processes-a-model-of-sequential-decision-making">1 | Markov Decision Processes: A Model of Sequential Decision Making</h1>
+<h2 id="11-mdp-semi-formalism">1.1. MDP (semi-)Formalism</h2>
+<p>In reinforcement learning (RL), an <em>agent</em> takes <em>actions</em> in an <em>environment</em> to change its state over discrete timesteps $t$, with the goal of maximising the future sum of a scalar quantity known as <em>reward</em>. We formalise this interaction as an agent-environment loop, mathematically described as a Markov Decision Process (MDP).</p>
+<!-- raw HTML omitted -->
+<p>MDPs break the I.I.D. data assumption of supervised and unsupervised learning; the agent <em>causally influences</em> the data it sees through its choice of actions. However, one assumption we do make is the <em>Markov property</em>, which says that the state representation captures <em>all relevent information</em> from the past. Formally, state transitions depend only on the most recent state and action,
+$$
+\mathbb{P}[S_{t+1} | S_1,A_1 \ldots, S_t,A_t]=\mathbb{P}[S_{t+1} | S_t,A_t],
+$$
+and rewards depend only on the most recent transition,
+$$
+\mathbb{P}[R_{t+1} | S_1,A_1 \ldots, S_t,A_t,S_{t+1}] = \mathbb{P}[R_{t+1} | S_t,A_t,S_{t+1}].
+$$</p>
+<ul>
+<li>Note: different sources use different notation here, but this is the most general.</li>
+</ul>
+<p>In some MDPs, a subset of states are designated as <em>terminal</em> (or <em>absorbing</em>). The agent-environment interaction loop ceases once a terminal state is reached, and restarts again at $t=0$ by sampling an state from an initialisation distribution $S_0\sim\mathbb{P}_\text{init}$. Such MDPs are known as <em>episodic</em>, while those without terminal states are known as <em>continuing</em>.</p>
+<p>The goal of an RL agent is to pick actions that maximise the discounted cumulative sum of future rewards, also known as the <em>return</em> $G_t$:
+$$
+G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \ldots + \gamma^{T-t-1}R_{T},
+$$
+where $\gamma\in[0,1]$ is a discount factor and $T$ is the time of termination ($\infty$ in continuing MDPs).</p>
+<p>To do so, it needs the ability to forecast the reward-getting effect of taking each action $A$ in each state $S$, potentially many timesteps into the future. This <em>temporal credit assignment</em> problem is one of the key factors that makes RL so challenging.</p>
+<p>Before we go on, it&rsquo;s worth reflecting on how general the MDP formulation is. An extremely large class of problems can be cast as MDPs (it&rsquo;s even possible to represent supervised learning as a special case), and <a href="https://reader.elsevier.com/reader/sd/pii/S0004370221000862?token=3A56DFC12064E559FBF2F53CBE7A85E4E4BE24160CC0B9DDDAE18351D2FE61DA3BF02167A8FCAE3398396BBBEDFDA7A9&amp;originRegion=eu-west-1&amp;originCreation=20220224085155">this recent DeepMind paper</a> goes as far as to say that <em>all aspects of general intelligence</em> can be understood as serving the maximisation of future reward. Although not everybody agrees, this attitude motivates the heavy RL focus at organisations like DeepMind and OpenAI.</p>
+<h2 id="12-mdp-example">1.2 MDP Example</h2>
+<p>Here&rsquo;s a simple MDP (courtesy of David Silver @ DeepMind/UCL), which we&rsquo;ll be using throughout this course.</p>
+<ul>
+<li>White circle: non-terminal state</li>
+<li>White square: terminal state</li>
+<li>Black circle: action</li>
+<li><!-- raw HTML omitted -->Green:<!-- raw HTML omitted --> reward (depends only on $S_{t+1}$ here)</li>
+<li><!-- raw HTML omitted -->Blue:<!-- raw HTML omitted --> state transition probability</li>
+<li><!-- raw HTML omitted -->Red:<!-- raw HTML omitted --> action probability for an exemplar policy</li>
+<li>Note: edges with probability $1$ are unlabelled</li>
+</ul>
+<!-- raw HTML omitted -->
+<h2 id="13-open-ai-gym">1.3 Open AI Gym</h2>
+<p><a href="https://gym.openai.com/">Open AI Gym</a> provides a unified framework for testing and comparing RL algorithms in Python, and offers a suite of MDPs that researchers can use to benchmark their work. It&rsquo;s important to be familiar with the conventions of Gym, because almost all modern RL code is built to work with it. Gym environment classes have two key methods:</p>
+<ul>
+<li><code>mdp.reset()</code>: reset the MDP to an initial state $S_0$ according to the initialisation distribution $\mathbb{P}_\text{init}$.</li>
+<li><code>mdp.step(action)</code> : given an action $A_t$, combine with the current state $S_t$ to produce the next state according to $\mathbb{P}[S_{t+1} | S_t,A_t]$ and a scalar reward according to $\mathbb{P}[R_{t+1} | S_t,A_t,S_{t+1}]$.</li>
+</ul>
+<p>A Gym-compatible class for the student MDP shown above can be found in <code>mdp.py</code> in this repository. Let&rsquo;s import it now and explore what it can do!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> mdp <span style="color:#f92672">import</span> StudentMDP
+mdp <span style="color:#f92672">=</span> StudentMDP()
+</code></pre></div><p>Firstly, we&rsquo;ll have a look at the initialisation probabilities and the behaviour of <code>mdp.reset()</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">print(mdp<span style="color:#f92672">.</span>initial_probs())
+mdp<span style="color:#f92672">.</span>reset()
+print(mdp<span style="color:#f92672">.</span>state)
+</code></pre></div><pre><code>{'Class 1': 1.0, 'Class 2': 0.0, 'Class 3': 0.0, 'Facebook': 0.0, 'Pub': 0.0, 'Pass': 0.0, 'Asleep': 0.0}
+Class 1
+</code></pre>
+<p>Next, let&rsquo;s check which actions are available in this initial state, and the action-dependent transition probabilities $\mathbb{P}[S_{t+1}|\text{Class 1},A_t]$.</p>
+<ul>
+<li>Reminder: the Markov property dictates that transition probabilities depend <em>only</em> on the current state and action.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">print(mdp<span style="color:#f92672">.</span>action_space(mdp<span style="color:#f92672">.</span>state))
+print(mdp<span style="color:#f92672">.</span>transition_probs(mdp<span style="color:#f92672">.</span>state, <span style="color:#e6db74">&#34;Study&#34;</span>))
+print(mdp<span style="color:#f92672">.</span>transition_probs(mdp<span style="color:#f92672">.</span>state, <span style="color:#e6db74">&#34;Go on Facebook&#34;</span>))
+</code></pre></div><pre><code>{'Study', 'Go on Facebook'}
+{'Class 2': 1.0}
+{'Facebook': 1.0}
+</code></pre>
+<p>Calling <code>mdp.step(action)</code> samples and returns the next state $S_{t+1}$, alongside the reward $R_{t+1}$. Let&rsquo;s try calling this method repeatedly. What&rsquo;s happening here?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">state, reward, _, _ <span style="color:#f92672">=</span> mdp<span style="color:#f92672">.</span>step(<span style="color:#e6db74">&#34;Study&#34;</span>) 
+print(state, reward)
+</code></pre></div><pre><code>Class 2 -2.0
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mdp<span style="color:#f92672">.</span>action_space(<span style="color:#e6db74">&#34;Pass&#34;</span>)
+</code></pre></div><pre><code>{'Fall asleep'}
+</code></pre>
+<p>So far, we&rsquo;ve only seen <em>deterministic</em> transitions, but having a pint in the pub has a <em>stochastic</em> effect; the state goes to one of the three classes with specified probabilities.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">print(mdp<span style="color:#f92672">.</span>action_space(<span style="color:#e6db74">&#34;Pub&#34;</span>))
+print(mdp<span style="color:#f92672">.</span>transition_probs(<span style="color:#e6db74">&#34;Pub&#34;</span>, <span style="color:#e6db74">&#34;Have a pint&#34;</span>))
+</code></pre></div><pre><code>{'Have a pint'}
+{'Class 1': 0.2, 'Class 2': 0.4, 'Class 3': 0.4}
+</code></pre>
+<p>In this state, the behaviour of <code>mdp.step(action)</code> changes between repeated calls, even for a constant action.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mdp<span style="color:#f92672">.</span>state <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Pub&#34;</span> <span style="color:#75715e"># Note that we&#39;re resetting the state to Pub each time</span>
+state, reward, _, _ <span style="color:#f92672">=</span> mdp<span style="color:#f92672">.</span>step(<span style="color:#e6db74">&#34;Have a pint&#34;</span>)
+print(state, reward)
+</code></pre></div><pre><code>Class 2 -2.0
+</code></pre>
+<p>This MDP has just one terminal state.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">print(mdp<span style="color:#f92672">.</span>terminal_states())
+</code></pre></div><pre><code>{'Asleep'}
+</code></pre>
+<p><code>mdp.step(action)</code> also returns a binary <code>done</code> flag, which is set to <code>True</code> if $S_{t+1}$ is a terminal state.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mdp<span style="color:#f92672">.</span>state <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Class 2&#34;</span> 
+state, reward, done, _ <span style="color:#f92672">=</span> mdp<span style="color:#f92672">.</span>step(<span style="color:#e6db74">&#34;Fall asleep&#34;</span>)
+print(state, reward, done)
+
+mdp<span style="color:#f92672">.</span>state <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Pass&#34;</span> 
+state, reward, done, _ <span style="color:#f92672">=</span> mdp<span style="color:#f92672">.</span>step(<span style="color:#e6db74">&#34;Fall asleep&#34;</span>)
+print(state, reward, done)
+</code></pre></div><pre><code>Asleep 0.0 True
+Asleep 0.0 True
+</code></pre>
+<p>Now let&rsquo;s bring an agent into the mix, and give it the exemplar policy shown in the diagram above.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> agent <span style="color:#f92672">import</span> Agent
+agent <span style="color:#f92672">=</span> Agent(mdp) 
+agent<span style="color:#f92672">.</span>policy <span style="color:#f92672">=</span> {
+    <span style="color:#e6db74">&#34;Class 1&#34;</span>:  {<span style="color:#e6db74">&#34;Study&#34;</span>: <span style="color:#ae81ff">0.5</span>, <span style="color:#e6db74">&#34;Go on Facebook&#34;</span>: <span style="color:#ae81ff">0.5</span>},
+    <span style="color:#e6db74">&#34;Class 2&#34;</span>:  {<span style="color:#e6db74">&#34;Study&#34;</span>: <span style="color:#ae81ff">0.8</span>, <span style="color:#e6db74">&#34;Fall asleep&#34;</span>: <span style="color:#ae81ff">0.2</span>},
+    <span style="color:#e6db74">&#34;Class 3&#34;</span>:  {<span style="color:#e6db74">&#34;Study&#34;</span>: <span style="color:#ae81ff">0.6</span>, <span style="color:#e6db74">&#34;Go to the pub&#34;</span>: <span style="color:#ae81ff">0.4</span>},
+    <span style="color:#e6db74">&#34;Facebook&#34;</span>: {<span style="color:#e6db74">&#34;Keep scrolling&#34;</span>: <span style="color:#ae81ff">0.9</span>, <span style="color:#e6db74">&#34;Close Facebook&#34;</span>: <span style="color:#ae81ff">0.1</span>},
+    <span style="color:#e6db74">&#34;Pub&#34;</span>:      {<span style="color:#e6db74">&#34;Have a pint&#34;</span>: <span style="color:#ae81ff">1.</span>},
+    <span style="color:#e6db74">&#34;Pass&#34;</span>:     {<span style="color:#e6db74">&#34;Fall asleep&#34;</span>: <span style="color:#ae81ff">1.</span>},
+    <span style="color:#e6db74">&#34;Asleep&#34;</span>:   {<span style="color:#e6db74">&#34;Stay asleep&#34;</span>: <span style="color:#ae81ff">1.</span>}}
+
+</code></pre></div><p>We can query the policy in a similar way to the MDP&rsquo;s properties, and observe its stochastic behaviour.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">print(agent<span style="color:#f92672">.</span>policy[<span style="color:#e6db74">&#34;Class 1&#34;</span>])
+print([agent<span style="color:#f92672">.</span>act(<span style="color:#e6db74">&#34;Class 1&#34;</span>) <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">20</span>)])
+</code></pre></div><pre><code>{'Study': 0.5, 'Go on Facebook': 0.5}
+['Go on Facebook', 'Study', 'Go on Facebook', 'Study', 'Go on Facebook', 'Study', 'Go on Facebook', 'Study', 'Go on Facebook', 'Study', 'Study', 'Study', 'Go on Facebook', 'Study', 'Study', 'Study', 'Go on Facebook', 'Go on Facebook', 'Go on Facebook', 'Study']
+</code></pre>
+<p>Bringing it all together:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mdp<span style="color:#f92672">.</span>verbose <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+state <span style="color:#f92672">=</span> mdp<span style="color:#f92672">.</span>reset()
+done <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+<span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> done:
+    state, reward, done, info <span style="color:#f92672">=</span> mdp<span style="color:#f92672">.</span>step(agent<span style="color:#f92672">.</span>act(state))
+</code></pre></div><pre><code>=========================== EPISODE   2 ===========================
+| Time  | State    | Action         | Reward | Next state | Done  |
+|-------|----------|----------------|--------|------------|-------|
+| 0     | Class 1  | Study          | -2.0   | Class 2    | False |
+| 1     | Class 2  | Study          | -2.0   | Class 3    | False |
+| 2     | Class 3  | Study          | 10.0   | Pass       | False |
+| 3     | Pass     | Fall asleep    |  0.0   | Asleep     | True  |
+</code></pre>
+<p>How &ldquo;good&rdquo; is this policy? To answer this, we need to calculate its expected return.</p>
+<h1 id="2--policy-evaluation-the-temporal-difference-method">2 | Policy Evaluation: The Temporal Difference Method</h1>
+<p>For a policy $\pi$, the <em>Q value</em> $Q_\pi(S_t,A_t)$ is the expected return from taking action $A_t$ in state $S_t$, and following $\pi$ thereafter. It thus quantifies how well the policy can be expected to perform, starting from this state-action pair. Q values exhibit an elegant recursive relationship known as the <em>Bellman equation</em>:
+$$
+Q_\pi(S_t,A_t)=\sum_{S_{t+1}}\mathbb{P}[S_{t+1}|S_t,A_t]\left(\mathbb{E}[R_{t+1} | S_t,A_t,S_{t+1}]+\gamma\times\sum_{A_{t+1}}\pi(A_{t+1}|S_{t+1})\times Q_\pi(S_{t+1},A_{t+1})\right).
+$$</p>
+<p>i.e. <strong>The Q value for a state-action pair is equal to the immediate reward, plus the $\gamma$-discounted Q value for the <em>next</em> state-action pair, with expectations taken over both the transition function $\mathbb{P}$ and the policy $\pi$.</strong></p>
+<p>This is a bit of a mouthful, but the Bellman equation is perhaps the single most important thing to understand if you really want to &ldquo;get&rdquo; reinforcement learning.</p>
+<p>To gain some intuition for this relationship, here are estimated Q values for the exemplar policy in the student MDP. Here we&rsquo;re using a discount factor of $\gamma=0.95$</p>
+<ul>
+<li>Note that these values are only approximate, so the Bellman equation doesn&rsquo;t hold exactly!</li>
+</ul>
+<!-- raw HTML omitted -->
+<p>To take one example:
+$$
+Q(\text{Class 2},\text{Study})=-2+0.95\times [(0.6\times Q(\text{Class 3},\text{Study})+0.4\times Q(\text{Class 3},\text{Go to the pub}))]
+$$
+$$
+=-2+0.95\times[(0.6\times 9.99+0.4\times 1.81)]
+$$
+$$
+=4.38\approx 4.36
+$$</p>
+<p>How did we arrive at these Q value estimates? Here&rsquo;s where the real magic happens.</p>
+<p>The <em>Bellman backup</em> algorithm makes use of this recursive relationship to update the Q value for a state-action pair based on the <em>current estimate of the value for the next state</em>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">GAMMA <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.95</span>  <span style="color:#75715e"># Discount factor</span>
+ALPHA <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.001</span> <span style="color:#75715e"># Learning rate</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bellman_backup</span>(agent, state, action, reward, next_state, done):
+
+    Q_next <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span> <span style="color:#66d9ef">if</span> done <span style="color:#66d9ef">else</span> agent<span style="color:#f92672">.</span>Q[next_state][agent<span style="color:#f92672">.</span>act(next_state)]
+
+    agent<span style="color:#f92672">.</span>Q[state][action] <span style="color:#f92672">+=</span> ALPHA <span style="color:#f92672">*</span> ( reward <span style="color:#f92672">+</span> GAMMA <span style="color:#f92672">*</span> Q_next <span style="color:#f92672">-</span> agent<span style="color:#f92672">.</span>Q[state][action])
+</code></pre></div><p>By sampling episodes in our MDP using the current policy we can collect rewards and update our Q-function accordingly. The algorithm we use to evaluate policies is called policy evaluation, and it uses the Bellman back-up which has two hyperparameters $\gamma$ and $\alpha$. $\gamma$ is the discount factor that</p>
+<p>Import the MDP and define the policy again.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> mdp <span style="color:#f92672">import</span> StudentMDP
+<span style="color:#f92672">from</span> agent <span style="color:#f92672">import</span> Agent
+mdp <span style="color:#f92672">=</span> StudentMDP(verbose<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+agent <span style="color:#f92672">=</span> Agent(mdp) 
+agent<span style="color:#f92672">.</span>policy <span style="color:#f92672">=</span> {
+    <span style="color:#e6db74">&#34;Class 1&#34;</span>:  {<span style="color:#e6db74">&#34;Study&#34;</span>: <span style="color:#ae81ff">0.5</span>, <span style="color:#e6db74">&#34;Go on Facebook&#34;</span>: <span style="color:#ae81ff">0.5</span>},
+    <span style="color:#e6db74">&#34;Class 2&#34;</span>:  {<span style="color:#e6db74">&#34;Study&#34;</span>: <span style="color:#ae81ff">0.8</span>, <span style="color:#e6db74">&#34;Fall asleep&#34;</span>: <span style="color:#ae81ff">0.2</span>},
+    <span style="color:#e6db74">&#34;Class 3&#34;</span>:  {<span style="color:#e6db74">&#34;Study&#34;</span>: <span style="color:#ae81ff">0.6</span>, <span style="color:#e6db74">&#34;Go to the pub&#34;</span>: <span style="color:#ae81ff">0.4</span>},
+    <span style="color:#e6db74">&#34;Facebook&#34;</span>: {<span style="color:#e6db74">&#34;Keep scrolling&#34;</span>: <span style="color:#ae81ff">0.9</span>, <span style="color:#e6db74">&#34;Close Facebook&#34;</span>: <span style="color:#ae81ff">0.1</span>},
+    <span style="color:#e6db74">&#34;Pub&#34;</span>:      {<span style="color:#e6db74">&#34;Have a pint&#34;</span>: <span style="color:#ae81ff">1.</span>},
+    <span style="color:#e6db74">&#34;Pass&#34;</span>:     {<span style="color:#e6db74">&#34;Fall asleep&#34;</span>: <span style="color:#ae81ff">1.</span>},
+    <span style="color:#e6db74">&#34;Asleep&#34;</span>:   {<span style="color:#e6db74">&#34;Stay asleep&#34;</span>: <span style="color:#ae81ff">1.</span>}
+}
+</code></pre></div><p>Initially, we set all Q values to zero (this is actually arbitrary).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">agent<span style="color:#f92672">.</span>Q
+</code></pre></div><pre><code>{'Class 1': {'Study': 0.0, 'Go on Facebook': 0.0},
+ 'Class 2': {'Study': 0.0, 'Fall asleep': 0.0},
+ 'Class 3': {'Study': 0.0, 'Go to the pub': 0.0},
+ 'Facebook': {'Keep scrolling': 0.0, 'Close Facebook': 0.0},
+ 'Pub': {'Have a pint': 0.0},
+ 'Pass': {'Fall asleep': 0.0},
+ 'Asleep': {}}
+</code></pre>
+<p>Run a single episode to see what happens.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">state <span style="color:#f92672">=</span> mdp<span style="color:#f92672">.</span>reset()
+done <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+<span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> done:
+    action <span style="color:#f92672">=</span> agent<span style="color:#f92672">.</span>act(state)
+    next_state, reward, done, _ <span style="color:#f92672">=</span> mdp<span style="color:#f92672">.</span>step(action)
+    
+    print(<span style="color:#e6db74">&#39;Current action value:&#39;</span>, agent<span style="color:#f92672">.</span>Q[state][action])
+    print(<span style="color:#e6db74">&#39;Reward obtained:&#39;</span>, reward)
+    print(<span style="color:#e6db74">&#39;Next action value:&#39;</span>, <span style="color:#ae81ff">0.</span> <span style="color:#66d9ef">if</span> done <span style="color:#66d9ef">else</span> agent<span style="color:#f92672">.</span>Q[next_state][agent<span style="color:#f92672">.</span>act(next_state)])
+
+    bellman_backup(agent, state, action, reward, next_state, done)
+
+    print(<span style="color:#e6db74">&#39;Updated action value:&#39;</span>, agent<span style="color:#f92672">.</span>Q[state][action])
+    print(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+
+    state <span style="color:#f92672">=</span> next_state
+</code></pre></div><pre><code>=========================== EPISODE  51 ===========================
+| Time  | State    | Action         | Reward | Next state | Done  |
+|-------|----------|----------------|--------|------------|-------|
+| 0     | Class 1  | Study          | -2.0   | Class 2    | False |
+Current action value: 4.271800760689531
+Reward obtained: -2.0
+Next action value: 6.9926093317691915
+Updated action value: 4.272171938794022
+
+
+| 1     | Class 2  | Study          | -2.0   | Class 3    | False |
+Current action value: 6.9926093317691915
+Reward obtained: -2.0
+Next action value: 9.999149294082697
+Updated action value: 6.9931159142668005
+
+
+| 2     | Class 3  | Study          | 10.0   | Pass       | False |
+Current action value: 9.999149294082697
+Reward obtained: 10.0
+Next action value: 0.0
+Updated action value: 9.999150144788615
+
+
+| 3     | Pass     | Fall asleep    |  0.0   | Asleep     | True  |
+Current action value: 0.0
+Reward obtained: 0.0
+Next action value: 0.0
+Updated action value: 0.0
+</code></pre>
+<p>Repeating a bunch of times, we gradually converge.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mdp<span style="color:#f92672">.</span>verbose <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+
+print(<span style="color:#e6db74">&#39;Initial Q&#39;</span>)
+print(agent<span style="color:#f92672">.</span>Q)
+
+<span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">20000</span>):
+    state <span style="color:#f92672">=</span> mdp<span style="color:#f92672">.</span>reset()
+    done <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+    <span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> done:
+        action <span style="color:#f92672">=</span> agent<span style="color:#f92672">.</span>act(state)
+        next_state, reward, done, _ <span style="color:#f92672">=</span> mdp<span style="color:#f92672">.</span>step(action)
+        bellman_backup(agent, state, action, reward, next_state, done)
+        state <span style="color:#f92672">=</span> next_state
+
+print(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+print(<span style="color:#e6db74">&#39;Converged Q&#39;</span>)
+print(agent<span style="color:#f92672">.</span>Q)
+</code></pre></div><pre><code>Initial Q
+{'Class 1': {'Study': -0.002, 'Go on Facebook': -0.001}, 'Class 2': {'Study': -0.002, 'Fall asleep': 0.0}, 'Class 3': {'Study': 0.01, 'Go to the pub': 0.0}, 'Facebook': {'Keep scrolling': -0.0049995000249993754, 'Close Facebook': -0.00200095}, 'Pub': {'Have a pint': 0.0}, 'Pass': {'Fall asleep': 0.0}, 'Asleep': {}}
+
+
+Converged Q
+{'Class 1': {'Study': 1.3750628761712569, 'Go on Facebook': -11.288976651525505}, 'Class 2': {'Study': 4.485658109648779, 'Fall asleep': 0.0}, 'Class 3': {'Study': 9.999996524778595, 'Go to the pub': 1.8953439336946862}, 'Facebook': {'Keep scrolling': -11.233042781986304, 'Close Facebook': -6.6761905244797735}, 'Pub': {'Have a pint': 0.9312667143217461}, 'Pass': {'Fall asleep': 0.0}, 'Asleep': {}}
+</code></pre>
+<p>Note that although the policy evaluation process is guaranteed to converge eventually (for simple MDPs!), we are likely to see some discrepencies between runs of finite length because of the role of randomness in the data collection process. Here are the results of five independent repeats:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">{<span style="color:#e6db74">&#39;Class 1&#39;</span>: {<span style="color:#e6db74">&#39;Study&#39;</span>: <span style="color:#ae81ff">1.2650695038546025</span>, <span style="color:#e6db74">&#39;Go on Facebook&#39;</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">11.30468184426212</span>}, <span style="color:#e6db74">&#39;Class 2&#39;</span>: {<span style="color:#e6db74">&#39;Study&#39;</span>: <span style="color:#ae81ff">4.407552596737938</span>, <span style="color:#e6db74">&#39;Fall asleep&#39;</span>: <span style="color:#ae81ff">0.0</span>}, <span style="color:#e6db74">&#39;Class 3&#39;</span>: {<span style="color:#e6db74">&#39;Study&#39;</span>: <span style="color:#ae81ff">9.99999695776742</span>, <span style="color:#e6db74">&#39;Go to the pub&#39;</span>: <span style="color:#ae81ff">1.8487809354712246</span>}, <span style="color:#e6db74">&#39;Facebook&#39;</span>: {<span style="color:#e6db74">&#39;Keep scrolling&#39;</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">11.258053618560483</span>, <span style="color:#e6db74">&#39;Close Facebook&#39;</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">6.489974573408375</span>}, <span style="color:#e6db74">&#39;Pub&#39;</span>: {<span style="color:#e6db74">&#39;Have a pint&#39;</span>: <span style="color:#ae81ff">0.9454014270087486</span>}, <span style="color:#e6db74">&#39;Pass&#39;</span>: {<span style="color:#e6db74">&#39;Fall asleep&#39;</span>: <span style="color:#ae81ff">0.0</span>}, <span style="color:#e6db74">&#39;Asleep&#39;</span>: {}}
+{<span style="color:#e6db74">&#39;Class 1&#39;</span>: {<span style="color:#e6db74">&#39;Study&#39;</span>: <span style="color:#ae81ff">1.3338704627380917</span>, <span style="color:#e6db74">&#39;Go on Facebook&#39;</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">11.222578014516461</span>}, <span style="color:#e6db74">&#39;Class 2&#39;</span>: {<span style="color:#e6db74">&#39;Study&#39;</span>: <span style="color:#ae81ff">4.404498313710967</span>, <span style="color:#e6db74">&#39;Fall asleep&#39;</span>: <span style="color:#ae81ff">0.0</span>}, <span style="color:#e6db74">&#39;Class 3&#39;</span>: {<span style="color:#e6db74">&#39;Study&#39;</span>: <span style="color:#ae81ff">9.999996607231745</span>, <span style="color:#e6db74">&#39;Go to the pub&#39;</span>: <span style="color:#ae81ff">1.9330819535637127</span>}, <span style="color:#e6db74">&#39;Facebook&#39;</span>: {<span style="color:#e6db74">&#39;Keep scrolling&#39;</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">11.237574593720579</span>, <span style="color:#e6db74">&#39;Close Facebook&#39;</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">6.649035509952115</span>}, <span style="color:#e6db74">&#39;Pub&#39;</span>: {<span style="color:#e6db74">&#39;Have a pint&#39;</span>: <span style="color:#ae81ff">1.0198591832482675</span>}, <span style="color:#e6db74">&#39;Pass&#39;</span>: {<span style="color:#e6db74">&#39;Fall asleep&#39;</span>: <span style="color:#ae81ff">0.0</span>}, <span style="color:#e6db74">&#39;Asleep&#39;</span>: {}}
+{<span style="color:#e6db74">&#39;Class 1&#39;</span>: {<span style="color:#e6db74">&#39;Study&#39;</span>: <span style="color:#ae81ff">1.255108027766012</span>, <span style="color:#e6db74">&#39;Go on Facebook&#39;</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">11.190843458457234</span>}, <span style="color:#e6db74">&#39;Class 2&#39;</span>: {<span style="color:#e6db74">&#39;Study&#39;</span>: <span style="color:#ae81ff">4.3028079916966</span>, <span style="color:#e6db74">&#39;Fall asleep&#39;</span>: <span style="color:#ae81ff">0.0</span>}, <span style="color:#e6db74">&#39;Class 3&#39;</span>: {<span style="color:#e6db74">&#39;Study&#39;</span>: <span style="color:#ae81ff">9.999996368375</span>, <span style="color:#e6db74">&#39;Go to the pub&#39;</span>: <span style="color:#ae81ff">1.692402249138645</span>}, <span style="color:#e6db74">&#39;Facebook&#39;</span>: {<span style="color:#e6db74">&#39;Keep scrolling&#39;</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">11.009224020468848</span>, <span style="color:#e6db74">&#39;Close Facebook&#39;</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">6.456279660637165</span>}, <span style="color:#e6db74">&#39;Pub&#39;</span>: {<span style="color:#e6db74">&#39;Have a pint&#39;</span>: <span style="color:#ae81ff">0.7467114530860179</span>}, <span style="color:#e6db74">&#39;Pass&#39;</span>: {<span style="color:#e6db74">&#39;Fall asleep&#39;</span>: <span style="color:#ae81ff">0.0</span>}, <span style="color:#e6db74">&#39;Asleep&#39;</span>: {}}
+{<span style="color:#e6db74">&#39;Class 1&#39;</span>: {<span style="color:#e6db74">&#39;Study&#39;</span>: <span style="color:#ae81ff">1.2734946938741027</span>, <span style="color:#e6db74">&#39;Go on Facebook&#39;</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">11.328006914127434</span>}, <span style="color:#e6db74">&#39;Class 2&#39;</span>: {<span style="color:#e6db74">&#39;Study&#39;</span>: <span style="color:#ae81ff">4.256107269897298</span>, <span style="color:#e6db74">&#39;Fall asleep&#39;</span>: <span style="color:#ae81ff">0.0</span>}, <span style="color:#e6db74">&#39;Class 3&#39;</span>: {<span style="color:#e6db74">&#39;Study&#39;</span>: <span style="color:#ae81ff">9.99999635381211</span>, <span style="color:#e6db74">&#39;Go to the pub&#39;</span>: <span style="color:#ae81ff">1.74113336614775</span>}, <span style="color:#e6db74">&#39;Facebook&#39;</span>: {<span style="color:#e6db74">&#39;Keep scrolling&#39;</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">11.34039736455563</span>, <span style="color:#e6db74">&#39;Close Facebook&#39;</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">6.777709970724558</span>}, <span style="color:#e6db74">&#39;Pub&#39;</span>: {<span style="color:#e6db74">&#39;Have a pint&#39;</span>: <span style="color:#ae81ff">0.7694312629253455</span>}, <span style="color:#e6db74">&#39;Pass&#39;</span>: {<span style="color:#e6db74">&#39;Fall asleep&#39;</span>: <span style="color:#ae81ff">0.0</span>}, <span style="color:#e6db74">&#39;Asleep&#39;</span>: {}}
+{<span style="color:#e6db74">&#39;Class 1&#39;</span>: {<span style="color:#e6db74">&#39;Study&#39;</span>: <span style="color:#ae81ff">1.2650695038546025</span>, <span style="color:#e6db74">&#39;Go on Facebook&#39;</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">11.30468184426212</span>}, <span style="color:#e6db74">&#39;Class 2&#39;</span>: {<span style="color:#e6db74">&#39;Study&#39;</span>: <span style="color:#ae81ff">4.407552596737938</span>, <span style="color:#e6db74">&#39;Fall asleep&#39;</span>: <span style="color:#ae81ff">0.0</span>}, <span style="color:#e6db74">&#39;Class 3&#39;</span>: {<span style="color:#e6db74">&#39;Study&#39;</span>: <span style="color:#ae81ff">9.99999695776742</span>, <span style="color:#e6db74">&#39;Go to the pub&#39;</span>: <span style="color:#ae81ff">1.8487809354712246</span>}, <span style="color:#e6db74">&#39;Facebook&#39;</span>: {<span style="color:#e6db74">&#39;Keep scrolling&#39;</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">11.258053618560483</span>, <span style="color:#e6db74">&#39;Close Facebook&#39;</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">6.489974573408375</span>}, <span style="color:#e6db74">&#39;Pub&#39;</span>: {<span style="color:#e6db74">&#39;Have a pint&#39;</span>: <span style="color:#ae81ff">0.9454014270087486</span>}, <span style="color:#e6db74">&#39;Pass&#39;</span>: {<span style="color:#e6db74">&#39;Fall asleep&#39;</span>: <span style="color:#ae81ff">0.0</span>}, <span style="color:#e6db74">&#39;Asleep&#39;</span>: {}}
+</code></pre></div><pre><code>{'Class 1': {'Study': 1.2650695038546025,
+  'Go on Facebook': -11.30468184426212},
+ 'Class 2': {'Study': 4.407552596737938, 'Fall asleep': 0.0},
+ 'Class 3': {'Study': 9.99999695776742, 'Go to the pub': 1.8487809354712246},
+ 'Facebook': {'Keep scrolling': -11.258053618560483,
+  'Close Facebook': -6.489974573408375},
+ 'Pub': {'Have a pint': 0.9454014270087486},
+ 'Pass': {'Fall asleep': 0.0},
+ 'Asleep': {}}
+</code></pre>
+<p>Try with $\gamma=0$</p>
+<h1 id="3--policy-improvement">3 | Policy Improvement</h1>
+<!-- raw HTML omitted -->
+<p>Having evaluated our policy $\pi$, how can we go about obtaining a better one? This question is the heart of <em>policy improvement</em>, perhaps the fundamental concept of RL. Recall, when we performed policy evaluation we obtained the value of taking every action in every state. Thus, we can perform policy improvement readily by picking our current best estimate of the optimal action from each state &ndash; so-called <em>greedy</em> action selection. Once we&rsquo;ve obtained a new policy, we can evaluate it as before. Continually iterating between policy evaluation and policy improvement in this way, we are guarenteed to reach the optimal policy $\pi^*$ according to the policy improvement theorem.</p>
+<h3 id="31--q-learning-combining-policy-evaluation-and-improvement">3.1 | Q-learning: Combining Policy Evaluation and Improvement</h3>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> mdp <span style="color:#f92672">import</span> StudentMDP
+mdp <span style="color:#f92672">=</span> StudentMDP(verbose<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> agent <span style="color:#f92672">import</span> QLearningAgent
+agent <span style="color:#f92672">=</span> QLearningAgent(mdp, epsilon<span style="color:#f92672">=</span><span style="color:#ae81ff">1.0</span>, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>, gamma<span style="color:#f92672">=</span><span style="color:#ae81ff">0.9</span>)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">NUM_EPS <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>
+mdp<span style="color:#f92672">.</span>ep <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">while</span> mdp<span style="color:#f92672">.</span>ep <span style="color:#f92672">&lt;</span> NUM_EPS:
+    state <span style="color:#f92672">=</span> mdp<span style="color:#f92672">.</span>reset()
+    done <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+    <span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> done:
+        action <span style="color:#f92672">=</span> agent<span style="color:#f92672">.</span>act(state)
+        next_state, reward, done, info <span style="color:#f92672">=</span> mdp<span style="color:#f92672">.</span>step(action)
+        agent<span style="color:#f92672">.</span>learn(state, action, reward, next_state, done)
+        state <span style="color:#f92672">=</span> next_state
+
+    print(<span style="color:#e6db74">&#34;Value function:&#34;</span>)
+    print(agent<span style="color:#f92672">.</span>Q)
+    print(<span style="color:#e6db74">&#34;Policy:&#34;</span>)
+    print(agent<span style="color:#f92672">.</span>policy)
+    print(<span style="color:#e6db74">&#34;Epsilon:&#34;</span>, agent<span style="color:#f92672">.</span>epsilon)
+    
+    agent<span style="color:#f92672">.</span>epsilon <span style="color:#f92672">=</span> max(agent<span style="color:#f92672">.</span>epsilon <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> (NUM_EPS<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>), <span style="color:#ae81ff">0</span>)
+</code></pre></div><pre><code>=========================== EPISODE   1 ===========================
+| Time  | State    | Action         | Reward | Next state | Done  |
+|-------|----------|----------------|--------|------------|-------|
+| 0     | Class 1  | Study          | -2.0   | Class 2    | False |
+| 1     | Class 2  | Study          | -2.0   | Class 3    | False |
+| 2     | Class 3  | Study          | 10.0   | Pass       | False |
+| 3     | Pass     | Fall asleep    |  0.0   | Asleep     | True  |
+Value function:
+{'Class 1': {'Study': -0.4, 'Go on Facebook': 0.0}, 'Class 2': {'Study': -0.4, 'Fall asleep': 0.0}, 'Class 3': {'Study': 2.0, 'Go to the pub': 0.0}, 'Facebook': {'Keep scrolling': 0.0, 'Close Facebook': 0.0}, 'Pub': {'Have a pint': 0.0}, 'Pass': {'Fall asleep': 0.0}, 'Asleep': {}}
+Policy:
+{'Class 1': {'Study': 0.5, 'Go on Facebook': 0.5}, 'Class 2': {'Study': 0.5, 'Fall asleep': 0.5}, 'Class 3': {'Study': 0.5, 'Go to the pub': 0.5}, 'Facebook': {'Keep scrolling': 0.5, 'Close Facebook': 0.5}, 'Pub': {'Have a pint': 1.0}, 'Pass': {'Fall asleep': 1.0}, 'Asleep': {}}
+Epsilon: 1.0
+
+=========================== EPISODE  50 ===========================
+| Time  | State    | Action         | Reward | Next state | Done  |
+|-------|----------|----------------|--------|------------|-------|
+| 0     | Class 1  | Study          | -2.0   | Class 2    | False |
+| 1     | Class 2  | Study          | -2.0   | Class 3    | False |
+| 2     | Class 3  | Study          | 10.0   | Pass       | False |
+| 3     | Pass     | Fall asleep    |  0.0   | Asleep     | True  |
+Value function:
+{'Class 1': {'Study': 4.2185955736170015, 'Go on Facebook': -2.843986498540236}, 'Class 2': {'Study': 6.978887265282676, 'Fall asleep': 0.0}, 'Class 3': {'Study': 9.997403851570732, 'Go to the pub': 1.0297507967148403}, 'Facebook': {'Keep scrolling': -3.2301556459908016, 'Close Facebook': -0.8716820424598939}, 'Pub': {'Have a pint': 2.6089417712654472}, 'Pass': {'Fall asleep': 0.0}, 'Asleep': {}}
+Policy:
+{'Class 1': {'Study': 1.0, 'Go on Facebook': 0.0}, 'Class 2': {'Study': 1.0, 'Fall asleep': 0.0}, 'Class 3': {'Study': 1.0, 'Go to the pub': 0.0}, 'Facebook': {'Keep scrolling': 0.0, 'Close Facebook': 1.0}, 'Pub': {'Have a pint': 1.0}, 'Pass': {'Fall asleep': 1.0}, 'Asleep': {}}
+Epsilon: 0
+</code></pre>
+<p>We find that after 50 episodes the agent has obtained the optimal policy $\pi_*$!</p>
+<h1 id="4--deep-rl">4 | Deep RL</h1>
+<p>So far, we&rsquo;ve tabularised the state-action space. Whilst useful for explaining the fundamental concepts that underpin RL, the real world state-action spaces are generally continuous and thus impossible to tabularise. To combat this, function approximators are used instead. In the past these included x, but more recently, deep neural networks have been used giving rise to the field of Deep Reinforcement Learning.</p>
+<p>The seminal Deep RL algorithm is Deep Q Learning which uses neural networks to represent the $Q$ function. The network takes the current obervation $o_t$ as input and predicts the value of each action. The agent&rsquo;s policy is $\epsilon$-greedy as before i.e. it takes the value-maximising action with probability $1 - \epsilon$. Deep Q learning</p>
+<p>Below, we run 500 episodes of the canonical Cartpole task using Deep Q learning. The agent&rsquo;s goal is to balance the pole in the upright position for as long as possible starting from an initially random position.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> gym
+<span style="color:#f92672">from</span> dqn_agent <span style="color:#f92672">import</span> Agent
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">env <span style="color:#f92672">=</span> gym<span style="color:#f92672">.</span>make(<span style="color:#e6db74">&#39;CartPole-v1&#39;</span>)
+agent <span style="color:#f92672">=</span> Agent(gamma<span style="color:#f92672">=</span><span style="color:#ae81ff">0.99</span>, epsilon<span style="color:#f92672">=</span><span style="color:#ae81ff">0.9</span>, lr<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0001</span>, n_actions<span style="color:#f92672">=</span>env<span style="color:#f92672">.</span>action_space<span style="color:#f92672">.</span>n, input_dims<span style="color:#f92672">=</span>[env<span style="color:#f92672">.</span>observation_space<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]],
+              mem_size<span style="color:#f92672">=</span><span style="color:#ae81ff">50000</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">128</span>,  eps_dec<span style="color:#f92672">=</span><span style="color:#ae81ff">1e-3</span>, eps_min<span style="color:#f92672">=</span><span style="color:#ae81ff">0.05</span>, replace<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>,
+              env_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cartpole&#39;</span>, chkpt_dir<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tmp/dqn&#39;</span>)
+
+best_score <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>np<span style="color:#f92672">.</span>inf
+episodes <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>
+scores, avg_score, eps_history <span style="color:#f92672">=</span> [], [], []
+
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(episodes):
+    score <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    done <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+    observation <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>reset()
+    env<span style="color:#f92672">.</span>render()
+    <span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> done:
+        action <span style="color:#f92672">=</span> agent<span style="color:#f92672">.</span>choose_action(observation)
+        observation_, reward, done, info <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>step(action)
+        score <span style="color:#f92672">+=</span> reward
+        agent<span style="color:#f92672">.</span>store_transition(observation, action, reward, observation_, done)
+        agent<span style="color:#f92672">.</span>learn()
+        observation <span style="color:#f92672">=</span> observation_
+        env<span style="color:#f92672">.</span>render()
+    
+    scores<span style="color:#f92672">.</span>append(score)
+    eps_history<span style="color:#f92672">.</span>append(agent<span style="color:#f92672">.</span>epsilon)
+    
+    avg_score <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>mean(scores[<span style="color:#f92672">-</span><span style="color:#ae81ff">100</span>:])
+    
+    print(<span style="color:#e6db74">&#39;episode&#39;</span>, i, <span style="color:#e6db74">&#39;score </span><span style="color:#e6db74">%.2f</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> score, <span style="color:#e6db74">&#39;average score </span><span style="color:#e6db74">%.2f</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> avg_score)
+</code></pre></div><h1 id="5--what-did-we-miss-out">5 | What Did We Miss Out?</h1>
+<ul>
+<li>Dynamic programming (when transition probabilities are known)</li>
+<li>Monte Carlo</li>
+<li>Exploration strategies</li>
+<li>Continuous actions</li>
+<li>Policy gradient, actor-critic</li>
+<li>Model-based</li>
+<li>Partial observability</li>
+</ul>
+<p>What next? RL interest group?</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        3056 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2022-02-25 15:23
+        
+
+         
+          
+        
+      </p>
+    </div>
+      <hr />
+      <div class="sharing-buttons">
+        
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fenjeeneer.io%2fposts%2f2022%2f02%2fone-hour-rl%2f" target="_blank" rel="noopener" aria-label="" title="Share on facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fenjeeneer.io%2fposts%2f2022%2f02%2fone-hour-rl%2f" target="_blank" rel="noopener" aria-label="" title="Share on twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+      <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=One%20Hour%20Rl&amp;caption=One%20Hour%20Rl&amp;canonicalUrl=https%3a%2f%2fenjeeneer.io%2fposts%2f2022%2f02%2fone-hour-rl%2f" target="_blank" rel="noopener" aria-label="" title="Share on tumblr">
+  <div class="resp-sharing-button resp-sharing-button--tumblr resp-sharing-button--small">
+    <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.371 2.207 2.371h.09c.631-.02 1.486-.205 1.936-.419l1.156 3.425c-.436.636-2.4 1.374-4.156 1.404h-.178l.011.002z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="mailto:?subject=One%20Hour%20Rl&amp;body=https%3a%2f%2fenjeeneer.io%2fposts%2f2022%2f02%2fone-hour-rl%2f" target="_self" rel="noopener" aria-label="" title="Share via email">
+  <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fenjeeneer.io%2fposts%2f2022%2f02%2fone-hour-rl%2f&amp;media=https%3a%2f%2fenjeeneer.io%2fposts%2f2022%2f02%2fone-hour-rl%2f;description=One%20Hour%20Rl" target="_blank" rel="noopener" aria-label="" title="Share on pinterest">
+  <div class="resp-sharing-button resp-sharing-button--pinterest resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fenjeeneer.io%2fposts%2f2022%2f02%2fone-hour-rl%2f&amp;title=One%20Hour%20Rl&amp;summary=One%20Hour%20Rl&amp;source=https%3a%2f%2fenjeeneer.io%2fposts%2f2022%2f02%2fone-hour-rl%2f" target="_blank" rel="noopener" aria-label="" title="Share on linkedin">
+  <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=https%3a%2f%2fenjeeneer.io%2fposts%2f2022%2f02%2fone-hour-rl%2f&amp;resubmit=true&amp;title=One%20Hour%20Rl" target="_blank" rel="noopener" aria-label="" title="Share on reddit">
+  <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.xing.com/app/user?op=share;url=https%3a%2f%2fenjeeneer.io%2fposts%2f2022%2f02%2fone-hour-rl%2f;title=One%20Hour%20Rl" target="_blank" rel="noopener" aria-label="" title="Share on xing">
+  <div class="resp-sharing-button resp-sharing-button--xing resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="whatsapp://send?text=One%20Hour%20Rl%20https%3a%2f%2fenjeeneer.io%2fposts%2f2022%2f02%2fone-hour-rl%2f" target="_blank" rel="noopener" aria-label="" title="Share on whatsapp">
+  <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fenjeeneer.io%2fposts%2f2022%2f02%2fone-hour-rl%2f&amp;t=One%20Hour%20Rl" target="_blank" rel="noopener" aria-label="" title="Share on hacker news">
+  <div class="resp-sharing-button resp-sharing-button--hackernews resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M0 24V0h24v24H0zM6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=One%20Hour%20Rl&amp;url=https%3a%2f%2fenjeeneer.io%2fposts%2f2022%2f02%2fone-hour-rl%2f" target="_blank" rel="noopener" aria-label="" title="Share on telegram">
+  <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    </div>
+  </div>
+</a>
+
+      </div>
+
+    
+
+
+    
+
+  </main>
+
+            </div>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://enjeeneer.io/bundle.min.a0f363fdf81cdc5cfacc447a79c33189eb000d090336cd04aac8ee256f423b3133b836c281944c19c75e38d0b0b449f01ce5807e37798b7ac94ac1db51983fc4.js" integrity="sha512-oPNj/fgc3Fz6zER6ecMxiesADQkDNs0EqsjuJW9COzEzuDbCgZRMGcdeONCwtEnwHOWAfjd5i3rJSsHbUZg/xA=="></script>
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-192648932-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+    </body>
+</html>

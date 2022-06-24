@@ -6,7 +6,29 @@
     <description>Recent content on Scott Jeen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 Nov 2021 09:03:11 -0500</lastBuildDate><atom:link href="https://enjeeneer.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 23 Jun 2022 09:34:36 +0100</lastBuildDate><atom:link href="https://enjeeneer.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Zero Shot Building Control</title>
+      <link>https://enjeeneer.io/talks/2022-06-23oxcav/</link>
+      <pubDate>Thu, 23 Jun 2022 09:34:36 +0100</pubDate>
+      
+      <guid>https://enjeeneer.io/talks/2022-06-23oxcav/</guid>
+      <description>Abstract
+Heating and cooling systems in buildings account for 31% of global energy use, much of which are regulated by Rule Based Controllers (RBCs) that neither maximise energy efficiency nor minimise emissions by interacting optimally with the grid. Control via Reinforcement Learning (RL) has been shown to significantly improve building energy efficiency, but existing solutions require pre-training in simulators that are prohibitively expensive to obtain for every building in the world.</description>
+    </item>
+    
+    <item>
+      <title>One Hour Rl</title>
+      <link>https://enjeeneer.io/posts/2022/02/one-hour-rl/</link>
+      <pubDate>Fri, 25 Feb 2022 15:23:20 +0000</pubDate>
+      
+      <guid>https://enjeeneer.io/posts/2022/02/one-hour-rl/</guid>
+      <description>An Introduction to Reinforcement Learning Tom Bewley &amp;amp; Scott Jeen Alan Turing Institute 24/02/2022 The best way to walk through this tutorial is using the accompanying Jupyter Notebook:
+
+[Jupyter Notebook]
+1 | Markov Decision Processes: A Model of Sequential Decision Making 1.1. MDP (semi-)Formalism In reinforcement learning (RL), an agent takes actions in an environment to change its state over discrete timesteps $t$, with the goal of maximising the future sum of a scalar quantity known as reward.</description>
+    </item>
+    
     <item>
       <title>Presenting with Jupyter Notebooks</title>
       <link>https://enjeeneer.io/posts/2021/11/presenting-with-jupyter-notebooks/</link>
@@ -83,25 +105,6 @@ In this talk, I will introduce deterministic and probabilistic black-box functio
       
       <guid>https://enjeeneer.io/projects/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://enjeeneer.io/about/</link>
-      <pubDate>Mon, 04 Jan 2021 17:15:23 +0000</pubDate>
-      
-      <guid>https://enjeeneer.io/about/</guid>
-      <description>Hey! 👋 My name&amp;rsquo;s Scott, I&amp;rsquo;m a PhD candidate in engineering at the University of Cambridge researching reinforcement learning and its applications for mitigating planet-cooking.
-I&amp;rsquo;m part of Jonathan Cullen&amp;rsquo;s group - the Resource Efficiency Collective - where I look at ways of controlling complex systems for improved energy efficiency. This involves building agents that learn to control buildings and industrial processes efficiently, and to draw power from the grid at optimal times - techniques often called demand response.</description>
-    </item>
-    
-    <item>
-      <title>Book Review: Cradle-to-Cradle Remaking the Way We Make Things</title>
-      <link>https://enjeeneer.io/posts/2018/11/book-review-cradle-to-cradle-remaking-the-way-we-make-things/</link>
-      <pubDate>Tue, 20 Nov 2018 16:54:55 +0000</pubDate>
-      
-      <guid>https://enjeeneer.io/posts/2018/11/book-review-cradle-to-cradle-remaking-the-way-we-make-things/</guid>
-      <description>Consider the cherry tree. A frenetic supply chain of blossom that produces thousands of seeds in the hope that one might fall to the soil, take root and grow. Its manufacturing model is inefficient, wasteful and laborious, yet beautifully nourishing to its surrounding ecology. The blossom that do not germinate instead provide nutrients for insects, microorganisms, animals and soil; its abundance and over-production should not be chastised, but celebrated. In Michael Braungart and William McDonough’s seminal book “Cradle-to-Cradle: Remaking the Way We Make Things”, the author’s ask: “What would the human-built world look like if it were built by a cherry tree?</description>
     </item>
     
   </channel>

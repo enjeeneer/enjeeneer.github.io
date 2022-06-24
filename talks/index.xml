@@ -6,7 +6,17 @@
     <description>Recent content in Talks on Scott Jeen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Jun 2021 11:50:52 +0100</lastBuildDate><atom:link href="https://enjeeneer.io/talks/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 23 Jun 2022 09:34:36 +0100</lastBuildDate><atom:link href="https://enjeeneer.io/talks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Zero Shot Building Control</title>
+      <link>https://enjeeneer.io/talks/2022-06-23oxcav/</link>
+      <pubDate>Thu, 23 Jun 2022 09:34:36 +0100</pubDate>
+      
+      <guid>https://enjeeneer.io/talks/2022-06-23oxcav/</guid>
+      <description>Abstract
+Heating and cooling systems in buildings account for 31% of global energy use, much of which are regulated by Rule Based Controllers (RBCs) that neither maximise energy efficiency nor minimise emissions by interacting optimally with the grid. Control via Reinforcement Learning (RL) has been shown to significantly improve building energy efficiency, but existing solutions require pre-training in simulators that are prohibitively expensive to obtain for every building in the world.</description>
+    </item>
+    
     <item>
       <title>Space Invasion, Space Invaders, and Climate Change Mitigation</title>
       <link>https://enjeeneer.io/talks/2021-06-03-jesusmcrgreen/</link>

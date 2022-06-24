@@ -2,19 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://enjeeneer.io/</loc>
+    <lastmod>2022-06-23T09:34:36+01:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/tags/</loc>
+    <lastmod>2022-06-23T09:34:36+01:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/talks/</loc>
+    <lastmod>2022-06-23T09:34:36+01:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/tags/untagged/</loc>
+    <lastmod>2022-06-23T09:34:36+01:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/talks/2022-06-23oxcav/</loc>
+    <lastmod>2022-06-23T09:34:36+01:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/posts/2022/02/one-hour-rl/</loc>
+    <lastmod>2022-02-25T15:23:20+00:00</lastmod>
+  </url><url>
     <loc>https://enjeeneer.io/posts/</loc>
-    <lastmod>2021-11-17T09:03:11-05:00</lastmod>
+    <lastmod>2022-02-25T15:23:20+00:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/posts/2021/11/presenting-with-jupyter-notebooks/</loc>
     <lastmod>2021-11-17T09:03:11-05:00</lastmod>
   </url><url>
-    <loc>https://enjeeneer.io/</loc>
-    <lastmod>2021-11-17T09:03:11-05:00</lastmod>
-  </url><url>
     <loc>https://enjeeneer.io/talks/2021-06-03-jesusmcrgreen/</loc>
-    <lastmod>2021-06-03T11:50:52+01:00</lastmod>
-  </url><url>
-    <loc>https://enjeeneer.io/talks/</loc>
     <lastmod>2021-06-03T11:50:52+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/posts/2021/04/notes-exercises-and-code-for-sutton-and-bartos-reinforcement-learning-an-introduction-2018/</loc>
@@ -33,9 +45,6 @@
     <lastmod>2021-03-15T16:55:47+00:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/tags/rl/</loc>
-    <lastmod>2021-03-15T16:55:47+00:00</lastmod>
-  </url><url>
-    <loc>https://enjeeneer.io/tags/</loc>
     <lastmod>2021-03-15T16:55:47+00:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/talks/2021-03-15-xchangeseminar/</loc>
