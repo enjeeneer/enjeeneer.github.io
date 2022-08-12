@@ -18,15 +18,5 @@
 In this talk, I will introduce deterministic and probabilistic black-box function approximators, with applications for timeseries modelling. First, I introduce the multilayer perceptron (neural network), demonstrating how they can model arbitrarily complex functions, but highlighting their propensity to overfit the training data. Second, I introduce the Gaussian process (GP), a bayesian, probabilistic approach to function approximation. I visualise how GP&amp;rsquo;s quantify uncertainty, a robust trait in the context of control, but highlight their inability to scale to large datasets.</description>
     </item>
     
-    <item>
-      <title>Can probabilistic machine learning help limit climate change?</title>
-      <link>https://enjeeneer.io/posts/2021/01/can-probabilistic-machine-learning-help-limit-climate-change/</link>
-      <pubDate>Tue, 05 Jan 2021 16:33:12 +0000</pubDate>
-      
-      <guid>https://enjeeneer.io/posts/2021/01/can-probabilistic-machine-learning-help-limit-climate-change/</guid>
-      <description>🌍 If we are to successfully mitigate climate change we must reduce global emissions to near-zero by 2050. To this end, three solutions exist:
- Generate energy using emission-free technologies; Capture and bury emissions using carbon capture and storage (CCS); and Use energy more efficiently.  In the UK, emission reduction efforts via solution 1) have so far proven extremely successful. Emission-free energy technologies generated 45% of UK electricity demand in 2020 which has caused a decrease in grid carbon intensity of 66%.</description>
-    </item>
-    
   </channel>
 </rss>
