@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Scott Jeen">
+<meta name="description" content="Scott R. Jeen\(^{1,3}\), Alessandro Abate\(^{2,3}\), Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
+\(^{2}\) University of Oxford
+\(^{3}\) Alan Turing Institute
+[Paper]
+[View Code on GitHub]
+[Talk]
+ Presenting PEARL: Probabilistic Emission-Abating Reinforcement Learning, a deep RL algorithm that can find performant building control policies online, without pre-training&amp;ndash;the first time this has been shown to be possible. We show PEARL can reduce annual emissions by 31% when compared with a conventional controller whilst maintaining thermal comfort, and outperforms all RL baselines used for comparison." />
+<meta name="keywords" content="Scott Jeen" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#6B8E23" />
+<link rel="canonical" href="https://enjeeneer.io/projects/pearl/" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-192648932-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+    <title>
+        
+            Low Emission Building Control with Zero-Shot Reinforcement Learning :: Scott Jeen  — Real world reinforcement learning
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://enjeeneer.io/main.cbec4bded5981a9639be0a9253dbc5636fb308fba08c31a50670aee0a034a132.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://enjeeneer.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://enjeeneer.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://enjeeneer.io/favicon-16x16.png">
+    <link rel="manifest" href="https://enjeeneer.io/site.webmanifest">
+    <link rel="mask-icon" href="https://enjeeneer.io/safari-pinned-tab.svg" color="#6B8E23">
+    <link rel="shortcut icon" href="https://enjeeneer.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#6B8E23">
+    <meta name="theme-color" content="#6B8E23">
+
+
+
+<meta itemprop="name" content="Low Emission Building Control with Zero-Shot Reinforcement Learning">
+<meta itemprop="description" content="Scott R. Jeen\(^{1,3}\), Alessandro Abate\(^{2,3}\), Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
+\(^{2}\) University of Oxford
+\(^{3}\) Alan Turing Institute
+[Paper]
+[View Code on GitHub]
+[Talk]
+ Presenting PEARL: Probabilistic Emission-Abating Reinforcement Learning, a deep RL algorithm that can find performant building control policies online, without pre-training&ndash;the first time this has been shown to be possible. We show PEARL can reduce annual emissions by 31% when compared with a conventional controller whilst maintaining thermal comfort, and outperforms all RL baselines used for comparison."><meta itemprop="datePublished" content="2022-08-12T15:11:43+01:00" />
+<meta itemprop="dateModified" content="2022-08-12T15:11:43+01:00" />
+<meta itemprop="wordCount" content="500"><meta itemprop="image" content="https://enjeeneer.io"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://enjeeneer.io"/>
+
+<meta name="twitter:title" content="Low Emission Building Control with Zero-Shot Reinforcement Learning"/>
+<meta name="twitter:description" content="Scott R. Jeen\(^{1,3}\), Alessandro Abate\(^{2,3}\), Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
+\(^{2}\) University of Oxford
+\(^{3}\) Alan Turing Institute
+[Paper]
+[View Code on GitHub]
+[Talk]
+ Presenting PEARL: Probabilistic Emission-Abating Reinforcement Learning, a deep RL algorithm that can find performant building control policies online, without pre-training&ndash;the first time this has been shown to be possible. We show PEARL can reduce annual emissions by 31% when compared with a conventional controller whilst maintaining thermal comfort, and outperforms all RL baselines used for comparison."/>
+
+
+
+    <meta property="og:title" content="Low Emission Building Control with Zero-Shot Reinforcement Learning" />
+<meta property="og:description" content="Scott R. Jeen\(^{1,3}\), Alessandro Abate\(^{2,3}\), Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
+\(^{2}\) University of Oxford
+\(^{3}\) Alan Turing Institute
+[Paper]
+[View Code on GitHub]
+[Talk]
+ Presenting PEARL: Probabilistic Emission-Abating Reinforcement Learning, a deep RL algorithm that can find performant building control policies online, without pre-training&ndash;the first time this has been shown to be possible. We show PEARL can reduce annual emissions by 31% when compared with a conventional controller whilst maintaining thermal comfort, and outperforms all RL baselines used for comparison." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://enjeeneer.io/projects/pearl/" /><meta property="og:image" content="https://enjeeneer.io"/><meta property="article:section" content="projects" />
+<meta property="article:published_time" content="2022-08-12T15:11:43+01:00" />
+<meta property="article:modified_time" content="2022-08-12T15:11:43+01:00" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2022-08-12 15:11:43 &#43;0100 BST" />
+
+
+
+
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+
+    
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-192648932-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    <span class="header__inner">
+        <a href="https://enjeeneer.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">/enjeeneer/</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#6B8E23;
+                   animation-duration:1s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://enjeeneer.io/about/">about</a></li><li><a href="https://enjeeneer.io/cv/cv_coffee.pdf">cv</a></li><li><a href="https://enjeeneer.io/posts/">posts</a></li><li><a href="https://enjeeneer.io/projects/">projects</a></li><li><a href="https://scholar.google.com/citations?user=3HPX720AAAAJ&amp;hl=en&amp;oi=ao">scholar</a></li><li><a href="https://enjeeneer.io/talks/">talks</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://enjeeneer.io/projects/pearl/">Low Emission Building Control with Zero-Shot Reinforcement Learning</a></h2>
+            <h3 class="loc"><a href="https://enjeeneer.io/projects/pearl/"></a></h3>
+            <h3 class="time"><a href="https://enjeeneer.io/projects/pearl/"></a></h3>
+
+            
+
+            
+
+            <div class="post-content">
+                <h3 id="scott-r-jeen13-alessandro-abate23-jonathan-m-cullen1">Scott R. Jeen\(^{1,3}\), Alessandro Abate\(^{2,3}\), Jonathan M. Cullen\(^{1}\)</h3>
+<p>\(^{1}\) University of Cambridge</p>
+<p>\(^{2}\) University of Oxford</p>
+<p>\(^{3}\) Alan Turing Institute</p>
+<p><a href="https://arxiv.org/abs/2206.14191">[Paper]</a></p>
+<p><a href="https://github.com/enjeeneer/PEARL">[View Code on GitHub]</a></p>
+<p><a href="https://enjeeneer.io/talks/2022-06-23oxcav/">[Talk]</a></p>
+<figure><img src="https://github.com/enjeeneer/PEARL/blob/main/media/pearl.png?raw=true"/>
+</figure>
+
+<p>Presenting PEARL: <strong>P</strong>robabilistic <strong>E</strong>mission-<strong>A</strong>bating <strong>R</strong>einforcement <strong>L</strong>earning, a deep RL algorithm that can find performant building control policies <em>online</em>, without pre-training&ndash;<strong>the first time this has been shown to be possible.</strong> We show PEARL can reduce annual emissions by <strong>31%</strong> when compared
+with a conventional controller whilst maintaining thermal comfort, and outperforms all RL baselines used for comparison. PEARL is simple to commission,
+requiring no historical data or simulator access in advance, paving a path towards general solutions that could control <em>any</em> building.
+The scaled deployment of such systems could prove a cost-effective method for tackling climate change.</p>
+<p><strong>Contact.</strong> If you want to chat about this work, please feel free to reach out to me at: <a href="mailto:srj38@cam.ac.uk">srj38@cam.ac.uk</a></p>
+<h2 id="abstract">Abstract</h2>
+<p>Heating and cooling systems in buildings account for 31% of global energy use, much of which are regulated by Rule Based Controller
+(RBCs) that neither maximise energy efficiency nor minimise emissions by interacting optimally with the grid. Control via
+Reinforcement Learning (RL) has been shown to significantly improve building energy efficiency, but existing solutions
+require access to building-specific simulators or data that cannot be expected for every building in the world.
+In response, we show it is possible to obtain emission-reducing policies without such knowledge <em>a priori</em> &ndash; a paradigm we
+call zero-shot building control. We combine ideas from system identification and model-based RL to create PEARL <strong>P</strong>robabilistic
+<strong>E</strong>mission-<strong>A</strong>bating <strong>R</strong>einforcement <strong>L</strong>earning) and show that a short period of active exploration is all that is required to build a performant model. In experiments across three varied building energy simulations, we show PEARL outperforms an existing RBC once, and popular RL baselines in all cases, reducing building emissions by as much as 31% whilst maintaining thermal comfort.</p>
+<h2 id="emissions-reduction-and-thermal-performance">Emissions Reduction and Thermal Performance</h2>
+<figure><img src="https://github.com/enjeeneer/PEARL/blob/main/media/emissions.jpg?raw=true"/>
+</figure>
+
+<p>We test PEARL in three varied building simulations with differing geographies, topologies and thermal properties. We show
+reduce emissions from one industrial facility by 31%, and maintain mean building temperature within the required bounds for
+\(\geq\)97% of the year across all buildings.</p>
+<figure><img src="https://github.com/enjeeneer/PEARL/blob/main/media/energym_performance.png?raw=true"/>
+</figure>
+
+<h2 id="load-shifting">Load Shifting</h2>
+<figure><img src="https://github.com/enjeeneer/PEARL/blob/main/media/load_shifting.png?raw=true"/>
+</figure>
+
+<p>PEARL autonomously shifts energy demand to periods of the day where grid carbon intensity is low, a procedure analagous to
+<em>Demand Response</em>.</p>
+<h2 id="probabilistic-deep-rl">Probabilistic Deep RL</h2>
+<figure><img src="https://github.com/enjeeneer/talks/blob/main/2022-06-23-OXCAV/images/prob_rl.gif?raw=true"/>
+</figure>
+
+<p>We can decompose PEARL down into three steps.</p>
+<ol>
+<li>System ID: the agent takes actions to explore parts of the state-space with highest predictive variance \(V_{\Gamma}^*\) to maximise information gain.</li>
+<li>Prediction: system dynamics modelled as an ensemble of probabilistic deep neural networks.</li>
+<li>Control: trajectory sampling used to predict future rewards \(G_\Gamma\) of one action sequence \(a_{t:H-1}\), which is compared with many others to find the trajectory with optimal return \(G^*_\Gamma\).</li>
+</ol>
+<figure><img src="https://github.com/enjeeneer/PEARL/blob/main/media/algo.png?raw=true"/>
+</figure>
+
+<h2 id="paper">Paper</h2>
+<p><figure><img src="https://github.com/enjeeneer/PEARL/blob/main/media/algo.png?raw=true"/>
+</figure>
+
+<a href="https://arxiv.org/abs/2206.14191">[View on arXiv]</a></p>
+<h2 id="citation">Citation</h2>
+<p>If you find this work informative please consider citing the paper:</p>
+<pre tabindex="0"><code class="language-commandline" data-lang="commandline">@article{jeen2022,
+  url = {https://arxiv.org/abs/2206.14191},
+  author = {Jeen, Scott R. and Abate, Alessandro and Cullen, Jonathan M.},  
+  title = {Low Emission Building Control with Zero Shot Reinforcement Learning},
+  publisher = {arXiv},
+  year = {2022},
+}
+</code></pre>
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://enjeeneer.io/bundle.min.a0f363fdf81cdc5cfacc447a79c33189eb000d090336cd04aac8ee256f423b3133b836c281944c19c75e38d0b0b449f01ce5807e37798b7ac94ac1db51983fc4.js" integrity="sha512-oPNj/fgc3Fz6zER6ecMxiesADQkDNs0EqsjuJW9COzEzuDbCgZRMGcdeONCwtEnwHOWAfjd5i3rJSsHbUZg/xA=="></script>
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-192648932-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+    </body>
+</html>

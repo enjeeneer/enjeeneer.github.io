@@ -2,8 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://enjeeneer.io/projects/pearl/</loc>
+    <lastmod>2022-08-12T15:11:43+01:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/projects/</loc>
+    <lastmod>2022-08-12T15:11:43+01:00</lastmod>
+  </url><url>
     <loc>https://enjeeneer.io/</loc>
-    <lastmod>2022-06-23T09:34:36+01:00</lastmod>
+    <lastmod>2022-08-12T15:11:43+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/tags/</loc>
     <lastmod>2022-06-23T09:34:36+01:00</lastmod>

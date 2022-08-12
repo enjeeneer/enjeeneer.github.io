@@ -6,7 +6,23 @@
     <description>Recent content on Scott Jeen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jun 2022 09:34:36 +0100</lastBuildDate><atom:link href="https://enjeeneer.io/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Fri, 12 Aug 2022 15:11:43 +0100</lastBuildDate><atom:link href="https://enjeeneer.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Low Emission Building Control with Zero-Shot Reinforcement Learning</title>
+      <link>https://enjeeneer.io/projects/pearl/</link>
+      <pubDate>Fri, 12 Aug 2022 15:11:43 +0100</pubDate>
+      
+      <guid>https://enjeeneer.io/projects/pearl/</guid>
+      <description>Scott R. Jeen\(^{1,3}\), Alessandro Abate\(^{2,3}\), Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
+\(^{2}\) University of Oxford
+\(^{3}\) Alan Turing Institute
+[Paper]
+[View Code on GitHub]
+[Talk]
+ Presenting PEARL: Probabilistic Emission-Abating Reinforcement Learning, a deep RL algorithm that can find performant building control policies online, without pre-training&amp;ndash;the first time this has been shown to be possible. We show PEARL can reduce annual emissions by 31% when compared with a conventional controller whilst maintaining thermal comfort, and outperforms all RL baselines used for comparison.</description>
+    </item>
+    
     <item>
       <title>Zero Shot Building Control</title>
       <link>https://enjeeneer.io/talks/2022-06-23oxcav/</link>
@@ -96,15 +112,6 @@ In this talk, I will introduce deterministic and probabilistic black-box functio
       <guid>https://enjeeneer.io/posts/2021/01/can-probabilistic-machine-learning-help-limit-climate-change/</guid>
       <description>🌍 If we are to successfully mitigate climate change we must reduce global emissions to near-zero by 2050. To this end, three solutions exist:
  Generate energy using emission-free technologies; Capture and bury emissions using carbon capture and storage (CCS); and Use energy more efficiently.  In the UK, emission reduction efforts via solution 1) have so far proven extremely successful. Emission-free energy technologies generated 45% of UK electricity demand in 2020 which has caused a decrease in grid carbon intensity of 66%.</description>
-    </item>
-    
-    <item>
-      <title>Projects</title>
-      <link>https://enjeeneer.io/projects/</link>
-      <pubDate>Mon, 04 Jan 2021 17:34:13 +0000</pubDate>
-      
-      <guid>https://enjeeneer.io/projects/</guid>
-      <description></description>
     </item>
     
   </channel>
