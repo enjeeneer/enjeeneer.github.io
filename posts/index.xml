@@ -29,7 +29,7 @@
 <h1 id="1--markov-decision-processes-a-model-of-sequential-decision-making">1 | Markov Decision Processes: A Model of Sequential Decision Making</h1>
 <h2 id="11-mdp-semi-formalism">1.1. MDP (semi-)Formalism</h2>
 <p>In reinforcement learning (RL), an <em>agent</em> takes <em>actions</em> in an <em>environment</em> to change its state over discrete timesteps $t$, with the goal of maximising the future sum of a scalar quantity known as <em>reward</em>. We formalise this interaction as an agent-environment loop, mathematically described as a Markov Decision Process (MDP).</p>
-<!-- raw HTML omitted -->
+<img src='https://github.com/enjeeneer/sutton_and_barto/blob/main/images/chapter3_1.png?raw=true' width='700'>
 <p>MDPs break the I.I.D. data assumption of supervised and unsupervised learning; the agent <em>causally influences</em> the data it sees through its choice of actions. However, one assumption we do make is the <em>Markov property</em>, which says that the state representation captures <em>all relevent information</em> from the past. Formally, state transitions depend only on the most recent state and action,
 $$
 \mathbb{P}[S_{t+1} | S_1,A_1 \ldots, S_t,A_t]=\mathbb{P}[S_{t+1} | S_t,A_t],
@@ -55,12 +55,12 @@ where $\gamma\in[0,1]$ is a discount factor and $T$ is the time of termination (
 <li>White circle: non-terminal state</li>
 <li>White square: terminal state</li>
 <li>Black circle: action</li>
-<li><!-- raw HTML omitted -->Green:<!-- raw HTML omitted --> reward (depends only on $S_{t+1}$ here)</li>
-<li><!-- raw HTML omitted -->Blue:<!-- raw HTML omitted --> state transition probability</li>
-<li><!-- raw HTML omitted -->Red:<!-- raw HTML omitted --> action probability for an exemplar policy</li>
+<li><span style="color:green">Green:</span> reward (depends only on $S_{t+1}$ here)</li>
+<li><span style="color:blue">Blue:</span> state transition probability</li>
+<li><span style="color:red">Red:</span> action probability for an exemplar policy</li>
 <li>Note: edges with probability $1$ are unlabelled</li>
 </ul>
-<!-- raw HTML omitted -->
+<img src='https://github.com/tombewley/one-hour-rl/blob/main/images/student-mdp.svg?raw=true' width='700'>
 <h2 id="13-open-ai-gym">1.3 Open AI Gym</h2>
 <p><a href="https://gym.openai.com/">Open AI Gym</a> provides a unified framework for testing and comparing RL algorithms in Python, and offers a suite of MDPs that researchers can use to benchmark their work. It&rsquo;s important to be familiar with the conventions of Gym, because almost all modern RL code is built to work with it. Gym environment classes have two key methods:</p>
 <ul>
@@ -167,7 +167,7 @@ $$</p>
 <ul>
 <li>Note that these values are only approximate, so the Bellman equation doesn&rsquo;t hold exactly!</li>
 </ul>
-<!-- raw HTML omitted -->
+<img src='https://github.com/tombewley/one-hour-rl/blob/main/images/student-mdp-Q-values.svg?raw=true' width='700'>
 <p>To take one example:
 $$
 Q(\text{Class 2},\text{Study})=-2+0.95\times [(0.6\times Q(\text{Class 3},\text{Study})+0.4\times Q(\text{Class 3},\text{Go to the pub}))]
@@ -303,10 +303,10 @@ Converged Q
 </code></pre>
 <p>Try with $\gamma=0$</p>
 <h1 id="3--policy-improvement">3 | Policy Improvement</h1>
-<!-- raw HTML omitted -->
+<img src='https://github.com/tombewley/one-hour-rl/blob/main/images/policy-improvement-2.PNG?raw=true' width='500'>
 <p>Having evaluated our policy $\pi$, how can we go about obtaining a better one? This question is the heart of <em>policy improvement</em>, perhaps the fundamental concept of RL. Recall, when we performed policy evaluation we obtained the value of taking every action in every state. Thus, we can perform policy improvement readily by picking our current best estimate of the optimal action from each state &ndash; so-called <em>greedy</em> action selection. Once we&rsquo;ve obtained a new policy, we can evaluate it as before. Continually iterating between policy evaluation and policy improvement in this way, we are guarenteed to reach the optimal policy $\pi^*$ according to the policy improvement theorem.</p>
 <h3 id="31--q-learning-combining-policy-evaluation-and-improvement">3.1 | Q-learning: Combining Policy Evaluation and Improvement</h3>
-<!-- raw HTML omitted -->
+<img src='https://github.com/tombewley/one-hour-rl/blob/main/images/q-learning.png?raw=true' width='700'>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> mdp <span style="color:#f92672">import</span> StudentMDP
 mdp <span style="color:#f92672">=</span> StudentMDP(verbose<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 </code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> agent <span style="color:#f92672">import</span> QLearningAgent
