@@ -18,7 +18,7 @@
 \(^{2}\) University of Oxford
 \(^{3}\) Alan Turing Institute
 [Paper] [View Code on GitHub] [Talk]
- PEARL: Probabilistic Emission-Abating Reinforcement Learning  Presenting PEARL: Probabilistic Emission-Abating Reinforcement Learning, a deep RL algorithm that can find performant building control policies online, without pre-training&amp;ndash;the first time this has been shown to be possible. We show PEARL can reduce annual emissions by 31% when compared with a conventional controller whilst maintaining thermal comfort, and outperforms all RL baselines used for comparison.</description>
+   PEARL: Probabilistic Emission-Abating Reinforcement Learning  Presenting PEARL: Probabilistic Emission-Abating Reinforcement Learning, a deep RL algorithm that can find performant building control policies online, without pre-training&amp;ndash;the first time this has been shown to be possible. We show PEARL can reduce annual emissions by 31% when compared with a conventional controller whilst maintaining thermal comfort, and outperforms all RL baselines used for comparison.</description>
     </item>
     
     <item>
