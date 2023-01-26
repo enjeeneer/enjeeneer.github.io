@@ -2,13 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://enjeeneer.io/posts/2023/01/neurips-2022/</loc>
+    <lastmod>2023-01-26T21:08:05+00:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/posts/</loc>
+    <lastmod>2023-01-26T21:08:05+00:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/</loc>
+    <lastmod>2023-01-26T21:08:05+00:00</lastmod>
+  </url><url>
     <loc>https://enjeeneer.io/projects/pearl/</loc>
     <lastmod>2022-08-12T09:34:36+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/projects/</loc>
-    <lastmod>2022-08-12T09:34:36+01:00</lastmod>
-  </url><url>
-    <loc>https://enjeeneer.io/</loc>
     <lastmod>2022-08-12T09:34:36+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/tags/</loc>
@@ -24,9 +30,6 @@
     <lastmod>2022-06-23T09:34:36+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/posts/2022/02/one-hour-rl/</loc>
-    <lastmod>2022-02-25T15:23:20+00:00</lastmod>
-  </url><url>
-    <loc>https://enjeeneer.io/posts/</loc>
     <lastmod>2022-02-25T15:23:20+00:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/posts/2021/11/presenting-with-jupyter-notebooks/</loc>

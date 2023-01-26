@@ -6,8 +6,214 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Fri, 25 Feb 2022 15:23:20 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 26 Jan 2023 21:08:05 +0000</lastBuildDate>
         <atom:link href="https://enjeeneer.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>NeurIPS 2022</title>
+            <link>https://enjeeneer.io/posts/2023/01/neurips-2022/</link>
+            <pubDate>Thu, 26 Jan 2023 21:08:05 +0000</pubDate>
+            
+            <guid>https://enjeeneer.io/posts/2023/01/neurips-2022/</guid>
+            <description>I was fortunate to attend NeurIPS in New Orleans in November. Here, I publish my takeaways to give you a feel for the zeitgeist. I’ll discuss, firstly, the papers, then the workshops, and finally, and briefly, the keynotes.
+Papers Here’s a ranked list of my top 8 papers. Most are on Offline RL, which is representative of the conference writ large, but one relates to the (imo) under discussed subfield of zero-shot RL.</description>
+            <content type="html"><![CDATA[<p>I was fortunate to attend NeurIPS in New Orleans in November. Here, I publish my takeaways to give you a feel for the zeitgeist. I’ll discuss, firstly, the papers, then the workshops, and finally, and briefly, the keynotes.</p>
+<h2 id="papers">Papers</h2>
+<p>Here’s a ranked list of my top 8 papers. Most are on Offline RL, which is representative of the conference writ large, but one relates to the (imo) under discussed subfield of zero-shot RL.</p>
+<p><strong>1. <a href="https://arxiv.org/pdf/2209.14935.pdf">Does Zero-Shot Reinforcement Learning Exist (Touati et. al, 2022)</a></strong></p>
+<figure><img src="/img/toutati2022.jpg"/>
+</figure>
+
+<p><strong>Key idea.</strong> To do zero-shot RL, we need to learn a general function from reward-free transitions that implicitly encodes the trajectories of <strong>all</strong> optimal policies for <strong>all</strong> tasks. The authors propose to learn two functions: \(F_\theta(s)\) and  \(B_\phi(s)\) that encode the future and past of state \(s\). We want to learn functions that <strong>always</strong> find a route from \(s \rightarrow s'\).</p>
+<p><strong>Implication(s):</strong></p>
+<ul>
+<li>They beat every previous zero-shot RL algorithm on the standard offline RL tasks, and approach the performance of online, reward-guided RL algorithms in some envs.</li>
+</ul>
+<p><strong>Misc thoughts:</strong></p>
+<ul>
+<li>It seems clear that zero-shot RL is the route to real world deployment for RL. This work represents the best effort I’ve seen in this direction. I’m really excited by it and will be looking to extend it in my own future work.</li>
+</ul>
+<hr>
+<p><strong>2. <a href="https://arxiv.org/pdf/2206.05314.pdf">Large Scale Retrieval for Reinforcement Learning (Humphreys et. al, 2022)</a></strong></p>
+<figure><img src="/img/largescaleretrieval.png" width="500" height="600"/>
+</figure>
+
+<p><strong>Key idea.</strong> Assuming access to a large offline dataset, we perform a nearest neighbours search over the dataset w.r.t. the current state, and append the retrieved states, next actions, rewards and final states (in the case of go) to the current state. The policy then acts w.r.t this augmented state.</p>
+<p>Implication(s):</p>
+<ul>
+<li><strong>Halves</strong> compute required to achieve the baseline win-rate in Go.</li>
+</ul>
+<p><strong>Misc thoughts:</strong></p>
+<ul>
+<li>This represents the most novel approach to offline RL I’ve seen; most techniques separate the offline and online learning phases, but here the authors combine them elegantly.</li>
+<li>To me this feels like a far more promising approach to offline RL than CQL etc.</li>
+</ul>
+<hr>
+<p><strong>3. <a href="https://arxiv.org/pdf/2206.00730.pdf">The Phenomenon of Policy Churn (Schaul et. al, 2022)</a></strong></p>
+<p><figure><img src="/img/churn1.png"/>
+</figure>
+
+<figure><img src="/img/churn2.png"/>
+</figure>
+</p>
+<p><strong>Key idea.</strong> When a value-based agent acts greedily, the policy updates by a surprising amount per gradient step e.g. in up to 10% of states in some cases.</p>
+<p><strong>Implication(s):</strong></p>
+<ul>
+<li>Policy churn means that $\epsilon$-greedy exploration may not be required as a rapidly changing policy induces enough noise into the data distribution that exploration may be implicit.</li>
+</ul>
+<p><strong>Misc thoughts:</strong></p>
+<ul>
+<li>Their paper is structured in a really engaging way.</li>
+<li>I liked their ML researcher survey which quantified how surprising their result was to experts.</li>
+</ul>
+<hr>
+<p><strong>4. <a href="https://arxiv.org/pdf/2206.08853.pdf">MINEDOJO: Building Open-Ended Embodied Agents with Internet-Scale Knowledge (Fan et. al, 2022)</a></strong></p>
+<figure><img src="/img/minedojo.png"/>
+</figure>
+
+<p><strong>Key idea.</strong> An internet-scale benchmark for generalist RL agents. 1000s of tasks, and a limitless procedurally-generated world for training.</p>
+<p><strong>Implication(s):</strong></p>
+<ul>
+<li>Provides a sufficiently diverse and complex sandbox for training more generally capable agents.</li>
+</ul>
+<p><strong>Misc thoughts:</strong></p>
+<ul>
+<li>This is an amazing software development effort from a relatively small team. Jim Fan is so cool!</li>
+</ul>
+<hr>
+<p><strong>5. <a href="https://arxiv.org/pdf/2210.05805.pdf">Exploration via Elliptical Episodic Bonuses (Henaff et. al, 2022)</a></strong></p>
+<figure><img src="/img/ellipticalbonus.png"/>
+</figure>
+
+<p><strong>Key Idea.</strong> Guided exploration is often performed by providing the agent reward inversely proportional to the state visitation count i.e. if you haven’t visited this state much you receive added reward. This works for discrete state spaces, but in continuous state spaces each visited state is ~ unique. Here, the authors parameterise ellipses around visited states, specifying a <em>region</em> of nearby states, outside of which the agent receives added reward.</p>
+<p><strong>Implication(s):</strong></p>
+<ul>
+<li>Better exploration means SOTA on the mini-hack suite of envs</li>
+<li>Strong performance of reward-free exploration tasks i.e. this is a really good way of thinking about exploration.</li>
+</ul>
+<p><strong>Misc. thoughts:</strong></p>
+<ul>
+<li>I really liked the elegance of this idea. A good example of simple, well-examined ideas being useful to the community.</li>
+</ul>
+<hr>
+<p><strong>6. <a href="https://arxiv.org/pdf/2205.15967.pdf">You Can’t Count on Luck: Why Decision Transformers and RvS Fail in Stochastic Environments (Paster et al., 2022)</a></strong></p>
+<figure><img src="/img/luck.png"/>
+</figure>
+
+<p><strong>Key Idea.</strong> In a stochastic environment, trajectories in a dataset used to train decision transformer may be high-reward by chance. Here the authors cluster similar trajectories and find their expected reward to mitigate overfitting to lucky trajectories.</p>
+<p><strong>Implication(s):</strong></p>
+<ul>
+<li>Decision transformer trained on these new objectives exhibits policies that area better aligned with the return conditioning of the user.</li>
+</ul>
+<p><strong>Misc. thoughts:</strong></p>
+<ul>
+<li>Another simple idea with positive implications for performance.</li>
+</ul>
+<hr>
+<p><strong>7. <a href="https://nips.cc/virtual/2022/poster/52843">Multi-Game Decision Transformers</a> (Lee et al., 2022)</strong></p>
+<figure><img src="/img/multigame.png"/>
+</figure>
+
+<p><strong>Key idea.</strong> Instead of predicting just the next action conditioned on state and return-to-go like the original decision transformer paper, they predict the intermediate reward and return-to-go. This allows them to re-condition on new returns-to-go at each timestep, using a clever sampling procedure that samples likely expert returns-to-go.</p>
+<p><strong>Implication(s):</strong></p>
+<ul>
+<li>SOTA on standard atari offline RL tasks.</li>
+</ul>
+<p><strong>Misc thoughts:</strong></p>
+<ul>
+<li>This work is very similar to the original decision transformer paper, so I’m surprised that it received a best paper award.</li>
+<li>It represents continued progress in the field on offline RL, and more specifically, decision transformer style architectures.</li>
+</ul>
+<hr>
+<p><strong>8. <a href="https://arxiv.org/abs/2206.01079">When does return-conditioned supervised learning work for offline reinforcement learning? (Brandfonbrener, 2022)</a></strong></p>
+<p><strong>Key idea.</strong> Much recent work on offline RL can be cast as supervised learning on a near-optimal offline dataset then conditioning on high rewards from the dataset at test time; under what conditions is this a valid approach? Here the authors prove that this (unsurprisingly) only works when two conditions are met: 1) the test envs are (nearly) deterministic, and 2) there is trajectory-level converage in the dataset.</p>
+<p><strong>Implication(s):</strong></p>
+<ul>
+<li>Current approaches to offline RL will not work in the real world because real envs are generally stochastic.</li>
+</ul>
+<p><strong>Misc thoughts:</strong></p>
+<ul>
+<li>I liked that the authors proved the community’s intuitions on current approaches to offline RL that, although somewhat obvious in retrospect, had not been verified.</li>
+</ul>
+<hr>
+<h2 id="workshops">Workshops</h2>
+<p>I attended 5 workshops:</p>
+<ol>
+<li>Foundation Models for Decision Making</li>
+<li>Safety</li>
+<li>Offline RL</li>
+<li>Real Life Reinforcement Learning</li>
+<li>Tackling Climate Change with Machine Learning</li>
+</ol>
+<p>I found the latter three to be interesting, but less informative and precient as the first two. I therefore only discuss the Foundation Models for Decision Making and Safety workshops; the extent to which I enjoyed both workshops is, in a sense, oxymoronic.</p>
+<h3 id="foundation-models-for-decision-making">Foundation Models for Decision Making</h3>
+<p><strong>Leslie P. Kaelbling: What does an intelligent robot need to know?</strong></p>
+<figure><img src="/img/kaelbling2022.jpg"/>
+</figure>
+
+<p>My favourite talk was from <a href="https://scholar.google.com/citations?user=IcasIiwAAAAJ&amp;hl=en">Leslie Kaelbling</a> of MIT. Kaelbling focussed on our proclivity for building inductive biases into our models (a similar thesis to Sutton’s <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html">Bitter Lesson</a>); though good in short term, the effectiveness of such priors plateaus in the long-run. I agree with her.</p>
+<p>She advocates for a marketplace of pre-trained models of the following types:</p>
+<ul>
+<li>Foundation: space, geometry, kinematics</li>
+<li>Psychology: other agents, beliefs, desires etc.</li>
+<li>Culture: how do u do things in the world e.g. stuff you can read in books</li>
+</ul>
+<p>Robotics manufacturers will provide:</p>
+<ul>
+<li>observation / perception</li>
+<li>actuators</li>
+<li>controllers e.g. policies</li>
+</ul>
+<p>And we’ll use our own expertise to build local states (specific facts about the env) and encode long horizon memories e.g. what did I do 2 years ago.</p>
+<hr>
+<h3 id="safety-unofficial-in-the-marriott-across-the-road">Safety (unofficial; in the Marriott across the road)</h3>
+<p>The safety workshop was wild. It was a small, unofficial congregation of researchers who you’d expect to see lurking on <a href="https://www.lesswrong.com/">Less Wrong</a> and other <a href="https://forum.effectivealtruism.org/">EA forums</a>.</p>
+<p><strong><a href="http://christoph-schuhmann.de/">Christoph Schuhmann</a> (Founder of LAION)</strong></p>
+<p>Chris is a high school teacher from Vienna; he gave an inspiring talk on the open-sourcing of foundation models. He started LAION (Large-scale Artificial Intelligence Open Network) a non-profit organization, provides datasets, tools and models to democratise ML research. His key points included:</p>
+<ul>
+<li>centralised intelligence means centralised problem solving; we can’t give the keys to problem solving to a (potentially) dictatorial few.</li>
+<li>risks by not open sourcing AI are bigger than those of open sourcing</li>
+<li>LAION progress:
+<ul>
+<li>initial plan was to replicate the orignal CLIP / Dalle-1</li>
+<li>got 3m image text pairs on his own</li>
+<li>discord server helped him get 300m image text pairs, then 5b pairs</li>
+<li>hedge fund gave them 8 A100s</li>
+</ul>
+</li>
+<li>We will always want to do things even if AI can, cause we need to express ourselve</li>
+</ul>
+<p><strong>Thomas Wolf (Hugging Face CEO)</strong></p>
+<p>Tom Wolf gave a talk on the <a href="https://www.notion.so/NeurIPS-a25bdf6d9af045f9bff65177f2833cfa">Big Science initiative</a>, a project takes inspiration from scientific creation schemes such as CERN and the LHC, in which open scientific collaborations facilitate the creation of large-scale artefacts that are useful for the entire research community:</p>
+<ul>
+<li>1000+ researchers coming together to build massive language model and massive dataset</li>
+<li>efficient agi will probs require modularity cc. LeCun</li>
+<li>working on the energy efficiency of training is inherently democratic i.e. stops models being held by the rich, especially re: inference</li>
+</ul>
+<p>Are AI researchers aligned on AGI alignment?</p>
+<p>There was interesting round table at the end of the workshop that included <a href="https://scholar.google.com/citations?user=KNr3vb4AAAAJ&amp;hl=en">Jared Kaplan</a> (Anthropic) and <a href="https://scholar.google.ca/citations?user=5Uz70IoAAAAJ&amp;hl=en">David Krueger</a> (Cambridge) discussing what is means to align AGI. There was little agreement.</p>
+<hr>
+<h2 id="keynotes">Keynotes</h2>
+<p>I attended 4 of the 6 keynotes which were:</p>
+<ol>
+<li><strong>David Chalmers:</strong> <a href="https://nips.cc/virtual/2022/invited-talk/55867">Are Large Language Models Sentient?</a></li>
+<li><strong>Emmanuel Candes:</strong> <a href="https://nips.cc/virtual/2022/invited-talk/55872">Conformal Prediction in 2022</a></li>
+<li><strong>Isabelle Guyon:</strong> <a href="https://nips.cc/virtual/2022/invited-talk/56158">The Data-Centric Era: How ML is Becoming an Experimental Science</a></li>
+<li><strong>Geoff Hinton:</strong> <a href="https://nips.cc/virtual/2022/invited-talk/55869">The Forward-Forward Algorithm for Training Deep Neural Networks</a></li>
+</ol>
+<p>I found Emmanuel’s talk on conformal prediction enlightening as I’d never heard of the topic (<a href="https://arxiv.org/abs/2107.07511#:~:text=Conformal%20prediction%20is%20a%20user,distributional%20assumptions%20or%20model%20assumptions.">here’s a primer</a>), and Isabelle’s talk on benchmark and data transparency to be agreeable, if a little unoriginal. Hinton’s talk on a more anatomically correct learning algorithm was interesting, but I’m as yet unconvinced that mimicking human intelligence is a good way of building systems that are superior to humans—we are able to leverage hardware for artificial systems far superior to that accessible to humans. Chalmers talk was extremely thought-provoking; he structured the problem of consciousness in LLMs excellently—far better than I’ve seen to date, and as such was my favourite of the four.</p>
+<p>I have linked to each of the talks, which are freely available to view above.</p>
+<h3 id="references">References</h3>
+<p>Fan, L.; Wang, G.; Jiang, Y.; Mandlekar, A.; Yang, Y.; Zhu, H.; Tang, A.; Huang, D.-A.; Zhu, Y.; and Anandkumar, A. 2022. Minedojo: Building open-ended embodied agents with</p>
+<p>internet-scale knowledge. Advances in neural information processing systems, 35.</p>
+<p>Henaff, M.; Raileanu, R.; Jiang, M.; and Rockt  ̈aschel, T. 2022. Exploration via Elliptical Episodic Bonuses. Advances in neural information processing systems, 35.</p>
+<p>Humphreys, P. C.; Guez, A.; Tieleman, O.; Sifre, L.; Weber, T.; and Lillicrap, T. 2022. Large-Scale Retrieval for Reinforcement Learning. Advances in neural information processing systems, 35.</p>
+<p>Lee, K.-H.; Nachum, O.; Yang, M.; Lee, L.; Freeman, D.; Xu, W.; Guadarrama, S.; Fischer, I.; Jang, E.; Michalewski, H.; et al. 2022. Multi-game decision transformers. Advances in neural information processing systems, 35.</p>
+<p>Paster, K.; McIlraith, S.; and Ba, J. 2022. You Can’t Count on Luck: Why Decision Transformers Fail in Stochastic Environments. Advances in neural information processing systems, 35.</p>
+<p>Schaul, T.; Barreto, A.; Quan, J.; and Ostrovski, G. 2022. The phenomenon of policy churn. Advances in neural information processing systems, 35.</p>
+<p>Touati, A.; Rapin, J.; and Ollivier, Y. 2022. Does Zero-Shot Reinforcement Learning Exist?</p>
+]]></content>
+        </item>
         
         <item>
             <title>One Hour RL</title>
