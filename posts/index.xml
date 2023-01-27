@@ -59,7 +59,7 @@ Papers Here’s a ranked list of my top 8 papers. Most are on Offline RL, which 
 <p><strong>Key idea.</strong> When a value-based agent acts greedily, the policy updates by a surprising amount per gradient step e.g. in up to 10% of states in some cases.</p>
 <p><strong>Implication(s):</strong></p>
 <ul>
-<li>Policy churn means that $\epsilon$-greedy exploration may not be required as a rapidly changing policy induces enough noise into the data distribution that exploration may be implicit.</li>
+<li>Policy churn means that ((\epsilon))-greedy exploration may not be required as a rapidly changing policy induces enough noise into the data distribution that exploration may be implicit.</li>
 </ul>
 <p><strong>Misc thoughts:</strong></p>
 <ul>
