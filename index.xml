@@ -15,7 +15,8 @@
       
       <guid>https://enjeeneer.io/posts/2023/01/neurips-2022/</guid>
       <description>I was fortunate to attend NeurIPS in New Orleans in November. Here, I publish my takeaways to give you a feel for the zeitgeist. I’ll discuss, firstly, the papers, then the workshops, and finally, and briefly, the keynotes.
-Papers Here’s a ranked list of my top 8 papers. Most are on Offline RL, which is representative of the conference writ large, but one relates to the (imo) under discussed subfield of zero-shot RL.</description>
+Papers Here’s a ranked list of my top 8 papers. Most are on Offline RL, which is representative of the conference writ large.
+1. Does Zero-Shot Reinforcement Learning Exist (Touati et. al, 2022)</description>
     </item>
     
     <item>

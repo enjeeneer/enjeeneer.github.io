@@ -16,10 +16,11 @@
             
             <guid>https://enjeeneer.io/posts/2023/01/neurips-2022/</guid>
             <description>I was fortunate to attend NeurIPS in New Orleans in November. Here, I publish my takeaways to give you a feel for the zeitgeist. I’ll discuss, firstly, the papers, then the workshops, and finally, and briefly, the keynotes.
-Papers Here’s a ranked list of my top 8 papers. Most are on Offline RL, which is representative of the conference writ large, but one relates to the (imo) under discussed subfield of zero-shot RL.</description>
+Papers Here’s a ranked list of my top 8 papers. Most are on Offline RL, which is representative of the conference writ large.
+1. Does Zero-Shot Reinforcement Learning Exist (Touati et. al, 2022)</description>
             <content type="html"><![CDATA[<p>I was fortunate to attend NeurIPS in New Orleans in November. Here, I publish my takeaways to give you a feel for the zeitgeist. I’ll discuss, firstly, the papers, then the workshops, and finally, and briefly, the keynotes.</p>
 <h2 id="papers">Papers</h2>
-<p>Here’s a ranked list of my top 8 papers. Most are on Offline RL, which is representative of the conference writ large, but one relates to the (imo) under discussed subfield of zero-shot RL.</p>
+<p>Here’s a ranked list of my top 8 papers. Most are on Offline RL, which is representative of the conference writ large.</p>
 <p><strong>1. <a href="https://arxiv.org/pdf/2209.14935.pdf">Does Zero-Shot Reinforcement Learning Exist (Touati et. al, 2022)</a></strong></p>
 <figure><img src="/img/toutati2022.jpg"/>
 </figure>
@@ -27,7 +28,7 @@ Papers Here’s a ranked list of my top 8 papers. Most are on Offline RL, which 
 <p><strong>Key idea.</strong> To do zero-shot RL, we need to learn a general function from reward-free transitions that implicitly encodes the trajectories of <strong>all</strong> optimal policies for <strong>all</strong> tasks. The authors propose to learn two functions: \(F_\theta(s)\) and  \(B_\phi(s)\) that encode the future and past of state \(s\). We want to learn functions that <strong>always</strong> find a route from \(s \rightarrow s'\).</p>
 <p><strong>Implication(s):</strong></p>
 <ul>
-<li>They beat every previous zero-shot RL algorithm on the standard offline RL tasks, and approach the performance of online, reward-guided RL algorithms in some envs.</li>
+<li>They beat every previous zero-shot RL algorithms on the standard offline RL tasks, and approach the performance of online, reward-guided RL algorithms in some envs.</li>
 </ul>
 <p><strong>Misc thoughts:</strong></p>
 <ul>
