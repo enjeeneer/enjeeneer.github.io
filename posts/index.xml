@@ -68,7 +68,7 @@ Papers Here’s a ranked list of my top 8 papers. Most are on Offline RL, which 
 </ul>
 <hr>
 <p><strong>4. <a href="https://arxiv.org/pdf/2206.08853.pdf">MINEDOJO: Building Open-Ended Embodied Agents with Internet-Scale Knowledge (Fan et. al, 2022)</a></strong></p>
-<figure><img src="/img/minedojo.png"/>
+<figure><img src="/img/minedojo.jpg"/>
 </figure>
 
 <p><strong>Key idea.</strong> An internet-scale benchmark for generalist RL agents. 1000s of tasks, and a limitless procedurally-generated world for training.</p>
