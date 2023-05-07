@@ -44,41 +44,5 @@
       <description></description>
     </item>
     
-    <item>
-      <title>book_review</title>
-      <link>https://enjeeneer.io/tags/book_review/</link>
-      <pubDate>Tue, 20 Nov 2018 16:54:55 +0000</pubDate>
-      
-      <guid>https://enjeeneer.io/tags/book_review/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>circular_economy</title>
-      <link>https://enjeeneer.io/tags/circular_economy/</link>
-      <pubDate>Tue, 20 Nov 2018 16:54:55 +0000</pubDate>
-      
-      <guid>https://enjeeneer.io/tags/circular_economy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>plastic</title>
-      <link>https://enjeeneer.io/tags/plastic/</link>
-      <pubDate>Fri, 19 Oct 2018 16:56:04 +0000</pubDate>
-      
-      <guid>https://enjeeneer.io/tags/plastic/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>change_challenge</title>
-      <link>https://enjeeneer.io/tags/change_challenge/</link>
-      <pubDate>Fri, 12 Oct 2018 16:55:47 +0000</pubDate>
-      
-      <guid>https://enjeeneer.io/tags/change_challenge/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>
