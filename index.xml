@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 26 Jan 2023 21:08:05 +0000</lastBuildDate><atom:link href="https://enjeeneer.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Sep 2023 17:27:21 +0100</lastBuildDate><atom:link href="https://enjeeneer.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Conservative World Models</title>
+      <link>https://enjeeneer.io/projects/conservative-world-models/</link>
+      <pubDate>Tue, 26 Sep 2023 17:27:21 +0100</pubDate>
+      
+      <guid>https://enjeeneer.io/projects/conservative-world-models/</guid>
+      <description>Scott Jeen\(^{1}\), Tom Bewley\(^{2}\), &amp;amp; Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
+\(^{2}\) University of Bristol
+[Paper] [View Code on GitHub]
+ Summary Imagine you&amp;rsquo;ve collected a dataset from a system you&amp;rsquo;d like to control more efficiently. Examples include: household robots, chemical manufacturing processes, autonomous vehicles, or steel-making furnaces. An ideal solution would be to train an autonomous agent on your dataset, then for it to use what it learns to solve any task inside the system.</description>
+    </item>
+    
     <item>
       <title>NeurIPS 2022</title>
       <link>https://enjeeneer.io/posts/2023/01/neurips-2022/</link>
@@ -102,15 +114,6 @@ Recent advances in the field of Reinforcement Learning, a subfield of Artificial
       <guid>https://enjeeneer.io/talks/2021-03-15-xchangeseminar/</guid>
       <description>Abstract
 In this talk, I will introduce deterministic and probabilistic black-box function approximators, with applications for timeseries modelling. First, I introduce the multilayer perceptron (neural network), demonstrating how they can model arbitrarily complex functions, but highlighting their propensity to overfit the training data. Second, I introduce the Gaussian process (GP), a bayesian, probabilistic approach to function approximation. I visualise how GP&amp;rsquo;s quantify uncertainty, a robust trait in the context of control, but highlight their inability to scale to large datasets.</description>
-    </item>
-    
-    <item>
-      <title>Projects</title>
-      <link>https://enjeeneer.io/projects/</link>
-      <pubDate>Mon, 04 Jan 2021 17:34:13 +0000</pubDate>
-      
-      <guid>https://enjeeneer.io/projects/</guid>
-      <description></description>
     </item>
     
   </channel>
