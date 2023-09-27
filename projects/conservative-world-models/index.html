@@ -64,7 +64,7 @@ if (!doNotTrack) {
 [Paper] [View Code on GitHub]
  Summary Imagine you&rsquo;ve collected a dataset from a system you&rsquo;d like to control more efficiently. Examples include: household robots, chemical manufacturing processes, autonomous vehicles, or steel-making furnaces. An ideal solution would be to train an autonomous agent on your dataset, then for it to use what it learns to solve any task inside the system."><meta itemprop="datePublished" content="2023-09-26T17:27:21+01:00" />
 <meta itemprop="dateModified" content="2023-09-26T17:27:21+01:00" />
-<meta itemprop="wordCount" content="516"><meta itemprop="image" content="https://enjeeneer.io"/>
+<meta itemprop="wordCount" content="947"><meta itemprop="image" content="https://enjeeneer.io"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://enjeeneer.io"/>
@@ -202,7 +202,7 @@ FB representations fail. They fail because they overestimate the value of the da
 <p>In this work, we resolve this by artificially suppressing these out-of-distribution values, leveraging ideas from <em>conservatism</em> in the Offline RL literature.
 The family of algorithms we propose are called <em>Conservative</em> Forward Backward representations&ndash;Figure 1 (Right). In experiments across
 a variety of systems and tasks, we show these methods consistently outperform FB representations when the datasets are suboptimal.</p>
-<figure><img src="https://github.com/conservative-world-models/blob/main/media/vcfb-intuition.png?raw=true"/>
+<figure><img src="https://github.com/conservative-world-models/blob/main/media/vcfb-intuition-final.png?raw=true"/>
 </figure>
 
 <p><em>Figure 1: <strong>FB&rsquo;s failure-mode on sub-optimal datasets and VC-FB&rsquo;s resolution.</strong> (Left) Ground truth value functions for two tasks in an environment for a given marginal state. (Middle) FB representations overestimate the value of actions not in the dataset for all tasks. (Right) Value-Conservative Forward Backward (VC-FB) Representations suppress the value of actions not in the  dataset for all tasks. Black dots represent state-action samples present in the dataset.</em></p>
@@ -218,17 +218,104 @@ reaching 150% of vanilla FB performance in aggregate. Somewhat surprisingly, con
 task-specific baseline, despite lacking access to reward labels, and being required to maintain policies for all tasks.
 Conservative FB algorithms perform no worse than FB on full datasets, and so present little downside over their predecessor.</p>
 <hr>
-<h3 id="aggregate-performance">Aggregate Performance</h3>
+<h3 id="intuition">Intuition</h3>
+<figure><img src="https://github.com/enjeeneer/conservative-world-models/blob/main/media/overestimates.png?raw=true"/>
+</figure>
+
+<p>When the dataset is inexhaustive, FB representations overestimate the value of actions not in the dataset. The above
+shows this overestimation as dataset size and quality is varied. The smaller and less diverse the dataset, the more
+$Q$ values tend to be overestimated.</p>
+<p>We fix this by suppressing the predicted values for actions not in the dataset, and show how this resolves overestimation
+in the below. Below wer show modified version of Point-mass Maze from the ExORL benchmark.
+Episodes begin with a point-mass initialised in the upper left of the maze (⊚), and the agent is tasked with selecting
+\(x\) and \(y\) tilt directions such that the mass is moved towards one of two goal locations (⊛ and ⊛). The action space is two-dimensional
+and bounded in \([−1,1]\). We take the RND dataset and remove all “left” actions such that \(a_x \in [0, 1]\) and
+\(a_y \in [−1, 1]\), creating a dataset that has the necessary information for solving the tasks, but is inexhaustive (below (a)).
+We train FB and VC-FB on this dataset and plot the highest-reward trajectories–below (b) and (c).
+FB overestimates the value of OOD actions and cannot complete either task. Conversely, VC-FB synthesises the requisite
+information from the dataset and completes both tasks.</p>
+<figure><img src="https://github.com/enjeeneer/conservative-world-models/blob/main/media/didactic.png?raw=true"/>
+</figure>
+
+<hr>
+<h3 id="aggregate-performance-on-suboptimal-datasets">Aggregate Performance on Suboptimal Datasets</h3>
 <figure><img src="https://github.com/enjeeneer/conservative-world-models/blob/main/media/performance-profiles-subplot.png?raw=true"/>
 </figure>
 
+<p>Both MC-FB and VC-FB stochastically dominate FB, achieving 150% and 137% its performance respectively.
+MC-FB and VC-FB outperform our single-task baseline in expectation, reaching 111% and 120% of
+CQL performance respectively <strong>despite not having access to task-specific reward labels and needing
+to fit policies for all tasks</strong>. This is a surprising result, and to the best of our knowledge, the first time
+a multi-task offline agent has been shown to outperform a single-task analogue.</p>
+<hr>
+<h3 id="aggregate-performance-on-full-datasets">Aggregate Performance on Full Datasets</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Domain</strong></th>
+<th><strong>Task</strong></th>
+<th><strong>FB</strong></th>
+<th><strong>VC-FB</strong></th>
+<th><strong>MC-FB</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Walker</td>
+<td>all tasks</td>
+<td>639 (616–661)</td>
+<td>659 (647–670)</td>
+<td>651 (632–671)</td>
+</tr>
+<tr>
+<td>Quadruped</td>
+<td>all tasks</td>
+<td>656 (638–674)</td>
+<td>579 (522–635)</td>
+<td>635 (628–642)</td>
+</tr>
+<tr>
+<td>Maze</td>
+<td>all tasks</td>
+<td>219 (86–353)</td>
+<td>287 (117–457)</td>
+<td>261 (159–363)</td>
+</tr>
+<tr>
+<td>Jaco</td>
+<td>all tasks</td>
+<td>39 (29–50)</td>
+<td>33 (24–42)</td>
+<td>34 (18–51)</td>
+</tr>
+<tr>
+<td>All</td>
+<td>all tasks</td>
+<td>361</td>
+<td><strong>381</strong></td>
+<td><strong>381</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Both conservative FB variants maintain (and slightly exceed) the performance
+of vanilla FB. These results suggest that performance on large, diverse datasets does not suffer
+as a consequence of the design decisions made  to improve performance on our small datasets that lack diversity.
+Therefore, we can safely adopt conservatism into FB without worrying about performance trade-offs.</p>
 <hr>
 <h3 id="paper">Paper</h3>
-<p><figure><img src="https://github.com/enjeeneer/PEARL/blob/main/media/pearl_first_page.png?raw=true" width="400"/>
+<p><figure><img src="https://github.com/conservative-world-models/blob/main/media/paper.png?raw=true" width="400"/>
 </figure>
 
 <strong><a href="https://arxiv.org/abs/2206.14191">[View on arXiv]</a></strong></p>
-<hr>
+<p>If you find this work informative please consider citing the paper:</p>
+<pre tabindex="0"><code class="language-commandline" data-lang="commandline">@article{jeen2023,
+  url = {https://arxiv.org/abs/2208.06385},
+  author = {Jeen, Scott and Bewley, Tom and Cullen, Jonathan M.},  
+  title = {Conservative World Models},
+  publisher = {arXiv},
+  year = {2023},
+}
+</code></pre><hr>
 
             </div>
         </article>
