@@ -16,7 +16,8 @@
       <guid>https://enjeeneer.io/projects/conservative-world-models/</guid>
       <description>Scott Jeen\(^{1}\), Tom Bewley\(^{2}\), &amp;amp; Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
 \(^{2}\) University of Bristol
-[Paper] [View Code on GitHub] [Poster] Summary Imagine you&amp;rsquo;ve collected a dataset from a system you&amp;rsquo;d like to control more efficiently. Examples include: household robots, chemical manufacturing processes, autonomous vehicles, or steel-making furnaces. An ideal solution would be to train an autonomous agent on your dataset, then for it to use what it learns to solve any task inside the system.</description>
+[Paper] [Code] [Poster]
+ Summary Imagine you&amp;rsquo;ve collected a dataset from a system you&amp;rsquo;d like to control more efficiently. Examples include: household robots, chemical manufacturing processes, autonomous vehicles, or steel-making furnaces. An ideal solution would be to train an autonomous agent on your dataset, then for it to use what it learns to solve any task inside the system.</description>
     </item>
     
     <item>
@@ -36,11 +37,12 @@ Papers Here’s a ranked list of my top 8 papers. Most are on Offline RL, which 
       <pubDate>Fri, 12 Aug 2022 09:34:36 +0100</pubDate>
       
       <guid>https://enjeeneer.io/projects/pearl/</guid>
-      <description>Scott R. Jeen\(^{1,3}\), Alessandro Abate\(^{2,3}\), Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
+      <description>In Proceedings of the AAAI Conference on Artificial Intelligence (Vol. 37, No. 12, pp. 14259-14267)
+Scott R. Jeen\(^{1,3}\), Alessandro Abate\(^{2,3}\), Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
 \(^{2}\) University of Oxford
 \(^{3}\) Alan Turing Institute
-[Paper] [View Code on GitHub] [Talk] [Poster]
-   PEARL: Probabilistic Emission-Abating Reinforcement Learning  Presenting PEARL: Probabilistic Emission-Abating Reinforcement Learning, a deep RL algorithm that can find performant building control policies online, without pre-training&amp;ndash;the first time this has been shown to be possible. We show PEARL can reduce annual emissions by 31% when compared with a conventional controller whilst maintaining thermal comfort, and outperforms all RL baselines used for comparison.</description>
+[Paper] [Code] [Talk] [Poster]
+   PEARL: Probabilistic Emission-Abating Reinforcement Learning  Presenting PEARL: Probabilistic Emission-Abating Reinforcement Learning, a deep RL algorithm that can find performant building control policies online, without pre-training&amp;ndash;the first time this has been shown to be possible.</description>
     </item>
     
     <item>
