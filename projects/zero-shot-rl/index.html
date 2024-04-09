@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Scott Jeen">
+<meta name="description" content="Scott Jeen\(^{1}\), Tom Bewley\(^{2}\), &amp;amp; Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
+\(^{2}\) University of Bristol
+[Paper] [Code] [Poster]
+ Summary  Figure 1: Conservative zero-shot RL methods.
+Zero-shot reinforcement learning (RL) concerns itself with learning general policies that can solve any unseen task in an environment. Recently, methods leveraging successor features and successor measures have emerged as viable zero-shot RL candidates, returning near-optimal policies for many unseen tasks. However, to enable this, they have assumed access to unrealistically large heterogeneous dataset of transitions for pre-training." />
+<meta name="keywords" content="Scott Jeen" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#6B8E23" />
+<link rel="canonical" href="https://enjeeneer.io/projects/zero-shot-rl/" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-192648932-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+    <title>
+        
+            Zero-Shot Reinforcement Learning from Low Quality Data :: Scott Jeen  — AI researcher
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://enjeeneer.io/main.cbec4bded5981a9639be0a9253dbc5636fb308fba08c31a50670aee0a034a132.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://enjeeneer.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://enjeeneer.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://enjeeneer.io/favicon-16x16.png">
+    <link rel="manifest" href="https://enjeeneer.io/site.webmanifest">
+    <link rel="mask-icon" href="https://enjeeneer.io/safari-pinned-tab.svg" color="#6B8E23">
+    <link rel="shortcut icon" href="https://enjeeneer.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#6B8E23">
+    <meta name="theme-color" content="#6B8E23">
+
+
+
+<meta itemprop="name" content="Zero-Shot Reinforcement Learning from Low Quality Data">
+<meta itemprop="description" content="Scott Jeen\(^{1}\), Tom Bewley\(^{2}\), &amp; Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
+\(^{2}\) University of Bristol
+[Paper] [Code] [Poster]
+ Summary  Figure 1: Conservative zero-shot RL methods.
+Zero-shot reinforcement learning (RL) concerns itself with learning general policies that can solve any unseen task in an environment. Recently, methods leveraging successor features and successor measures have emerged as viable zero-shot RL candidates, returning near-optimal policies for many unseen tasks. However, to enable this, they have assumed access to unrealistically large heterogeneous dataset of transitions for pre-training."><meta itemprop="datePublished" content="2023-09-26T17:27:21+01:00" />
+<meta itemprop="dateModified" content="2023-09-26T17:27:21+01:00" />
+<meta itemprop="wordCount" content="575"><meta itemprop="image" content="https://enjeeneer.io"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://enjeeneer.io"/>
+
+<meta name="twitter:title" content="Zero-Shot Reinforcement Learning from Low Quality Data"/>
+<meta name="twitter:description" content="Scott Jeen\(^{1}\), Tom Bewley\(^{2}\), &amp; Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
+\(^{2}\) University of Bristol
+[Paper] [Code] [Poster]
+ Summary  Figure 1: Conservative zero-shot RL methods.
+Zero-shot reinforcement learning (RL) concerns itself with learning general policies that can solve any unseen task in an environment. Recently, methods leveraging successor features and successor measures have emerged as viable zero-shot RL candidates, returning near-optimal policies for many unseen tasks. However, to enable this, they have assumed access to unrealistically large heterogeneous dataset of transitions for pre-training."/>
+
+
+
+    <meta property="og:title" content="Zero-Shot Reinforcement Learning from Low Quality Data" />
+<meta property="og:description" content="Scott Jeen\(^{1}\), Tom Bewley\(^{2}\), &amp; Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
+\(^{2}\) University of Bristol
+[Paper] [Code] [Poster]
+ Summary  Figure 1: Conservative zero-shot RL methods.
+Zero-shot reinforcement learning (RL) concerns itself with learning general policies that can solve any unseen task in an environment. Recently, methods leveraging successor features and successor measures have emerged as viable zero-shot RL candidates, returning near-optimal policies for many unseen tasks. However, to enable this, they have assumed access to unrealistically large heterogeneous dataset of transitions for pre-training." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://enjeeneer.io/projects/zero-shot-rl/" /><meta property="og:image" content="https://enjeeneer.io"/><meta property="article:section" content="projects" />
+<meta property="article:published_time" content="2023-09-26T17:27:21+01:00" />
+<meta property="article:modified_time" content="2023-09-26T17:27:21+01:00" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2023-09-26 17:27:21 &#43;0100 BST" />
+
+
+
+
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+
+    
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-192648932-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    <span class="header__inner">
+        <a href="https://enjeeneer.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">/enjeeneer/</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#6B8E23;
+                   animation-duration:1s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://enjeeneer.io/about/">about</a></li><li><a href="https://enjeeneer.io/cv/cv-oct23-coffee.pdf">cv</a></li><li><a href="https://enjeeneer.io/posts/">posts</a></li><li><a href="https://enjeeneer.io/projects/">projects</a></li><li><a href="https://scholar.google.com/citations?user=3HPX720AAAAJ&amp;hl=en&amp;oi=ao">scholar</a></li><li><a href="https://enjeeneer.io/talks/">talks</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://enjeeneer.io/projects/zero-shot-rl/">Zero-Shot Reinforcement Learning from Low Quality Data</a></h2>
+            <h3 class="loc"><a href="https://enjeeneer.io/projects/zero-shot-rl/"></a></h3>
+            <h3 class="time"><a href="https://enjeeneer.io/projects/zero-shot-rl/"></a></h3>
+
+            
+
+            
+
+            <div class="post-content">
+                <h3 id="scott-jeen1-tom-bewley2--jonathan-m-cullen1">Scott Jeen\(^{1}\), Tom Bewley\(^{2}\), &amp; Jonathan M. Cullen\(^{1}\)</h3>
+<p>\(^{1}\) <em>University of Cambridge</em></p>
+<p>\(^{2}\) <em>University of Bristol</em></p>
+<p><strong><a href="https://arxiv.org/abs/2309.15178">[Paper]</a></strong>
+<strong><a href="https://github.com/enjeeneer/zero-shot-rl">[Code]</a></strong>
+<strong><a href="https://enjeeneer.io/posters/conservative-world-models.pdf">[Poster]</a></strong></p>
+<hr>
+<h2 id="summary">Summary</h2>
+<figure><img src="https://github.com/enjeeneer/conservative-world-models/blob/main/media/vcfb-intuition-final.png?raw=true"/>
+</figure>
+
+<p><em>Figure 1: <strong>Conservative zero-shot RL methods.</strong></em></p>
+<p>Zero-shot reinforcement learning (RL) concerns itself with learning general policies that can solve any unseen task in an environment. Recently,
+methods leveraging successor features and successor measures have emerged as viable
+zero-shot RL candidates, returning near-optimal policies
+for many unseen tasks. However, to enable this, they have assumed access to unrealistically large heterogeneous dataset of transitions for pre-training. Most real datasets,
+like historical logs created by existing control systems, are smaller and less diverse than these current methods expect. As a result, this paper asks:</p>
+<p><strong>Can we still perform zero-shot RL with small, homogeneous datasets?</strong></p>
+<hr>
+<h3 id="intuition">Intuition</h3>
+<figure><img src="https://github.com/enjeeneer/conservative-world-models/blob/main/media/overestimates.png?raw=true"/>
+</figure>
+
+<p><em>Figure 2: <strong>FB value overestimation with respect to dataset size \(n\) and quality</strong>.</em></p>
+<p>When the dataset is inexhaustive, existing methods like FB representations overestimate the value of actions not in the dataset. The above
+shows this overestimation as dataset size and quality is varied. The smaller and less diverse the dataset, the more
+\(Q\) values tend to be overestimated.</p>
+<p>We fix this by suppressing the predicted values (or measures) for actions not in the dataset, and show how this resolves overestimation in Figure 3&ndash;a modified version of Point-mass Maze from the ExORL benchmark.
+Episodes begin with a point-mass initialised in the upper left of the maze (⊚), and the agent is tasked with selecting
+\(x\) and \(y\) tilt directions such that the mass is moved towards one of two goal locations (⊛ and ⊛). The action space is two-dimensional
+and bounded in \([−1,1]\). We take the RND dataset and remove all “left” actions such that \(a_x \in [0, 1]\) and
+\(a_y \in [−1, 1]\), creating a dataset that has the necessary information for solving the tasks, but is inexhaustive (below (a)).
+We train FB and VC-FB on this dataset and plot the highest-reward trajectories–below (b) and (c).
+FB overestimates the value of OOD actions and cannot complete either task. Conversely, VC-FB synthesises the requisite
+information from the dataset and completes both tasks.</p>
+<figure><img src="https://github.com/enjeeneer/conservative-world-models/blob/main/media/didactic.png?raw=true"/>
+</figure>
+
+<p><em>Figure 3: <strong>Ignoring out-of-distribution actions</strong>.</em></p>
+<hr>
+<h3 id="aggregate-performance-on-suboptimal-datasets">Aggregate Performance on Suboptimal Datasets</h3>
+<figure><img src="https://github.com/enjeeneer/zero-shot-rl/blob/main/media/performance-profiles-subplot.png?raw=true"/>
+</figure>
+
+<p><em>Figure 4: <strong>Aggregate zero-shot performance.</strong> (Left): IQM of task scores across datasets and domains, normalised against the performance of CQL, our baseline. (Right) Performance profiles showing the distribution of scores across all tasks and domains. Both conservative FB variants stochastically dominate vanilla FB. The black dashed line represents the IQM of CQL performance across all datasets, domains, tasks and seeds.</em></p>
+<p>Both MC-FB and VC-FB outperform FB and outperform our single-task baseline in expectation, reaching 111% and 120% of
+CQL performance respectively <strong>despite not having access to task-specific reward labels and needing
+to fit policies for all tasks</strong>. This is a surprising result, and to the best of our knowledge, the first time
+a multi-task offline agent has been shown to outperform a single-task analogue.</p>
+<hr>
+<h3 id="performance-with-respect-to-dataset-size">Performance with respect to dataset size</h3>
+<figure><img src="img/zero-shot-rl-dataset-size.png"/>
+</figure>
+
+<p><em>Figure 5:  <strong>Performance by dataset size.</strong></em></p>
+<p><em>Table 1: <strong>Performance on full RND dataset.</strong></em></p>
+<figure><img src="img/zero-shot-rl-full-dataset-results-table.png"/>
+</figure>
+
+<p>The performance gap between conservative FB variants and vanilla FB increases as dataset size decreases. On the full datasets, conservative FB variants maintain (and slightly exceed) the performance
+of vanilla FB.</p>
+<hr>
+<h2 id="citation">Citation</h2>
+<p>Read the full paper for more details: <strong><a href="https://arxiv.org/abs/2309.15178">[link]</a></strong>, and if you find this work informative please consider citing it:</p>
+<pre tabindex="0"><code class="language-commandline" data-lang="commandline">@article{jeen2023,
+  url = {https://arxiv.org/abs/2309.15178},
+  author = {Jeen, Scott and Bewley, Tom and Cullen, Jonathan M.},  
+  title = {Conservative World Models},
+  publisher = {arXiv},
+  year = {2023},
+}
+</code></pre><hr>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+
+    </main>
+
+            </div>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://enjeeneer.io/bundle.min.a0f363fdf81cdc5cfacc447a79c33189eb000d090336cd04aac8ee256f423b3133b836c281944c19c75e38d0b0b449f01ce5807e37798b7ac94ac1db51983fc4.js" integrity="sha512-oPNj/fgc3Fz6zER6ecMxiesADQkDNs0EqsjuJW9COzEzuDbCgZRMGcdeONCwtEnwHOWAfjd5i3rJSsHbUZg/xA=="></script>
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-192648932-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+    </body>
+</html>

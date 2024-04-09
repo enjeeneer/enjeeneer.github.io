@@ -9,15 +9,16 @@
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Tue, 26 Sep 2023 17:27:21 +0100</lastBuildDate><atom:link href="https://enjeeneer.io/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Conservative World Models</title>
-      <link>https://enjeeneer.io/projects/conservative-world-models/</link>
+      <title>Zero-Shot Reinforcement Learning from Low Quality Data</title>
+      <link>https://enjeeneer.io/projects/zero-shot-rl/</link>
       <pubDate>Tue, 26 Sep 2023 17:27:21 +0100</pubDate>
       
-      <guid>https://enjeeneer.io/projects/conservative-world-models/</guid>
+      <guid>https://enjeeneer.io/projects/zero-shot-rl/</guid>
       <description>Scott Jeen\(^{1}\), Tom Bewley\(^{2}\), &amp;amp; Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
 \(^{2}\) University of Bristol
 [Paper] [Code] [Poster]
- Summary Imagine you&amp;rsquo;ve collected a dataset from a system you&amp;rsquo;d like to control more efficiently. Examples include: household robots, chemical manufacturing processes, autonomous vehicles, or steel-making furnaces. An ideal solution would be to train an autonomous agent on your dataset, then for it to use what it learns to solve any task inside the system.</description>
+ Summary  Figure 1: Conservative zero-shot RL methods.
+Zero-shot reinforcement learning (RL) concerns itself with learning general policies that can solve any unseen task in an environment. Recently, methods leveraging successor features and successor measures have emerged as viable zero-shot RL candidates, returning near-optimal policies for many unseen tasks. However, to enable this, they have assumed access to unrealistically large heterogeneous dataset of transitions for pre-training.</description>
     </item>
     
     <item>

@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://enjeeneer.io/projects/conservative-world-models/</loc>
-    <lastmod>2023-09-26T17:27:21+01:00</lastmod>
-  </url><url>
     <loc>https://enjeeneer.io/projects/</loc>
     <lastmod>2023-09-26T17:27:21+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/</loc>
+    <lastmod>2023-09-26T17:27:21+01:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/projects/zero-shot-rl/</loc>
     <lastmod>2023-09-26T17:27:21+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/posts/2023/01/neurips-2022/</loc>
