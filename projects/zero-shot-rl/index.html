@@ -66,7 +66,7 @@ if (!doNotTrack) {
  Summary  Figure 1: Conservative zero-shot RL methods.
 Zero-shot reinforcement learning (RL) concerns itself with learning general policies that can solve any unseen task in an environment. Recently, methods leveraging successor features and successor measures have emerged as viable zero-shot RL candidates, returning near-optimal policies for many unseen tasks. However, to enable this, they have assumed access to unrealistically large heterogeneous dataset of transitions for pre-training."><meta itemprop="datePublished" content="2023-09-26T17:27:21+01:00" />
 <meta itemprop="dateModified" content="2023-09-26T17:27:21+01:00" />
-<meta itemprop="wordCount" content="575"><meta itemprop="image" content="https://enjeeneer.io"/>
+<meta itemprop="wordCount" content="524"><meta itemprop="image" content="https://enjeeneer.io"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://enjeeneer.io"/>
@@ -230,26 +230,26 @@ information from the dataset and completes both tasks.</p>
 <p><em>Figure 3: <strong>Ignoring out-of-distribution actions</strong>.</em></p>
 <hr>
 <h3 id="aggregate-performance-on-suboptimal-datasets">Aggregate Performance on Suboptimal Datasets</h3>
-<figure><img src="https://github.com/enjeeneer/zero-shot-rl/blob/main/media/performance-profiles-subplot.png?raw=true"/>
+<figure><img src="https://github.com/enjeeneer/zero-shot-rl/blob/main/media/performance-profiles-subplot1.png?raw=true"/>
 </figure>
 
-<p><em>Figure 4: <strong>Aggregate zero-shot performance.</strong> (Left): IQM of task scores across datasets and domains, normalised against the performance of CQL, our baseline. (Right) Performance profiles showing the distribution of scores across all tasks and domains. Both conservative FB variants stochastically dominate vanilla FB. The black dashed line represents the IQM of CQL performance across all datasets, domains, tasks and seeds.</em></p>
+<p><em>Figure 4: <strong>Aggregate zero-shot RL performance on ExORL benchmark.</strong></em></p>
 <p>Both MC-FB and VC-FB outperform FB and outperform our single-task baseline in expectation, reaching 111% and 120% of
 CQL performance respectively <strong>despite not having access to task-specific reward labels and needing
 to fit policies for all tasks</strong>. This is a surprising result, and to the best of our knowledge, the first time
 a multi-task offline agent has been shown to outperform a single-task analogue.</p>
 <hr>
 <h3 id="performance-with-respect-to-dataset-size">Performance with respect to dataset size</h3>
-<figure><img src="img/zero-shot-rl-dataset-size.png"/>
+<figure><img src="https://enjeeneer.io/img/zero-shot-rl-dataset-size.png" width="600"/>
 </figure>
 
-<p><em>Figure 5:  <strong>Performance by dataset size.</strong></em></p>
-<p><em>Table 1: <strong>Performance on full RND dataset.</strong></em></p>
-<figure><img src="img/zero-shot-rl-full-dataset-results-table.png"/>
-</figure>
-
+<p><em>Figure 5:  <strong>Performance by RND dataset size.</strong></em></p>
 <p>The performance gap between conservative FB variants and vanilla FB increases as dataset size decreases. On the full datasets, conservative FB variants maintain (and slightly exceed) the performance
 of vanilla FB.</p>
+<p><em>Table 1: <strong>Performance on full datasets.</strong></em></p>
+<figure><img src="https://enjeeneer.io/img/zero-shot-rl-full-dataset-results-table.png" width="600"/>
+</figure>
+
 <hr>
 <h2 id="citation">Citation</h2>
 <p>Read the full paper for more details: <strong><a href="https://arxiv.org/abs/2309.15178">[link]</a></strong>, and if you find this work informative please consider citing it:</p>
