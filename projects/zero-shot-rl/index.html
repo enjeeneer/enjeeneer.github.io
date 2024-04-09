@@ -65,7 +65,7 @@ if (!doNotTrack) {
 [Paper] [Code] [Poster]
  Summary  Figure 1: Conservative zero-shot RL methods.
 Zero-shot reinforcement learning (RL) concerns itself with learning general policies that can solve any unseen task in an environment. Recently, methods leveraging successor features and successor measures have emerged as viable zero-shot RL candidates, returning near-optimal policies for many unseen tasks. However, to enable this, they have assumed access to unrealistically large heterogeneous dataset of transitions for pre-training."><meta itemprop="datePublished" content="2023-09-26T17:27:21+01:00" />
-<meta itemprop="dateModified" content="2023-09-26T17:27:21+01:00" />
+<meta itemprop="dateModified" content="2024-04-09T16:02:24+01:00" />
 <meta itemprop="wordCount" content="524"><meta itemprop="image" content="https://enjeeneer.io"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
@@ -89,7 +89,7 @@ Zero-shot reinforcement learning (RL) concerns itself with learning general poli
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://enjeeneer.io/projects/zero-shot-rl/" /><meta property="og:image" content="https://enjeeneer.io"/><meta property="article:section" content="projects" />
 <meta property="article:published_time" content="2023-09-26T17:27:21+01:00" />
-<meta property="article:modified_time" content="2023-09-26T17:27:21+01:00" />
+<meta property="article:modified_time" content="2024-04-09T16:02:24+01:00" />
 
 
 
@@ -208,7 +208,7 @@ for many unseen tasks. However, to enable this, they have assumed access to unre
 like historical logs created by existing control systems, are smaller and less diverse than these current methods expect. As a result, this paper asks:</p>
 <p><strong>Can we still perform zero-shot RL with small, homogeneous datasets?</strong></p>
 <hr>
-<h3 id="intuition">Intuition</h3>
+<h2 id="intuition">Intuition</h2>
 <figure><img src="https://github.com/enjeeneer/conservative-world-models/blob/main/media/overestimates.png?raw=true"/>
 </figure>
 
@@ -229,7 +229,7 @@ information from the dataset and completes both tasks.</p>
 
 <p><em>Figure 3: <strong>Ignoring out-of-distribution actions</strong>.</em></p>
 <hr>
-<h3 id="aggregate-performance-on-suboptimal-datasets">Aggregate Performance on Suboptimal Datasets</h3>
+<h2 id="aggregate-performance-on-suboptimal-datasets">Aggregate Performance on Suboptimal Datasets</h2>
 <figure><img src="https://github.com/enjeeneer/zero-shot-rl/blob/main/media/performance-profiles-subplot1.png?raw=true"/>
 </figure>
 
@@ -239,7 +239,7 @@ CQL performance respectively <strong>despite not having access to task-specific 
 to fit policies for all tasks</strong>. This is a surprising result, and to the best of our knowledge, the first time
 a multi-task offline agent has been shown to outperform a single-task analogue.</p>
 <hr>
-<h3 id="performance-with-respect-to-dataset-size">Performance with respect to dataset size</h3>
+<h2 id="performance-with-respect-to-dataset-size">Performance with respect to dataset size</h2>
 <figure><img src="https://enjeeneer.io/img/zero-shot-rl-dataset-size.png" width="600"/>
 </figure>
 
@@ -270,6 +270,7 @@ of vanilla FB.</p>
         <div class="post-info">
             
             
+			    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="https://github.com/enjeeneer/enjeeneer.github.io/commit/6a8eb445042957499b8954cdeb22567e67f9c893" target="_blank" rel="noopener">6a8eb44</a> @ 2024-04-09</p>
   		</div>
 
     </main>
