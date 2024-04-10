@@ -18,7 +18,7 @@
 \(^{2}\) University of Bristol
 [Paper] [Code] [Poster]
  Summary  Figure 1: Conservative zero-shot RL methods.
-Zero-shot reinforcement learning (RL) concerns itself with learning general policies that can solve any unseen task in an environment. Recently, methods leveraging successor features and successor measures have emerged as viable zero-shot RL candidates, returning near-optimal policies for many unseen tasks. However, to enable this, they have assumed access to unrealistically large heterogeneous dataset of transitions for pre-training.</description>
+Zero-shot reinforcement learning (RL) concerns itself with learning general policies that can solve any unseen task in an environment. Recently, methods leveraging successor features and successor measures have emerged as viable zero-shot RL candidates, returning near-optimal policies for many unseen tasks. However, to enable this, they have assumed access to unrealistically large and heterogeneous datasets of transitions for pre-training.</description>
     </item>
     
     <item>
