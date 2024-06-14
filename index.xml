@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 26 Sep 2023 17:27:21 +0100</lastBuildDate><atom:link href="https://enjeeneer.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Jun 2024 09:34:36 +0100</lastBuildDate><atom:link href="https://enjeeneer.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Problem Problem</title>
+      <link>https://enjeeneer.io/talks/2024-06-14-reffciency/</link>
+      <pubDate>Fri, 14 Jun 2024 09:34:36 +0100</pubDate>
+      
+      <guid>https://enjeeneer.io/talks/2024-06-14-reffciency/</guid>
+      <description>[Click here for slideshow]</description>
+    </item>
+    
     <item>
       <title>Zero-Shot Reinforcement Learning from Low Quality Data</title>
       <link>https://enjeeneer.io/projects/zero-shot-rl/</link>
@@ -106,16 +115,6 @@ Recent advances in the field of Reinforcement Learning, a subfield of Artificial
       
       <guid>https://enjeeneer.io/posts/2021/04/scotts-uncomprehensive-guide-to-scotland/</guid>
       <description>Hello treasured friend. If you&amp;rsquo;re reading this, it&amp;rsquo;s probably because I&amp;rsquo;ve force-fed you a link after discussing your upcoming trip to Scotland. I hope this is useful to you in some way. Think of this a travel guide that you can dip into when you find yourself in one of these places either hungry or bored. I don&amp;rsquo;t describe anything in detail, you&amp;rsquo;ll just have to take me on my word that these places are worth visiting.</description>
-    </item>
-    
-    <item>
-      <title>Taking a peek inside black-box function approximators</title>
-      <link>https://enjeeneer.io/talks/2021-03-15-xchangeseminar/</link>
-      <pubDate>Mon, 15 Mar 2021 16:55:47 +0000</pubDate>
-      
-      <guid>https://enjeeneer.io/talks/2021-03-15-xchangeseminar/</guid>
-      <description>Abstract
-In this talk, I will introduce deterministic and probabilistic black-box function approximators, with applications for timeseries modelling. First, I introduce the multilayer perceptron (neural network), demonstrating how they can model arbitrarily complex functions, but highlighting their propensity to overfit the training data. Second, I introduce the Gaussian process (GP), a bayesian, probabilistic approach to function approximation. I visualise how GP&amp;rsquo;s quantify uncertainty, a robust trait in the context of control, but highlight their inability to scale to large datasets.</description>
     </item>
     
   </channel>
