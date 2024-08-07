@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 14 Jun 2024 09:34:36 +0100</lastBuildDate><atom:link href="https://enjeeneer.io/talks/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Aug 2024 17:01:15 -0400</lastBuildDate><atom:link href="https://enjeeneer.io/talks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dynamics Generalisation with Behaviour Foundation Models    </title>
+      <link>https://enjeeneer.io/talks/2024-08-09-rlc-tafm/</link>
+      <pubDate>Wed, 07 Aug 2024 17:01:15 -0400</pubDate>
+      
+      <guid>https://enjeeneer.io/talks/2024-08-09-rlc-tafm/</guid>
+      <description>[Click here for full-screen slideshow]</description>
+    </item>
+    
     <item>
       <title>The problem problem: choosing impactful research problems</title>
       <link>https://enjeeneer.io/talks/2024-06-14-reffciency/</link>
@@ -48,25 +57,6 @@ Recent advances in the field of Reinforcement Learning, a subfield of Artificial
       <guid>https://enjeeneer.io/talks/2021-03-15-xchangeseminar/</guid>
       <description>Abstract
 In this talk, I will introduce deterministic and probabilistic black-box function approximators, with applications for timeseries modelling. First, I introduce the multilayer perceptron (neural network), demonstrating how they can model arbitrarily complex functions, but highlighting their propensity to overfit the training data. Second, I introduce the Gaussian process (GP), a bayesian, probabilistic approach to function approximation. I visualise how GP&amp;rsquo;s quantify uncertainty, a robust trait in the context of control, but highlight their inability to scale to large datasets.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://enjeeneer.io/talks/slides_files/libs/revealjs/plugin/notes/speaker-view/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://enjeeneer.io/talks/slides_files/libs/revealjs/plugin/notes/speaker-view/</guid>
-      <description>reveal.js - Speaker View  body { font-family: Helvetica; font-size: 18px; } #current-slide, #upcoming-slide, #speaker-controls { padding: 6px; box-sizing: border-box; -moz-box-sizing: border-box; } #current-slide iframe, #upcoming-slide iframe { width: 100%; height: 100%; border: 1px solid #ddd; } #current-slide .label, #upcoming-slide .label { position: absolute; top: 10px; left: 10px; z-index: 2; } #connection-status { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 20; padding: 30% 20% 20% 20%; font-size: 18px; color: #222; background: #fff; text-align: center; box-sizing: border-box; line-height: 1.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://enjeeneer.io/talks/slides_files/libs/revealjs/plugin/reveal-chalkboard/readme/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://enjeeneer.io/talks/slides_files/libs/revealjs/plugin/reveal-chalkboard/readme/</guid>
-      <description>Chalkboard With this plugin you can add a chalkboard to reveal.js. The plugin provides two possibilities to include handwritten notes to your presentation:
- you can make notes directly on the slides, e.g. to comment on certain aspects, you can open a chalkboard or whiteboard on which you can make notes.  The main use case in mind when implementing the plugin is classroom usage in which you may want to explain some course content and quickly need to make some notes.</description>
     </item>
     
   </channel>

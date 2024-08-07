@@ -2,19 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://enjeeneer.io/talks/2024-08-09-rlc-tafm/</loc>
+    <lastmod>2024-08-07T17:01:15-04:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/</loc>
+    <lastmod>2024-08-07T17:01:15-04:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/tags/</loc>
+    <lastmod>2024-08-07T17:01:15-04:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/talks/</loc>
+    <lastmod>2024-08-07T17:01:15-04:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/tags/untagged/</loc>
+    <lastmod>2024-08-07T17:01:15-04:00</lastmod>
+  </url><url>
     <loc>https://enjeeneer.io/tags/philosophy-of-science/</loc>
     <lastmod>2024-06-14T09:50:27+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/tags/reseach-problems/</loc>
-    <lastmod>2024-06-14T09:50:27+01:00</lastmod>
-  </url><url>
-    <loc>https://enjeeneer.io/</loc>
-    <lastmod>2024-06-14T09:50:27+01:00</lastmod>
-  </url><url>
-    <loc>https://enjeeneer.io/tags/</loc>
-    <lastmod>2024-06-14T09:50:27+01:00</lastmod>
-  </url><url>
-    <loc>https://enjeeneer.io/talks/</loc>
     <lastmod>2024-06-14T09:50:27+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/talks/2024-06-14-reffciency/</loc>
@@ -33,9 +39,6 @@
     <lastmod>2024-04-09T16:02:24+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/projects/pearl/</loc>
-    <lastmod>2024-04-09T16:02:24+01:00</lastmod>
-  </url><url>
-    <loc>https://enjeeneer.io/tags/untagged/</loc>
     <lastmod>2024-04-09T16:02:24+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/talks/2022-06-23oxcav/</loc>
@@ -73,10 +76,6 @@
   </url><url>
     <loc>https://enjeeneer.io/about/</loc>
     <lastmod>2024-06-14T09:50:27+01:00</lastmod>
-  </url><url>
-    <loc>https://enjeeneer.io/talks/slides_files/libs/revealjs/plugin/notes/speaker-view/</loc>
-  </url><url>
-    <loc>https://enjeeneer.io/talks/slides_files/libs/revealjs/plugin/reveal-chalkboard/readme/</loc>
   </url><url>
     <loc>https://enjeeneer.io/authors/</loc>
   </url><url>
