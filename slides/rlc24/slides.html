@@ -326,7 +326,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="figures/cambridge-logo.png" data-background-position="50% 110%" data-background-size="25%" class="quarto-title-block center">
+<section id="title-slide" data-background-image="_extensions/scott/cambridge-logo.png" data-background-position="50% 110%" data-background-size="25%" class="quarto-title-block center">
   <h1 class="title">Dynamics Generalisation with Behaviour Foundation Models</h1>
   <p class="subtitle">Training Agents with Foundation Models Workshop</p>
 
@@ -377,7 +377,7 @@ Scott Jeen &amp; Jonathan M. Cullen
 <p><img data-src="figures/darc-modified-maze.png" style="width:850.0%"></p>
 <ol type="1">
 <li>Pre-train <span class="math inline">\(\pi(s,z)\)</span> on offline dataset <span class="math inline">\(D_{\text{train}}\)</span> from one env</li>
-<li>Collect small datasets of transitions from <span class="math inline">\(N\)</span> test envs <span class="math inline">\(\{D_{\text{test}}^1, \ldots, D_{\text{test}}^N\}\)</span></li>
+<li>Collect datasets of transitions from <span class="math inline">\(N\)</span> test envs <span class="math inline">\(\{D_{\text{test}}^1, \ldots, D_{\text{test}}^N\}\)</span></li>
 <li>Use <span class="math inline">\(\{D_{\text{test}}^1, \ldots, D_{\text{test}}^N\}\)</span> to condition <span class="math inline">\(\pi(s, z)\)</span> on test envs with changed dynamics</li>
 </ol>
 
@@ -396,19 +396,19 @@ Scott Jeen &amp; Jonathan M. Cullen
 </div>
 <div class="fragment">
 <p><br><br></p>
-<h3 id="key-idea-downweight-r-for-all-transitions-not-possible-under-changed-dynamics">Key idea: downweight <span class="math inline">\(R\)</span> for all transitions not possible under changed dynamics</h3>
+<h3 id="key-idea-downweight-r-for-transitions-not-possible-under-changed-dynamics">Key idea: downweight <span class="math inline">\(R\)</span> for transitions not possible under changed dynamics</h3>
 </div>
 </div>
 <div id="tabset-1-2">
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:40%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="figures/darc-intuition.png" style="width:80.0%"></p>
 <figcaption>(a) <span class="math inline">\(\pi(s,z)\)</span> is pre-trained (b) <span class="math inline">\(D_{\text{test}}\)</span> is collected in each test env and transitions not possible in the train env are downweighted (c) <span class="math inline">\(z\)</span> is inferred from <span class="math inline">\(D_{\text{test}}\)</span> and passed to <span class="math inline">\(\pi(s,z)\)</span>.</figcaption>
 </figure>
 </div>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:60%;">
 <div class="fragment">
 <ol type="1">
 <li>Collect <span class="math inline">\(\{D_{\text{test}}^1, \ldots, D_{\text{test}}^N\}\)</span>.</li>
@@ -447,8 +447,12 @@ Scott Jeen &amp; Jonathan M. Cullen
 </section>
 <section id="limitations" class="slide level2">
 <h2>Limitations</h2>
-
-<img data-src="figures/inference-dataset-size.png" style="width:100.0%" class="r-stretch"></section>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p><img data-src="figures/inference-dataset-size.png" style="width:100.0%"></p>
+</div>
+</div>
+</section>
 <section id="conclusions" class="slide level2">
 <h2>Conclusions</h2>
 <div class="fragment">
@@ -456,9 +460,6 @@ Scott Jeen &amp; Jonathan M. Cullen
 </div>
 <div class="fragment">
 <p><br><br> ❌ The classifier training sets need to be large (<span class="math inline">\(&gt;10^6\)</span> transitions) to achieve this (in our experiments)</p>
-</div>
-<div class="fragment">
-<p><br><br> ❌ These types of dynamics function changes may be uncommon in practice</p>
 </div>
 </section>
 <section id="thanks" class="slide level2">
@@ -474,7 +475,7 @@ Scott Jeen &amp; Jonathan M. Cullen
 </div>
 </div>
 <div class="quarto-auto-generated-content">
-<p><img src="figures/cambridge-badge.svg" class="slide-logo"></p>
+<p><img src="_extensions/scott/cambridge-badge.svg" class="slide-logo"></p>
 <div class="footer footer-default">
 <p>Scott Jeen | <a href="https://enjeeneer.io" class="uri">https://enjeeneer.io</a></p>
 </div>
@@ -656,7 +657,7 @@ Scott Jeen &amp; Jonathan M. Cullen
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1200,
 
         height: 700,
 
