@@ -40,7 +40,7 @@ Solutions to most problems aren’t particularly useful. Solutions to a small nu
 <ol>
 <li>Think deeply about your <em>moral axioms</em> (beliefs that require no justification), and build a tree of <em>proxies</em> (sub-problems) and their values that is as exhaustive as possible.</li>
 <li>Rank proxies by their <em>proxy score</em> (expected value).</li>
-<li>Think about what combination of skills you are Pareto best at, and find the proxy with maximum expected gain that requires these (i.e. for which you have a comparative advantage in solving).</li>
+<li>Think about what combination of skills you are Pareto best at, and find the proxy with the highest score that requires these (i.e. for which you have a comparative advantage in solving).</li>
 <li>Think about new skills that, if learned, would unlock proxies with higher proxy scores. Learn them.</li>
 </ol>
 <h3 id="further-reading">Further reading</h3>
