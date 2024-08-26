@@ -2,13 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://enjeeneer.io/talks/2024-08-09-rlc-tafm/</loc>
-    <lastmod>2024-08-07T17:01:15-04:00</lastmod>
+    <loc>https://enjeeneer.io/tags/meta-science/</loc>
+    <lastmod>2024-08-26T19:36:27+02:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/posts/</loc>
+    <lastmod>2024-08-26T19:36:27+02:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/</loc>
-    <lastmod>2024-08-07T17:01:15-04:00</lastmod>
+    <lastmod>2024-08-26T19:36:27+02:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/posts/2024/08/searching-for-useful-problems/</loc>
+    <lastmod>2024-08-26T19:36:27+02:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/tags/</loc>
+    <lastmod>2024-08-26T19:36:27+02:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/talks/2024-08-09-rlc-tafm/</loc>
     <lastmod>2024-08-07T17:01:15-04:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/talks/</loc>
@@ -33,9 +42,6 @@
     <lastmod>2024-06-14T09:50:27+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/posts/2023/01/neurips-2022/</loc>
-    <lastmod>2024-04-09T16:02:24+01:00</lastmod>
-  </url><url>
-    <loc>https://enjeeneer.io/posts/</loc>
     <lastmod>2024-04-09T16:02:24+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/projects/pearl/</loc>

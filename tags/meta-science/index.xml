@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>meta-science on Scott Jeen</title>
+    <link>https://enjeeneer.io/tags/meta-science/</link>
+    <description>Recent content in meta-science on Scott Jeen</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Mon, 26 Aug 2024 19:36:27 +0200</lastBuildDate><atom:link href="https://enjeeneer.io/tags/meta-science/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Searching for useful problems</title>
+      <link>https://enjeeneer.io/posts/2024/08/searching-for-useful-problems/</link>
+      <pubDate>Mon, 26 Aug 2024 19:36:27 +0200</pubDate>
+      
+      <guid>https://enjeeneer.io/posts/2024/08/searching-for-useful-problems/</guid>
+      <description>This post is based on a talk I gave to my research group at Cambridge University in June 2024. You can find the notes and slides for the talk here.
+Solutions to most problems aren’t particularly useful. Solutions to a small number of problems are extremely useful. If you’re interested in doing good, you’ll want to search for problems that look like the latter. It’s a hard search, but the ROI is likely greater than any other use of your time, and I have some ways of running it that I think make it a little more tractable.</description>
+    </item>
+    
+  </channel>
+</rss>

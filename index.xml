@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 07 Aug 2024 17:01:15 -0400</lastBuildDate><atom:link href="https://enjeeneer.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Aug 2024 19:36:27 +0200</lastBuildDate><atom:link href="https://enjeeneer.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Searching for useful problems</title>
+      <link>https://enjeeneer.io/posts/2024/08/searching-for-useful-problems/</link>
+      <pubDate>Mon, 26 Aug 2024 19:36:27 +0200</pubDate>
+      
+      <guid>https://enjeeneer.io/posts/2024/08/searching-for-useful-problems/</guid>
+      <description>This post is based on a talk I gave to my research group at Cambridge University in June 2024. You can find the notes and slides for the talk here.
+Solutions to most problems aren’t particularly useful. Solutions to a small number of problems are extremely useful. If you’re interested in doing good, you’ll want to search for problems that look like the latter. It’s a hard search, but the ROI is likely greater than any other use of your time, and I have some ways of running it that I think make it a little more tractable.</description>
+    </item>
+    
     <item>
       <title>Dynamics Generalisation with Behaviour Foundation Models</title>
       <link>https://enjeeneer.io/talks/2024-08-09-rlc-tafm/</link>
@@ -108,16 +118,6 @@ Heating and cooling systems in buildings account for 31% of global energy use, m
       <guid>https://enjeeneer.io/talks/2021-06-03-jesusmcrgreen/</guid>
       <description>Abstract
 Recent advances in the field of Reinforcement Learning, a subfield of Artificial Intelligence, have shown computers can achieve superhuman performance at complex games like Go, Starcraft and the Atari Suite without human knowledge. What if, instead of playing Space Invaders, we play the game of climate change mitigation? More specifically, how can we design games where the goal is to minimise carbon emissions in some setting, and learn to play them optimally?</description>
-    </item>
-    
-    <item>
-      <title>Notes, Exercises and Code for Sutton and Barto&#39;s Reinforcement Learning: An Introduction (2018)</title>
-      <link>https://enjeeneer.io/posts/2021/04/notes-exercises-and-code-for-sutton-and-bartos-reinforcement-learning-an-introduction-2018/</link>
-      <pubDate>Fri, 30 Apr 2021 18:18:24 +0100</pubDate>
-      
-      <guid>https://enjeeneer.io/posts/2021/04/notes-exercises-and-code-for-sutton-and-bartos-reinforcement-learning-an-introduction-2018/</guid>
-      <description>In the last few weeks I&amp;rsquo;ve been compiling a set of notes and exercise solutions for Sutton and Barto&amp;rsquo;s Reinforcement Learning: An Introduction. Admittedly, these were produced for my own benefit, but if you&amp;rsquo;d like to look at my notes, my (probably incorrect) answers to the exercises, or the code accommodating those answers, I&amp;rsquo;ll link directly to them below:
- Notes Exercises Code  Thanks to Bryn Hayder for inspiring this idea, and for providing his exercise solutions which helped me throughout.</description>
     </item>
     
   </channel>
