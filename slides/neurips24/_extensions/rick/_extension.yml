@@ -1,0 +1,16 @@
+title: Rick's presentation
+author: Rick Lupton
+version: 1.0.0
+contributes:
+  formats:
+    revealjs:
+      theme: [default, rick.scss]
+      footer: |
+        [https://enjeeneer.io/projects/zero-shot-rl/](https://enjeeneer.io/projects/zero-shot-rl/)
+#      title-slide-attributes:
+#        data-background-image: cambridge.png, cambridge.png
+#        data-background-size: 15%, 15%
+#        data-background-position: 60% 90%, 40% 90%
+      preview-links: auto
+      filters:
+        - prep-svg.lua
