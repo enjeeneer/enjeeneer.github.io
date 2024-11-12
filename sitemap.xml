@@ -2,28 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://enjeeneer.io/talks/2024-11-12-phd-reflection/</loc>
+    <lastmod>2024-11-12T14:18:07+00:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/</loc>
+    <lastmod>2024-11-12T14:18:07+00:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/tags/</loc>
+    <lastmod>2024-11-12T14:18:07+00:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/talks/</loc>
+    <lastmod>2024-11-12T14:18:07+00:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/tags/untagged/</loc>
+    <lastmod>2024-11-12T14:18:07+00:00</lastmod>
+  </url><url>
     <loc>https://enjeeneer.io/tags/meta-science/</loc>
     <lastmod>2024-08-26T19:36:27+02:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/posts/</loc>
     <lastmod>2024-08-26T19:36:27+02:00</lastmod>
   </url><url>
-    <loc>https://enjeeneer.io/</loc>
-    <lastmod>2024-08-26T19:36:27+02:00</lastmod>
-  </url><url>
     <loc>https://enjeeneer.io/posts/2024/08/searching-for-useful-problems/</loc>
     <lastmod>2024-08-26T19:36:27+02:00</lastmod>
   </url><url>
-    <loc>https://enjeeneer.io/tags/</loc>
-    <lastmod>2024-08-26T19:36:27+02:00</lastmod>
-  </url><url>
     <loc>https://enjeeneer.io/talks/2024-08-09-rlc-tafm/</loc>
-    <lastmod>2024-08-07T17:01:15-04:00</lastmod>
-  </url><url>
-    <loc>https://enjeeneer.io/talks/</loc>
-    <lastmod>2024-08-07T17:01:15-04:00</lastmod>
-  </url><url>
-    <loc>https://enjeeneer.io/tags/untagged/</loc>
     <lastmod>2024-08-07T17:01:15-04:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/tags/philosophy-of-science/</loc>

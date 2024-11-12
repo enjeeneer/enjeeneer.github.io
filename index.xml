@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 26 Aug 2024 19:36:27 +0200</lastBuildDate><atom:link href="https://enjeeneer.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Nov 2024 14:18:07 +0000</lastBuildDate><atom:link href="https://enjeeneer.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>4 Years in 4(ish) Minutes</title>
+      <link>https://enjeeneer.io/talks/2024-11-12-phd-reflection/</link>
+      <pubDate>Tue, 12 Nov 2024 14:18:07 +0000</pubDate>
+      
+      <guid>https://enjeeneer.io/talks/2024-11-12-phd-reflection/</guid>
+      <description>[Click here for full-screen slideshow]</description>
+    </item>
+    
     <item>
       <title>Searching for useful problems</title>
       <link>https://enjeeneer.io/posts/2024/08/searching-for-useful-problems/</link>
@@ -108,16 +117,6 @@ Heating and cooling systems in buildings account for 31% of global energy use, m
       <description>The best way to walk through this tutorial is using the accompanying Jupyter Notebook: 
 [Jupyter Notebook]
 - In the last year I&amp;rsquo;ve started presenting work using Jupyter Notebooks, rebelling against the Bill Gates&#39;-driven status-quo. Here I&amp;rsquo;ll explain how to do it. It&amp;rsquo;s not difficult, but in my opinion makes presentations look slicker, whilst allowing you to run code live in a presentation if you like. First, we need to download the plug-in that gives us the presentation functionality, it&amp;rsquo;s called RISE.</description>
-    </item>
-    
-    <item>
-      <title>Space Invasion, Space Invaders, and Climate Change Mitigation</title>
-      <link>https://enjeeneer.io/talks/2021-06-03-jesusmcrgreen/</link>
-      <pubDate>Thu, 03 Jun 2021 11:50:52 +0100</pubDate>
-      
-      <guid>https://enjeeneer.io/talks/2021-06-03-jesusmcrgreen/</guid>
-      <description>Abstract
-Recent advances in the field of Reinforcement Learning, a subfield of Artificial Intelligence, have shown computers can achieve superhuman performance at complex games like Go, Starcraft and the Atari Suite without human knowledge. What if, instead of playing Space Invaders, we play the game of climate change mitigation? More specifically, how can we design games where the goal is to minimise carbon emissions in some setting, and learn to play them optimally?</description>
     </item>
     
   </channel>
