@@ -1,0 +1,59 @@
+/*-- scss:defaults --*/
+
+// $body-bg: #191919;
+$body-color: #222;
+$link-color: #2a76dd;
+
+$presentation-font-size-root: 30px;
+$presentation-h1-font-size: 2.0em;
+$presentation-h2-font-size: 1.5em;
+$presentation-h3-font-size: 1.2em;
+$presentation-h4-font-size: 1.0em;
+
+/*-- scss:rules --*/
+
+.reveal .slide blockquote {
+  border-left: 3px solid $text-muted;
+  padding-left: 0.5em;
+}
+
+// Title slide
+.reveal .slides #title-slide {
+    text-align: left;
+    // Doesn't work because SCSS adjusts paths?
+    background-image: url(cambridge.png);
+    background-repeat: no-repeat;
+    background-position: 0% 98%;
+    background-size: 35%;
+    padding-bottom: 150px;
+
+    .subtitle {
+        font-variant: petite-caps;
+        text-transform: lowercase;
+        letter-spacing: 0.05em;
+        // margin-top: 3em;
+    }
+
+    .quarto-title-authors {
+        justify-content: left;
+
+        .quarto-title-author {
+            padding-left: 0;
+        }
+    }
+    .author {
+        font-size: 1.2em;
+        margin-bottom: 0;
+    }
+
+    .institute {
+        font-size: 0.7em;
+        margin-top: 0;
+    }
+}
+
+.reveal .slides .columns {
+  display: flex;
+  align-items: center; /* Vertically center content */
+  padding-top: 90px;
+}
