@@ -345,37 +345,54 @@ Scott Jeen<span class="math inline">\(^{\alpha}\)</span>, Tom Bewley<span class=
 <h2>Motivation</h2>
 <div class="fragment">
 <ul>
-<li>(Zero-shot) Generalisation in RL is hard! [1]</li>
+<li>Training policies to (zero-shot) generalise to unseen tasks in an environment is hard! [1]</li>
 </ul>
 </div>
 
 <div class="fragment">
 <ul>
-<li>Behaviour Foundation Models (BFMs) provide principled mechanisms for pre-training agents to generalise to <em>any</em> downstream reward function [2]</li>
+<li>Behaviour Foundation Models (BFMs) based on forward-backward representations (FB) [2] and universal successor features (USF) [3], provide principled mechanisms for performing zero-shot task generalisation</li>
 </ul>
 </div>
 
 <div class="fragment">
 <ul>
-<li>BFMs are usually trained on idealised datasets that we can’t expect for real problems</li>
+<li>However, BFMs assumed access to idealised (large &amp; diverse) pre-training datasets that we can’t expect for real problems</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li><strong>Can we pre-train BFMs on realistic, low-quality datasets?</strong></li>
+<li><strong>Can we pre-train BFMs on realistic (small &amp; narrow) datasets?</strong></li>
 </ul>
 </div>
 <aside><div>
 <p>[1] Robert Kirk, Amy Zhang, Edward Grefenstette, and Tim Rocktäschel. <em>A survey of zero-shot generalisation in deep reinforcement learning</em>. JAIR 2023</p>
 </div><div>
 <p>[2] Ahmed Touati, Jérémy Rapin, and Yann Ollivier. <em>Does zero-shot reinforcement learning exist?</em> ICLR 2023</p>
+<p>[3] Seohong Park, Tobias Kreiman, and Sergey Levine. <em>Foundation Policies with Hilbert Representations</em>. ICML 2024</p>
 </div></aside></section>
-<section id="the-distribution-shift-in-bfms" class="slide level2">
-<h2>The <em>Distribution Shift</em> in BFMs</h2>
-<div style="padding-top: 30px;">
+<section id="out-of-distribution-value-overestimation-in-bfms" class="slide level2">
+<h2>Out-of-distribution Value Overestimation in BFMs</h2>
 <div style="text-align: center;">
 <p><img data-src="figures/overestimates.png" style="width:85.0%"></p>
 </div>
+</section>
+<section id="out-of-distribution-value-overestimation-in-bfms-1" class="slide level2">
+<h2>Out-of-distribution Value Overestimation in BFMs</h2>
+<div style="text-align: center;">
+<p><img data-src="figures/overestimates.png" style="width:85.0%"></p>
+</div>
+<div style="text-align: center;">
+<p><img data-src="figures/fb-loss.png" style="width:100.0%"></p>
+</div>
+</section>
+<section id="out-of-distribution-value-overestimation-in-bfms-2" class="slide level2">
+<h2>Out-of-distribution Value Overestimation in BFMs</h2>
+<div style="text-align: center;">
+<p><img data-src="figures/overestimates.png" style="width:85.0%"></p>
+</div>
+<div style="text-align: center;">
+<p><img data-src="figures/fb-loss-2.png" style="width:100.0%"></p>
 </div>
 
 <aside><div>
@@ -383,49 +400,49 @@ Scott Jeen<span class="math inline">\(^{\alpha}\)</span>, Tom Bewley<span class=
 </div></aside></section>
 <section id="conservative-bfms" class="slide level2">
 <h2><em>Conservative</em> BFMs</h2>
-
-<img data-src="figures/vcfb-intuition-1.png" style="width:90.0%" class="r-stretch"></section>
+</section>
 <section id="conservative-bfms-1" class="slide level2">
 <h2><em>Conservative</em> BFMs</h2>
 
-<img data-src="figures/vcfb-intuition-2.png" style="width:90.0%" class="r-stretch"></section>
+<img data-src="figures/vcfb-intuition-0.png" style="width:90.0%" class="r-stretch"></section>
 <section id="conservative-bfms-2" class="slide level2">
 <h2><em>Conservative</em> BFMs</h2>
 
-<img data-src="figures/vcfb-intuition-3.png" style="width:90.0%" class="r-stretch"></section>
+<img data-src="figures/vcfb-intuition-1.png" style="width:90.0%" class="r-stretch"></section>
 <section id="conservative-bfms-3" class="slide level2">
 <h2><em>Conservative</em> BFMs</h2>
+
+<img data-src="figures/vcfb-intuition-2.png" style="width:90.0%" class="r-stretch"></section>
+<section id="conservative-bfms-4" class="slide level2">
+<h2><em>Conservative</em> BFMs</h2>
 <p><img data-src="figures/vcfb-intuition-3.png" style="width:100.0%"></p>
-<h4 id="key-idea-regularise-value-estimates-vc-fb-or-measure-estimates-mc-fb-at-state-action-pairs-not-in-the-dataset-think-cql-for-bfms-4">Key idea: regularise value estimates (<span style="color: #029E73;">VC-FB</span>) or measure estimates (<span style="color: #56B4E9;">MC-FB</span>) at state-action pairs not in the dataset (think CQL for BFMs [4])</h4>
+<p><img data-src="figures/vcfb-equation.png" style="width:77.0%"> <img data-src="figures/mcfb-equation.png" style="width:100.0%"></p>
 
 <aside><div>
 <p>[4] Aviral Kumar, Aurick Zhou, George Tucker, and Sergey Levine. <em>Conservative q-learning for offline reinforcement learning.</em> NeurIPS 2020</p>
 </div></aside></section>
-<section id="didactic-example" class="slide level2">
-<h2>Didactic Example</h2>
-<div style="padding-top: 50px;">
-<div style="text-align: center;">
-<p><img data-src="figures/didactic-1.png" style="width:100.0%"></p>
-</div>
-</div>
-</section>
-<section id="didactic-example-1" class="slide level2">
-<h2>Didactic Example</h2>
-<div style="padding-top: 50px;">
-<div style="text-align: center;">
-<p><img data-src="figures/didactic-2.png" style="width:100.0%"></p>
-</div>
-</div>
-</section>
-<section id="didactic-example-2" class="slide level2">
-<h2>Didactic Example</h2>
-<div style="padding-top: 50px;">
-<div style="text-align: center;">
-<p><img data-src="figures/didactic-3.png" style="width:100.0%"></p>
-</div>
-</div>
-</section>
 <section id="exorl-results" class="slide level2">
+<h2>ExORL Results</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="baselines">Baselines</h3>
+<ul>
+<li><strong>Zero-shot RL:</strong> FB, SF-LAP [5]</li>
+<li><strong>Goal-conditioned RL:</strong> GC-IQL [6]</li>
+<li><strong>Offline RL:</strong> CQL [7]</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="datasets">Datasets</h3>
+<p><img data-src="figures/dataset-heatmap.png" style="width:100.0%"></p>
+</div>
+</div>
+
+<aside><div>
+<p>[5] Ahmed Touati, Jérémy Rapin, and Yann Ollivier. <em>Does zero-shot reinforcement learning exist?</em> ICLR 2023</p>
+<p>[6] Seohong Park, Dibya Ghosh, Benjamin Eysenbach, and Sergey Levine. <em>Hiql: Offline goalconditioned rl with latent states as actions.</em> NeurIPS 2023.</p>
+<p>[7] Aviral Kumar, Justin Fu, Matthew Soh, George Tucker, and Sergey Levine. <em>Conservative q-learning for offline reinforcement learning.</em> NeurIPS 2020</p>
+</div></aside></section>
+<section id="exorl-results-1" class="slide level2">
 <h2>ExORL Results</h2>
 <div style="padding-top: 50px;">
 <p><img data-src="figures/performance-profiles-subplot.png" style="width:100.0%"></p>
