@@ -14,11 +14,10 @@
       <pubDate>Tue, 26 Sep 2023 17:27:21 +0100</pubDate>
       
       <guid>https://enjeeneer.io/projects/zero-shot-rl/</guid>
-      <description>Scott Jeen\(^{1}\), Tom Bewley\(^{2}\), &amp;amp; Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
+      <description>NeurIPS 2024 Scott Jeen\(^{1}\), Tom Bewley\(^{2}\), &amp;amp; Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
 \(^{2}\) University of Bristol
 [Paper] [Code] [Poster] [Slides]
- Summary  Figure 1: Conservative zero-shot RL methods.
-Zero-shot reinforcement learning (RL) concerns itself with learning general policies that can solve any unseen task in an environment. Recently, methods leveraging successor features and successor measures have emerged as viable zero-shot RL candidates, returning near-optimal policies for many unseen tasks. However, to enable this, they have assumed access to unrealistically large and heterogeneous datasets of transitions for pre-training.</description>
+ Summary Zero-shot reinforcement learning (RL) methods learn general policies that can, in principle, solve any unseen task in an environment. Recently, methods leveraging successor features and successor measures have emerged as viable zero-shot RL candidates, returning near-optimal policies for many unseen tasks. However, to enable this, they have assumed access to unrealistically large and heterogeneous datasets of transitions for pre-training.</description>
     </item>
     
     <item>
