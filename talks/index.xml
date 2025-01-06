@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 12 Nov 2024 14:18:07 +0000</lastBuildDate><atom:link href="https://enjeeneer.io/talks/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 10 Dec 2024 17:01:15 -0400</lastBuildDate><atom:link href="https://enjeeneer.io/talks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Zero-Shot Reinforcement Learning from Low Quality Data</title>
+      <link>https://enjeeneer.io/talks/neurips/</link>
+      <pubDate>Tue, 10 Dec 2024 17:01:15 -0400</pubDate>
+      
+      <guid>https://enjeeneer.io/talks/neurips/</guid>
+      <description>[Click here for full-screen slideshow]</description>
+    </item>
+    
     <item>
       <title>4 Years in 4(ish) Minutes</title>
       <link>https://enjeeneer.io/talks/2024-11-12-phd-reflection/</link>
