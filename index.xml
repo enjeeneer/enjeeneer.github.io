@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 31 Mar 2025 21:15:18 +0100</lastBuildDate><atom:link href="https://enjeeneer.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Jun 2025 21:48:13 +0100</lastBuildDate><atom:link href="https://enjeeneer.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Zero-Shot Reinforcement Learning Under Partial Observability</title>
+      <link>https://enjeeneer.io/projects/bfms-with-memory/</link>
+      <pubDate>Thu, 12 Jun 2025 21:48:13 +0100</pubDate>
+      
+      <guid>https://enjeeneer.io/projects/bfms-with-memory/</guid>
+      <description>RL Conference 2025 Scott Jeen\(^{1}\), Tom Bewley, &amp;amp; Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
+[Paper] [Code]
+ Summary Zero-shot reinforcement learning (RL) methods learn general policies that can, in principle, solve any unseen task in an environment. Recently, methods leveraging successor features and successor measures have emerged as viable zero-shot RL candidates, returning near-optimal policies for many unseen tasks. However, to enable this, they have assumed access to unrealistically large and heterogeneous datasets of transitions for pre-training.</description>
+    </item>
+    
     <item>
       <title>20s</title>
       <link>https://enjeeneer.io/posts/2025/03/20s/</link>
@@ -98,20 +109,6 @@ David Deutsch
       <description>I was fortunate to attend NeurIPS in New Orleans in November. Here, I publish my takeaways to give you a feel for the zeitgeist. I’ll discuss, firstly, the papers, then the workshops, and finally, and briefly, the keynotes.
 Papers Here’s a ranked list of my top 8 papers. Most are on Offline RL, which is representative of the conference writ large.
 1. Does Zero-Shot Reinforcement Learning Exist (Touati et. al, 2022)</description>
-    </item>
-    
-    <item>
-      <title>Low Emission Building Control with Zero-Shot Reinforcement Learning</title>
-      <link>https://enjeeneer.io/projects/pearl/</link>
-      <pubDate>Fri, 12 Aug 2022 09:34:36 +0100</pubDate>
-      
-      <guid>https://enjeeneer.io/projects/pearl/</guid>
-      <description>In Proceedings of the AAAI Conference on Artificial Intelligence (Vol. 37, No. 12, pp. 14259-14267)
-Scott R. Jeen\(^{1,3}\), Alessandro Abate\(^{2,3}\), Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
-\(^{2}\) University of Oxford
-\(^{3}\) Alan Turing Institute
-[Paper] [Code] [Talk] [Poster]
-   PEARL: Probabilistic Emission-Abating Reinforcement Learning  Presenting PEARL: Probabilistic Emission-Abating Reinforcement Learning, a deep RL algorithm that can find performant building control policies online, without pre-training&amp;ndash;the first time this has been shown to be possible.</description>
     </item>
     
   </channel>

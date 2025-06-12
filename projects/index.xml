@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 26 Sep 2023 17:27:21 +0100</lastBuildDate><atom:link href="https://enjeeneer.io/projects/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Jun 2025 21:48:13 +0100</lastBuildDate><atom:link href="https://enjeeneer.io/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Zero-Shot Reinforcement Learning Under Partial Observability</title>
+      <link>https://enjeeneer.io/projects/bfms-with-memory/</link>
+      <pubDate>Thu, 12 Jun 2025 21:48:13 +0100</pubDate>
+      
+      <guid>https://enjeeneer.io/projects/bfms-with-memory/</guid>
+      <description>RL Conference 2025 Scott Jeen\(^{1}\), Tom Bewley, &amp;amp; Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
+[Paper] [Code]
+ Summary Zero-shot reinforcement learning (RL) methods learn general policies that can, in principle, solve any unseen task in an environment. Recently, methods leveraging successor features and successor measures have emerged as viable zero-shot RL candidates, returning near-optimal policies for many unseen tasks. However, to enable this, they have assumed access to unrealistically large and heterogeneous datasets of transitions for pre-training.</description>
+    </item>
+    
     <item>
       <title>Zero-Shot Reinforcement Learning from Low Quality Data</title>
       <link>https://enjeeneer.io/projects/zero-shot-rl/</link>

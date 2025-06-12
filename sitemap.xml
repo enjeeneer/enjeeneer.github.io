@@ -2,13 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://enjeeneer.io/projects/</loc>
+    <lastmod>2025-06-12T21:48:13+01:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/</loc>
+    <lastmod>2025-06-12T21:48:13+01:00</lastmod>
+  </url><url>
+    <loc>https://enjeeneer.io/projects/bfms-with-memory/</loc>
+    <lastmod>2025-06-12T21:48:13+01:00</lastmod>
+  </url><url>
     <loc>https://enjeeneer.io/posts/2025/03/20s/</loc>
     <lastmod>2025-03-31T21:15:18+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/posts/</loc>
-    <lastmod>2025-03-31T21:15:18+01:00</lastmod>
-  </url><url>
-    <loc>https://enjeeneer.io/</loc>
     <lastmod>2025-03-31T21:15:18+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/tags/</loc>
@@ -39,61 +45,58 @@
     <lastmod>2024-08-07T17:01:15-04:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/tags/philosophy-of-science/</loc>
-    <lastmod>2024-06-14T09:50:27+01:00</lastmod>
+    <lastmod>2024-06-14T09:34:36+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/tags/reseach-problems/</loc>
-    <lastmod>2024-06-14T09:50:27+01:00</lastmod>
+    <lastmod>2024-06-14T09:34:36+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/talks/2024-06-14-reffciency/</loc>
-    <lastmod>2024-06-14T09:50:27+01:00</lastmod>
-  </url><url>
-    <loc>https://enjeeneer.io/projects/</loc>
-    <lastmod>2024-06-14T09:50:27+01:00</lastmod>
+    <lastmod>2024-06-14T09:34:36+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/projects/zero-shot-rl/</loc>
-    <lastmod>2024-06-14T09:50:27+01:00</lastmod>
+    <lastmod>2023-09-26T17:27:21+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/posts/2023/01/neurips-2022/</loc>
-    <lastmod>2024-04-09T16:02:24+01:00</lastmod>
+    <lastmod>2023-01-26T21:08:05+00:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/projects/pearl/</loc>
-    <lastmod>2024-04-09T16:02:24+01:00</lastmod>
+    <lastmod>2022-08-12T09:34:36+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/talks/2022-06-23oxcav/</loc>
-    <lastmod>2024-04-09T16:02:24+01:00</lastmod>
+    <lastmod>2022-06-23T09:34:36+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/posts/2022/02/one-hour-rl/</loc>
-    <lastmod>2024-04-09T16:02:24+01:00</lastmod>
+    <lastmod>2022-02-25T15:23:20+00:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/posts/2021/11/presenting-with-jupyter-notebooks/</loc>
-    <lastmod>2022-02-25T11:22:49+00:00</lastmod>
+    <lastmod>2021-11-17T09:03:11-05:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/talks/2021-06-03-jesusmcrgreen/</loc>
-    <lastmod>2024-04-09T16:02:24+01:00</lastmod>
+    <lastmod>2021-06-03T11:50:52+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/posts/2021/04/notes-exercises-and-code-for-sutton-and-bartos-reinforcement-learning-an-introduction-2018/</loc>
-    <lastmod>2022-02-25T11:22:49+00:00</lastmod>
+    <lastmod>2021-04-30T18:18:24+01:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/posts/2021/04/scotts-uncomprehensive-guide-to-scotland/</loc>
-    <lastmod>2022-02-25T11:22:49+00:00</lastmod>
+    <lastmod>2021-04-19T21:08:05+00:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/tags/black-box-functions/</loc>
-    <lastmod>2022-02-25T11:22:49+00:00</lastmod>
+    <lastmod>2021-03-15T16:55:47+00:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/tags/machine-learning/</loc>
-    <lastmod>2022-02-25T11:22:49+00:00</lastmod>
+    <lastmod>2021-03-15T16:55:47+00:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/tags/rl/</loc>
-    <lastmod>2022-02-25T11:22:49+00:00</lastmod>
+    <lastmod>2021-03-15T16:55:47+00:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/talks/2021-03-15-xchangeseminar/</loc>
-    <lastmod>2022-02-25T11:22:49+00:00</lastmod>
+    <lastmod>2021-03-15T16:55:47+00:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/projects/</loc>
-    <lastmod>2021-01-05T21:50:42+00:00</lastmod>
+    <lastmod>2021-01-04T17:34:13+00:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/about/</loc>
-    <lastmod>2024-06-14T09:50:27+01:00</lastmod>
+    <lastmod>2021-01-04T17:15:23+00:00</lastmod>
   </url><url>
     <loc>https://enjeeneer.io/authors/</loc>
   </url><url>
