@@ -16,7 +16,8 @@
       <guid>https://enjeeneer.io/projects/bfms-with-memory/</guid>
       <description>RL Conference 2025 Scott Jeen\(^{1}\), Tom Bewley, &amp;amp; Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
 [Paper] [Code]
- Summary Zero-shot reinforcement learning (RL) methods learn general policies that can, in principle, solve any unseen task in an environment. Recently, methods leveraging successor features and successor measures have emerged as viable zero-shot RL candidates, returning near-optimal policies for many unseen tasks. However, to enable this, they have assumed access to unrealistically large and heterogeneous datasets of transitions for pre-training.</description>
+  Figure 1: BFMs with memory. In the case of FB, the forward model F and backward model B condition on the output of memory models that compress trajectories of observations and actions to estimate the underlying state. 
+Summary Behaviour foundation models (BFMs) can learn general policies that solve any unseen task in an environment under certain assumptions.</description>
     </item>
     
     <item>

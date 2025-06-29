@@ -7,7 +7,8 @@
 <meta name="author" content="Scott Jeen">
 <meta name="description" content="RL Conference 2025 Scott Jeen\(^{1}\), Tom Bewley, &amp;amp; Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
 [Paper] [Code]
- Summary Zero-shot reinforcement learning (RL) methods learn general policies that can, in principle, solve any unseen task in an environment. Recently, methods leveraging successor features and successor measures have emerged as viable zero-shot RL candidates, returning near-optimal policies for many unseen tasks. However, to enable this, they have assumed access to unrealistically large and heterogeneous datasets of transitions for pre-training." />
+  Figure 1: BFMs with memory. In the case of FB, the forward model F and backward model B condition on the output of memory models that compress trajectories of observations and actions to estimate the underlying state. 
+Summary Behaviour foundation models (BFMs) can learn general policies that solve any unseen task in an environment under certain assumptions." />
 <meta name="keywords" content="Scott Jeen" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="#6B8E23" />
@@ -59,9 +60,10 @@ if (!doNotTrack) {
 <meta itemprop="name" content="Zero-Shot Reinforcement Learning Under Partial Observability">
 <meta itemprop="description" content="RL Conference 2025 Scott Jeen\(^{1}\), Tom Bewley, &amp; Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
 [Paper] [Code]
- Summary Zero-shot reinforcement learning (RL) methods learn general policies that can, in principle, solve any unseen task in an environment. Recently, methods leveraging successor features and successor measures have emerged as viable zero-shot RL candidates, returning near-optimal policies for many unseen tasks. However, to enable this, they have assumed access to unrealistically large and heterogeneous datasets of transitions for pre-training."><meta itemprop="datePublished" content="2025-06-12T21:48:13+01:00" />
+  Figure 1: BFMs with memory. In the case of FB, the forward model F and backward model B condition on the output of memory models that compress trajectories of observations and actions to estimate the underlying state. 
+Summary Behaviour foundation models (BFMs) can learn general policies that solve any unseen task in an environment under certain assumptions."><meta itemprop="datePublished" content="2025-06-12T21:48:13+01:00" />
 <meta itemprop="dateModified" content="2025-06-12T21:48:13+01:00" />
-<meta itemprop="wordCount" content="412"><meta itemprop="image" content="https://enjeeneer.io"/>
+<meta itemprop="wordCount" content="677"><meta itemprop="image" content="https://enjeeneer.io"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://enjeeneer.io"/>
@@ -69,14 +71,16 @@ if (!doNotTrack) {
 <meta name="twitter:title" content="Zero-Shot Reinforcement Learning Under Partial Observability"/>
 <meta name="twitter:description" content="RL Conference 2025 Scott Jeen\(^{1}\), Tom Bewley, &amp; Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
 [Paper] [Code]
- Summary Zero-shot reinforcement learning (RL) methods learn general policies that can, in principle, solve any unseen task in an environment. Recently, methods leveraging successor features and successor measures have emerged as viable zero-shot RL candidates, returning near-optimal policies for many unseen tasks. However, to enable this, they have assumed access to unrealistically large and heterogeneous datasets of transitions for pre-training."/>
+  Figure 1: BFMs with memory. In the case of FB, the forward model F and backward model B condition on the output of memory models that compress trajectories of observations and actions to estimate the underlying state. 
+Summary Behaviour foundation models (BFMs) can learn general policies that solve any unseen task in an environment under certain assumptions."/>
 
 
 
     <meta property="og:title" content="Zero-Shot Reinforcement Learning Under Partial Observability" />
 <meta property="og:description" content="RL Conference 2025 Scott Jeen\(^{1}\), Tom Bewley, &amp; Jonathan M. Cullen\(^{1}\) \(^{1}\) University of Cambridge
 [Paper] [Code]
- Summary Zero-shot reinforcement learning (RL) methods learn general policies that can, in principle, solve any unseen task in an environment. Recently, methods leveraging successor features and successor measures have emerged as viable zero-shot RL candidates, returning near-optimal policies for many unseen tasks. However, to enable this, they have assumed access to unrealistically large and heterogeneous datasets of transitions for pre-training." />
+  Figure 1: BFMs with memory. In the case of FB, the forward model F and backward model B condition on the output of memory models that compress trajectories of observations and actions to estimate the underlying state. 
+Summary Behaviour foundation models (BFMs) can learn general policies that solve any unseen task in an environment under certain assumptions." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://enjeeneer.io/projects/bfms-with-memory/" /><meta property="og:image" content="https://enjeeneer.io"/><meta property="article:section" content="projects" />
 <meta property="article:published_time" content="2025-06-12T21:48:13+01:00" />
@@ -182,60 +186,75 @@ if (!doNotTrack) {
                 <h2 id="rl-conference-2025">RL Conference 2025</h2>
 <h3 id="scott-jeen1-tom-bewley--jonathan-m-cullen1">Scott Jeen\(^{1}\), Tom Bewley, &amp; Jonathan M. Cullen\(^{1}\)</h3>
 <p>\(^{1}\) <em>University of Cambridge</em></p>
-<p><strong><a href="https://arxiv.org/abs/2309.15178">[Paper]</a></strong>
-<strong><a href="https://github.com/enjeeneer/zero-shot-rl">[Code]</a></strong></p>
+<p><strong><a href="https://arxiv.org/abs/2506.15446">[Paper]</a></strong>
+<strong><a href="https://github.com/enjeeneer/bfms-with-memory">[Code]</a></strong></p>
 <hr>
+<p><figure><img src="https://github.com/enjeeneer/bfms-with-memory/blob/main/assets/fb-with-memory-architecture.png?raw=true"/>
+</figure>
+
+<small><em>Figure 1: <strong>BFMs with memory</strong>.  In the case of FB, the forward model F and backward model B condition on
+the output of memory models that compress trajectories of observations and actions to estimate the underlying state.</em> </small></p>
 <h2 id="summary">Summary</h2>
-<p>Zero-shot reinforcement learning (RL) methods learn general policies that can, in principle, solve any unseen task in an environment. Recently,
-methods leveraging successor features and successor measures have emerged as viable
-zero-shot RL candidates, returning near-optimal policies
-for many unseen tasks. However, to enable this, they have assumed access to unrealistically large and heterogeneous datasets of transitions for pre-training. Most real datasets,
-like historical logs created by existing control systems, are smaller and less diverse than these current methods expect. As a result, this paper asks:</p>
-<p><strong>Can we still perform zero-shot RL with small, homogeneous datasets?</strong></p>
+<p>Behaviour foundation models (BFMs) can learn general policies that solve <em>any</em> unseen task in an environment under certain assumptions.
+BFMs have so far assumed access to Markov states that provide all the information required to solve a task,
+but in most real problems this is an unrealistic assumption and the state is only <em>partially observed</em>. The general fix for partial observability is to
+use <em>memory models</em> (like Transformers and RNNs) to estimate underlying states from histories of observations and actions. This work
+augments BFMs with memory models to improve their performance when subjected to partial observability.</p>
 <hr>
 <h2 id="intuition">Intuition</h2>
-<p>When the dataset is inexhaustive, existing methods like FB representations overestimate the value of actions not in the dataset (Figure 2). The above
-shows this overestimation as dataset size and quality is varied. The smaller and less diverse the dataset, the more
-\(Q\) values tend to be overestimated.</p>
-<figure><img src="https://github.com/enjeeneer/conservative-world-models/blob/main/media/overestimates.png?raw=true"/>
+<p>When BFMs are fed noisy or partial observations instead of clean states, they break in predictable ways (Figure 2). The forward model,
+which predicts how the world will evolve, misrepresents the true dynamics—this throws off the Q-values and leads to bad
+action choices. Meanwhile, the backward model, which tries to infer what task the agent is solving based
+on where it ends up, also fails because it can’t reliably associate partial observations with the correct reward structure.
+These breakdowns—state and task misidentification—undermine the policy’s ability to plan effectively. Our fix? Plug
+in memory models to help the BFM reconstruct the underlying state and task from past observations and actions.
+This lets us keep the same architecture, but extend its powers to messy, partially observed settings.</p>
+<figure><img src="https://github.com/enjeeneer/bfms-with-memory/blob/main/assets/fb-pomdp-failure-mode.png?raw=true"/>
 </figure>
 
-<p><small><em>Figure 1: <strong>FB value overestimation with respect to dataset size \(n\) and quality</strong>. \(Q\) values predicted during training
-increase as both the size and “quality&quot; of the dataset decrease. This contradicts the low return of all resultant
-policies (note: a return of 1000 is the maximum achievable for this task).</em> </small></p>
-<p>We fix this by suppressing the predicted values (or measures) for state-actions not in the dataset.</p>
-<figure><img src="https://github.com/enjeeneer/conservative-world-models/blob/main/media/vcfb-intuition-final.png?raw=true"/>
-</figure>
-
-<p><small><em>Figure 2: <strong>Conservative zero-shot RL methods</strong>. VC-FB (right) suppresses the predicted values for OOD state-action pairs**</em></small></p>
+<p><small><em>Figure 2: <strong>The failure modes of BFMs under partial observability</strong>. FB’s average (IQM) all-task return
+on Walker when observations are passed to its respective components. Observations are created by adding
+Gaussian noise to the underlying states. (Left) Observations are passed as input to B causing FB to misidentify
+the task. (Middle) Observations are passed as input to F and π causing FB to misidentify the state. (Right)
+Observations are passed as input to F, π and B causing FB to misidentify both the task and state.</em> </small></p>
 <hr>
 <h2 id="results">Results</h2>
-<p>We demonstrate our methods improve performance w.r.t standard zero-shot RL / GCRL baselines on low quality datasets from ExORL (Figure 3) and D4RL (Figure 4), and do not hinder performance on large and diverse datasets (Figure 5).
-<figure><img src="https://github.com/enjeeneer/zero-shot-rl/blob/main/media/performance-profiles-subplot2.png?raw=true"/>
+<p>We demonstrate our methods improve performance w.r.t memory free BFMs on ExORL environments adapted to exhibit
+partially observed states (Figure 3) and changes in dynamics (Figure 4).
+<figure><img src="https://github.com/enjeeneer/bfms-with-memory/blob/main/assets/results-generalisation.png?raw=true" width="100%"/>
 </figure>
 </p>
-<p><small><em>Figure 3: <strong>Aggregate zero-shot performance on ExORL.</strong> (Left) IQM of task scores across datasets and domains,
-normalised against the performance of CQL, our baseline. (Right) Performance profiles showing the distribution
-of scores across all tasks and domains. Both conservative FB variants stochastically dominate vanilla FB.</em></small></p>
-<figure><img src="https://github.com/enjeeneer/zero-shot-rl/blob/main/media/d4rl-performance.png?raw=true" width="50%"/>
+<p><small>_Figure 3: <strong>Aggregate zero-shot task performance on ExORL with partially observed states.</strong> IQM of task
+scores across all tasks on noisy and flickering variants of Walker, Cheetah and Quadruped, normalised
+against the performance of FB in the fully observed environment. 5 random seeds.</small></p>
+<figure><img src="https://github.com/enjeeneer/bfms-with-memory/blob/main/assets/results-states.png?raw=true" width="100%"/>
 </figure>
 
-<p><small><em>Figure 4: <strong>Aggregate zero-shot RL performance on D4RL.</strong> Aggregate IQM scores across all domains and datasets,
-normalised against the performance of CQL.</em></small></p>
-<figure><img src="/img/zero-shot-rl-dataset-size.png" width="450"/>
+<p><small><em>Figure 4: <strong>Aggregate zero-shot task performance on ExORL with changed dynamics at test time.</strong> IQM of
+task scores across all tasks when trained on dynamics where mass and damping coefficients are scaled to {0.5×,
+1.5×} their usual values and evaled on {1.0×, 2.0×} their usual values, normalised against the performance of
+FB in the fully observed environment. To solve the test dynamics with 1.0× scaling the agent must interpolate
+within the training set; to solve the test dynamics with 2.0× scaling the agent must extrapolate from the training
+set.</em></small></p>
+<p>Interestingly, we find that GRUs are the most performant memory model for BFMs, outperforming Transformers and S4d. In particular,
+we find it is the only memory model that can be trained stably when applied to both forward and backward models.
+<figure><img src="https://github.com/enjeeneer/bfms-with-memory/blob/main/assets/results-memory-models.png?raw=true" width="100%"/>
 </figure>
-
-<p><small><em>Figure 5:  <strong>Performance by RND dataset size.</strong> The performance gap between conservative FB variants and vanilla FB increases as dataset size decreases</em></small></p>
+</p>
+<p><small><em>Figure 5: <strong>Aggregate zero-shot task performance of FB-M with different memory models.</strong> IQM of task
+scores across all tasks on Walker flickering. (Left) Observations are passed only to a memory-based backward model; the forward model and policy are memory-free. (Middle) Observations are passed only to the
+forward model and policy; the backward model is memory-free. (Right) Observations are passed to all models.</em></small></p>
 <hr>
-<p>Read the <a href="https://arxiv.org/abs/2309.15178">full paper</a> for more details!</p>
-<pre tabindex="0"><code class="language-commandline" data-lang="commandline">@article{jeen2025,
-  url = {https://arxiv.org/abs/2309.15178},
-  author = {Jeen, Scott and Bewley, Tom and Cullen, Jonathan M.},  
-  title = {Zero-Shot Reinforcement Learning Under Partial Observability},
-  journal = {2nd Reinforcement Learning Conference},
-  year = {2025},
-}
-</code></pre><hr>
+<p>Check out the <a href="https://arxiv.org/abs/2506.15446">full paper</a> for more details! If you find this work informative, please
+consider citing the paper:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">@article<span style="color:#f92672">{</span>jeen2025,
+  url <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>https://arxiv.org/abs/2309.15178<span style="color:#f92672">}</span>,
+  author <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>Jeen, Scott and Bewley, Tom and Cullen, Jonathan M.<span style="color:#f92672">}</span>,  
+  title <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>Zero-Shot Reinforcement Learning Under Partial Observability<span style="color:#f92672">}</span>,
+  journal <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>2nd Reinforcement Learning Conference<span style="color:#f92672">}</span>,
+  year <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>2025<span style="color:#f92672">}</span>,
+<span style="color:#f92672">}</span>
+</code></pre></div><hr>
 
             </div>
         </article>
